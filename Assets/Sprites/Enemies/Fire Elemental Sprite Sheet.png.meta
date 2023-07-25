@@ -1,0 +1,950 @@
+fileFormatVersion: 2
+guid: 0cc7d30db79bb554eb6fe0821bd48da9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba6acb8bd12952a4895b07d4bf6e0040
+      internalID: -1530045423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca2221acebb1af47831d050e43e351d
+      internalID: -899762580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d308a0f453fd4704f9544dceefe0732b
+      internalID: -647958855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d1d024115ac465408b641c1a9b6f7f0
+      internalID: 478157550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a3252fca2365641bf46cb1df37de1e
+      internalID: -912536877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057ba180649ce1e4481b88d32fd13f67
+      internalID: -457717280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771f2abdf994d774a966dca28a0c8381
+      internalID: 4169390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230fac203b20a524ba5e39b90d58d719
+      internalID: -1169911642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcf9b62e79a42f44b69f2bb01862250
+      internalID: 679717109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2546fdff971086e4dad8941b76b643f1
+      internalID: 594577461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0042202e9e7f2b248a6e510ab1294031
+      internalID: -919505854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a0a6c0d4afad94987a260c864833e3
+      internalID: -1452210356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46ba4157c51cce42b58ece64b41a013
+      internalID: -1688000730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1855da3e552fac4ca7ebb6f66c4bb02
+      internalID: -1424354101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b2847c7d19e24499f0208f8af12ae1
+      internalID: -966144519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 700e0a1765b48d342a8176e69851c7c6
+      internalID: -178245242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 64
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ecd3ddbc464a144b576b7cc37fcce2
+      internalID: 1983840659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb734e547950c3b40a12120be4c54719
+      internalID: 601430647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017b8857f6025df42b4d17947aa5a59e
+      internalID: 1736687018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1325be69a77eb284899bb6009d248930
+      internalID: 932547262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d66520ce14ab44195161f75f841950
+      internalID: 1616784955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac077f2c855ea394fa94b8fc7bda9fcf
+      internalID: -1541432082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19556606381b6ab4494d4b46fdbf8d4f
+      internalID: 1099135989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f8bba991af580f4fa3c493968494651
+      internalID: 81843125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b066b7a2d9b04914e845a917b5b55bf2
+      internalID: -1484369713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82c9aac72c0acf4c8234dc91651893d
+      internalID: -741713319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f793cf9a600564a867c6611b44823c
+      internalID: -1693580248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962bac817a4dbcf42ba2870feb8c01ff
+      internalID: -1312883546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794b9f8e58bb6884f8503f540153014e
+      internalID: -729695211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1499b1a73cd399143a7f6f8ac83e72ec
+      internalID: 2060277021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb0dc8b7a9bc8dc40b805e7383d5838a
+      internalID: 750851252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dc21c8b4fd5b74b8827060db3163c0
+      internalID: -1157094778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad1828d92a14a64419e1dabc0a97382c
+      internalID: 1305151437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7afd1d6e8c4b1bb4bbb5d5450fde6a69
+      internalID: -1070946228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca846633b8f8084c902a1d784ca6c1c
+      internalID: 773030486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Elemental Sprite Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fb6e6712acac4241879e46fecc26eb4
+      internalID: -964556787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Fire Elemental Sprite Sheet_42: -1157094778
+      Fire Elemental Sprite Sheet_30: 1616784955
+      Fire Elemental Sprite Sheet_19: -1688000730
+      Fire Elemental Sprite Sheet_4: -647958855
+      Fire Elemental Sprite Sheet_40: 2060277021
+      Fire Elemental Sprite Sheet_16: 594577461
+      Fire Elemental Sprite Sheet_34: 81843125
+      Fire Elemental Sprite Sheet_18: -1452210356
+      Fire Elemental Sprite Sheet_28: 932547262
+      Fire Elemental Sprite Sheet_21: -17468920
+      Fire Elemental Sprite Sheet_3: -1389791470
+      Fire Elemental Sprite Sheet_26: 1736687018
+      Fire Elemental Sprite Sheet_24: 1983840659
+      Fire Elemental Sprite Sheet_37: -1693580248
+      Fire Elemental Sprite Sheet_5: 2071869420
+      Fire Elemental Sprite Sheet_43: 1305151437
+      Fire Elemental Sprite Sheet_7: 5560807
+      Fire Elemental Sprite Sheet_13: -1026927705
+      Fire Elemental Sprite Sheet_22: -966144519
+      Fire Elemental Sprite Sheet_33: 1099135989
+      Fire Elemental Sprite Sheet_39: -729695211
+      Fire Elemental Sprite Sheet_0: -1530045423
+      Fire Elemental Sprite Sheet_35: -1484369713
+      Fire Elemental Sprite Sheet_9: 1460888003
+      Fire Elemental Sprite Sheet_14: -1169911642
+      Fire Elemental Sprite Sheet_20: -1424354101
+      Fire Elemental Sprite Sheet_12: 4169390
+      Fire Elemental Sprite Sheet_29: -1725173931
+      Fire Elemental Sprite Sheet_10: -457717280
+      Fire Elemental Sprite Sheet_23: -178245242
+      Fire Elemental Sprite Sheet_15: 679717109
+      Fire Elemental Sprite Sheet_25: 601430647
+      Fire Elemental Sprite Sheet_38: -1312883546
+      Fire Elemental Sprite Sheet_6: 478157550
+      Fire Elemental Sprite Sheet_44: -1070946228
+      Fire Elemental Sprite Sheet_27: -764772104
+      Fire Elemental Sprite Sheet_46: -964556787
+      Fire Elemental Sprite Sheet_31: 1774380362
+      Fire Elemental Sprite Sheet_36: -741713319
+      Fire Elemental Sprite Sheet_1: 922080272
+      Fire Elemental Sprite Sheet_32: -1541432082
+      Fire Elemental Sprite Sheet_41: 750851252
+      Fire Elemental Sprite Sheet_17: -919505854
+      Fire Elemental Sprite Sheet_45: 773030486
+      Fire Elemental Sprite Sheet_11: -1663673151
+      Fire Elemental Sprite Sheet_2: -899762580
+      Fire Elemental Sprite Sheet_8: -912536877
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
