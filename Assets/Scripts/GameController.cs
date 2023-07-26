@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
-using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -18,6 +16,7 @@ public class GameController : MonoBehaviour
     private static float bulletSize = 0.2f;
 
     private static float enemyDamage = 1f;
+    private static float playerDamage = 1f;
     [SerializeField] private float invincibilityTime = 1.5f;
 
     /*private bool bootCollected = false;
@@ -34,6 +33,7 @@ public class GameController : MonoBehaviour
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public static float FireRate { get => fireRate; set => fireRate = value; }
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
+    public static float PlayerDamage { get => playerDamage; set => playerDamage = value; }
 
     //public Text healthText;
 
@@ -73,18 +73,18 @@ public class GameController : MonoBehaviour
         foreach (GameObject bullet in bulletArray) { bulletCollider = GetComponents<Collider2D>(); }
 
         StatsMinCap();
+
+        if (health <= 0)
+            KillPlayer();
     }
 
 
     public static void DamagePlayer()
     {
-        if(health <= 0) { KillPlayer(); }
-
-        if (!instance.isInvincible)
-        {
-            health -= enemyDamage;
-            instance.StartCoroutine(instance.Invincibility());
-        }
+        if (instance.isInvincible) { return; }
+        
+        health -= enemyDamage;
+        instance.StartCoroutine(instance.Invincibility());
     }
 
     private static void KillPlayer()
@@ -166,10 +166,11 @@ public class GameController : MonoBehaviour
         else if (itemType == ItemType.REDHEART && health <= maxHealth - 0.5f)
             health += 0.5f;
     }
-    public static void MoveSpeedChange(float speed) => MoveSpeed += speed;
 
+    public static void MoveSpeedChange(float speed) => MoveSpeed += speed;
     public static void FireRateChange(float rate) => fireRate += rate;
     public static void BulletSizeChange(float size) => bulletSize += size;
+    public static void PlayerDamageChange(float damage) => bulletSize += damage;
     public static void TripleShot() => PlayerController.isTripleshot = true;
     #endregion
 }

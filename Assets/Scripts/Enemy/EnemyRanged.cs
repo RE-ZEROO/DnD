@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class EnemyRanged : EnemyController
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         base.Start();
+        enemyType = EnemyType.RANGED;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         base.Update();
 
-        if (enemyType == EnemyType.RANGED && currentState == EnemyState.ATTACK)
-            DashAttack();
+        if (currentState == EnemyState.ATTACK)
+            RangeAttack();
     }
 
-
-
+    private void RangeAttack()
+    {
+        if(!isOnCooldownAttack)
+            Shoot();
+    }
 }

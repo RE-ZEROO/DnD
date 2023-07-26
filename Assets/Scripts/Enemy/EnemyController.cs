@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Pathfinding;
+using System.Collections;
+using UnityEngine;
 
 public enum EnemyType
 {
@@ -22,56 +21,43 @@ public enum EnemyState
 
 public class EnemyController : MonoBehaviour
 {
-    private GameObject player;
-    private Rigidbody2D rb;
-    private Collider2D coll;
-    [SerializeField] private Transform enemyGFX;
-    public GameObject tester;
+    protected GameObject player;
+    protected Rigidbody2D rb;
+    protected Collider2D coll;
 
     [SerializeField] protected EnemyState currentState = EnemyState.IDLE;
     [SerializeField] protected EnemyType enemyType;
 
-    [SerializeField] private float range;
-    [SerializeField] private float maxDistance;
-    private Vector2 wanderingWayPoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform enemyGFX;
 
-
-    [Header("Stats")]
-    public float speed;
-    //public float dashSpeed;
-    public float retreatSpeed;
-
-    public float detectionRange;
-    //public float stoppingDistance;
-    public float retreatDistance;
-
-    public float attackRange;
-
-    public float bulletSpeed;
-    public float cooldown;
-
-    private float distanceToPlayer;
-
-    private bool isChoosingDirection = false;
-    //private bool isDead = false;
-    private bool isOnCooldownAttack = false;
-
-    //[HideInInspector]
+    protected float distanceToPlayer;
+    protected bool isOnCooldownAttack = false;
     protected bool inRoom = true;
 
-    private Vector3 randomDir;
-    public GameObject bulletPrefab;
+
+    [Header("Base Stats")]
+    [SerializeField] protected float health;
+    [SerializeField] protected float speed;
+
+    [SerializeField] protected float detectionRange;
+    [SerializeField] protected float attackRange;
+
+    [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected float cooldown;
 
 
-
-    [Header("Pathfinding")]
-    public float nextWaypointDistance = 3f;
-    
+    //[Header("Pathfinding")]
+    private float nextWaypointDistance = 3f;
     private Seeker seeker;
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedEndOfPath = false;
 
+    //Random Wandering
+    private float wanderingRange = 1f;
+    private float wanderingMaxDistance = 30f;
+    private Vector2 wanderingWayPoint;
 
 
     [Header("Animation")]
@@ -127,6 +113,18 @@ public class EnemyController : MonoBehaviour
             SetNewWanderPosition();
     }
 
+    protected bool IsPlayerInRange(float range) => distanceToPlayer <= range;
+    protected bool PlayerInSightLine()
+    {
+        string[] layers = { "Player", "Obstacle" };
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distanceToPlayer, LayerMask.GetMask(layers));
+
+        if (hit.collider.CompareTag("Player"))
+            return true;
+        else
+            return false;
+    }
+
 
     #region Pathfinding
     private void UpdatePath()
@@ -149,13 +147,10 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
 
-
-    protected bool IsPlayerInRange(float range) => distanceToPlayer <= range;
-
     #region Move Methods
     private void Wander()
     {
-        if (Vector2.Distance(transform.position, wanderingWayPoint) < range)
+        if (Vector2.Distance(transform.position, wanderingWayPoint) < wanderingRange)
             SetNewWanderPosition();
             
 
@@ -167,10 +162,8 @@ public class EnemyController : MonoBehaviour
 
     private void SetNewWanderPosition()
     {
-        wanderingWayPoint = new Vector2(transform.position.x + Random.Range(-maxDistance, maxDistance + 1), 
-                                        transform.position.y + Random.Range(-maxDistance, maxDistance + 1));
-
-        Instantiate(tester, wanderingWayPoint, Quaternion.identity);
+        wanderingWayPoint = new Vector2(transform.position.x + Random.Range(-wanderingMaxDistance, wanderingMaxDistance + 1), 
+                                        transform.position.y + Random.Range(-wanderingMaxDistance, wanderingMaxDistance + 1));
     }
 
 
@@ -197,29 +190,10 @@ public class EnemyController : MonoBehaviour
             currentWaypoint++;
     }
 
-    //Dodge player (For ranged types)
-    protected void Retreat()
-    {
-        Vector2 direction = ((Vector2)player.transform.position + rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-        rb.AddForce(force);
 
-        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, -retreatSpeed * Time.deltaTime);
-    }
     #endregion
 
-
     #region Attack Methods
-    
-
-    private void RangeAttack()
-    {
-        if (!isOnCooldownAttack) { Shoot(); }
-
-        if (distanceToPlayer < attackRange && distanceToPlayer > retreatDistance) { transform.position = this.transform.position; }
-        else if (distanceToPlayer < retreatDistance) { Retreat(); }
-    }
-
     protected void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -229,7 +203,7 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(Cooldown());
     }
 
-    protected IEnumerator Cooldown()
+    private IEnumerator Cooldown()
     {
         isOnCooldownAttack = true;
         yield return new WaitForSeconds(cooldown);
@@ -237,19 +211,22 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
 
+
     private void Idle()
     {
 
     }
 
-    public void Death()
+    public void Damage()
     {
-        currentState = EnemyState.DEAD;
+        health -= (GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
+        Debug.Log(health);
 
-        //=======Add Death Animation=========
-
-        Destroy(gameObject);
+        if(health <= 0 )
+            currentState = EnemyState.DEAD;
     }
+
+    public void Death() => Destroy(gameObject);
 
     protected void SwitchStates()
     {
@@ -257,13 +234,17 @@ public class EnemyController : MonoBehaviour
         if (inRoom)
         {
             //Set current states
-            if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD)
+            if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)
                 currentState = EnemyState.FOLLOW;
-            else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD)
+            else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)
                 currentState = EnemyState.WANDER;
 
-            if (distanceToPlayer <= attackRange)
+
+            if (distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
                 currentState = EnemyState.ATTACK;
+
+            if(health <= 0)
+                currentState = EnemyState.DEAD;
         }
         else
             currentState = EnemyState.IDLE;
@@ -278,21 +259,11 @@ public class EnemyController : MonoBehaviour
                 Wander();
                 break;
             case (EnemyState.FOLLOW):
-                Follow();
+                Follow(); 
                 break;
-            case (EnemyState.DEAD):
+            /*case (EnemyState.DEAD):
                 Death();
-                break;
-            case (EnemyState.ATTACK):
-                if (enemyType == EnemyType.MELEE) { }
-                else if (enemyType == EnemyType.RANGED) { RangeAttack(); };
-                break;
-            /*case (EnemyState.RUSH):
-                DashAttack();
                 break;*/
-            default:
-                currentState = EnemyState.IDLE;
-                break;
         }
     }
 

@@ -54,7 +54,7 @@ public class BulletController : MonoBehaviour
     {
         if(collision.CompareTag("Enemy") && !isEnemyBullet)
         {
-            collision.gameObject.GetComponent<EnemyController>().Death();
+            collision.gameObject.GetComponent<EnemyController>().Damage();
             Destroy(gameObject);
         }
         else if(collision.CompareTag("Player") && isEnemyBullet)
@@ -63,8 +63,6 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Wall") || collision.CompareTag("Door") || collision.CompareTag("BossDoor"))
-        {
             Destroy(gameObject);
-        }
     }
 }

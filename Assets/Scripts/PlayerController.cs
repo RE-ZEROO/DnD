@@ -1,11 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
-using System.Collections;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using System.Collections.Generic;
-using UnityEngine.InputSystem.EnhancedTouch;
 
 public enum PlayerState
 {
@@ -134,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == collision.CompareTag("Enemy") || collision == collision.CompareTag("Boss"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
             GameController.DamagePlayer();
     }
 
@@ -178,11 +172,11 @@ public class PlayerController : MonoBehaviour
         lowerBullet.GetComponent<Rigidbody2D>().velocity = lowerDirection * bulletSpeed;
     }
 
-    private IEnumerator BulletDelay(float delay)
+    /*private IEnumerator BulletDelay(float delay)
     {
         yield return new WaitForSeconds(5);
         yield return null;
-    }
+    }*/
     #endregion
 
     private void Flip()
