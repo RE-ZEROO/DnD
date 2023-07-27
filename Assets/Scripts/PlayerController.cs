@@ -13,23 +13,23 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
     [SerializeField] public PlayerState currentState = PlayerState.IDLE;
 
     [Header("Input")]
-    public PlayerActionsInput playerInput;
-    public InputAction move;
-    public InputAction shoot;
+    [SerializeField] private PlayerActionsInput playerInput;
+    [SerializeField] private InputAction move;
+    [SerializeField] private InputAction shoot;
 
     [Header("Movement")]
-    public float speed;
+    [SerializeField] private float speed;
     Vector2 moveDirection = Vector2.zero;
     private bool facingRight = true;
 
     [Header("Shooting")]
-    public GameObject bulletPrefab;
-    public float bulletSpeed;
-    public float fireDelay;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float fireDelay;
     private float lastFire;
 
     public static bool isTripleshot = false;
@@ -45,12 +45,12 @@ public class PlayerController : MonoBehaviour
     private float lockedTill;
 
     //Hashing animation states to improve performance
-    private static readonly int Idle = Animator.StringToHash("Player_Idle");
-    private static readonly int Run = Animator.StringToHash("Player_Run");
-    private static readonly int Attack = Animator.StringToHash("Player_Attack");
-    private static readonly int TeleportOut = Animator.StringToHash("Player_Teleport_Out");
-    private static readonly int TeleportIn = Animator.StringToHash("Player_Teleport_In");
-    private static readonly int Die = Animator.StringToHash("Player_Die");
+    private static readonly int PlayerIdleAnimation = Animator.StringToHash("Player_Idle");
+    private static readonly int PlayerRunAnimation = Animator.StringToHash("Player_Run");
+    private static readonly int PlayerAttackAnimation = Animator.StringToHash("Player_Attack");
+    private static readonly int PlayerTeleportOutAnimation = Animator.StringToHash("Player_Teleport_Out");
+    private static readonly int PlayerTeleportInAnimation = Animator.StringToHash("Player_Teleport_In");
+    private static readonly int PlayerDieAnimation = Animator.StringToHash("Player_Die");
 
 
     #region Enable / Disable Inputs
@@ -179,6 +179,8 @@ public class PlayerController : MonoBehaviour
     }*/
     #endregion
 
+    public void PlayerDeath() => currentState = PlayerState.DEAD;
+
     private void Flip()
     {
         //Flip player sprite
@@ -195,17 +197,17 @@ public class PlayerController : MonoBehaviour
 
         //Set animation based of the player state
         if (currentState == PlayerState.RUN) 
-            return Run;
+            return PlayerRunAnimation;
         else if (currentState == PlayerState.ATTACK)
-            return LockState(Attack, attackAnimTime);
+            return LockState(PlayerAttackAnimation, attackAnimTime);
         else if (currentState == PlayerState.TELEPORTING_OUT) 
-            return TeleportOut;
+            return PlayerTeleportOutAnimation;
         else if (currentState == PlayerState.TELEPORTING_IN) 
-            return TeleportIn;
+            return PlayerTeleportInAnimation;
         else if (currentState == PlayerState.DEAD) 
-            return Die;
+            return PlayerDieAnimation;
 
-        return Idle;
+        return PlayerIdleAnimation;
 
         int LockState(int s, float t)
         {

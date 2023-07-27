@@ -14,13 +14,21 @@ public class EnemyRanged : EnemyController
     {
         base.Update();
 
+
         if (currentState == EnemyState.ATTACK)
             RangeAttack();
     }
 
     private void RangeAttack()
     {
-        if(!isOnCooldownAttack)
-            Shoot();
+        if (isOnCooldownAttack && currentState == EnemyState.IDLE && currentState == EnemyState.HIT) { return; }
+
+        if (rb.velocity.magnitude < .01)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = 0f;
+        }
+
+        Shoot();
     }
 }

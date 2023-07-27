@@ -32,7 +32,8 @@ public class EnemyStationary : EnemyController
 
     private void RangeAttack()
     {
-        if (!isOnCooldownAttack)
-            Shoot();
+        if (isOnCooldownAttack && currentState == EnemyState.IDLE && currentState == EnemyState.HIT) { return; }
+        
+        Shoot();
     }
 }

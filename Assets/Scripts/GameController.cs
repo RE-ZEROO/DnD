@@ -37,6 +37,8 @@ public class GameController : MonoBehaviour
 
     //public Text healthText;
 
+    private GameObject player;
+    private PlayerController playerController;
     private Renderer playerRenderer;
     private Collider2D playerCollider;
     private Color playerColor;
@@ -55,8 +57,10 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        playerRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
-        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
+        playerCollider = player.GetComponent<Collider2D>();
+        playerRenderer = player.GetComponent<SpriteRenderer>();
         playerColor = playerRenderer.material.color;
     }
 
@@ -76,6 +80,8 @@ public class GameController : MonoBehaviour
 
         if (health <= 0)
             KillPlayer();
+
+        Debug.Log(health);
     }
 
 
@@ -87,9 +93,10 @@ public class GameController : MonoBehaviour
         instance.StartCoroutine(instance.Invincibility());
     }
 
-    private static void KillPlayer()
+    private void KillPlayer()
     {
-        Debug.Log("Player Died!");
+        //Debug.Log("Player Died!");
+        playerController.PlayerDeath();
     }
 
     public void UpdateCollectedItems(ItemController collectedItem)

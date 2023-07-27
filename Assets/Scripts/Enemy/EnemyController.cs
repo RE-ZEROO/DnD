@@ -16,6 +16,7 @@ public enum EnemyState
     FOLLOW,
     DEAD,
     ATTACK,
+    HIT,
     RUSH
 };
 
@@ -25,11 +26,11 @@ public class EnemyController : MonoBehaviour
     protected Rigidbody2D rb;
     protected Collider2D coll;
 
-    [SerializeField] protected EnemyState currentState = EnemyState.IDLE;
+    [SerializeField] public EnemyState currentState = EnemyState.IDLE;
     [SerializeField] protected EnemyType enemyType;
 
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform enemyGFX;
+    //[SerializeField] private Transform enemyGFX;
 
     protected float distanceToPlayer;
     protected bool isOnCooldownAttack = false;
@@ -60,23 +61,6 @@ public class EnemyController : MonoBehaviour
     private Vector2 wanderingWayPoint;
 
 
-    [Header("Animation")]
-    [SerializeField] private float attackAnimTime = 0.75f;
-
-    private Animator animator;
-    private int currentAnimationState;
-    private float lockedTill;
-
-    //Hashing animation states to improve performance
-    private static readonly int EnemyIdleAnimation = Animator.StringToHash("Enemy_Idle");
-    private static readonly int EnemyRunAnimation = Animator.StringToHash("Enemy_Run");
-    private static readonly int EnemyAttackAnimation = Animator.StringToHash("Enemy_Attack");
-    private static readonly int EnemyHitAnimation = Animator.StringToHash("Enemy_Hit");
-    private static readonly int EnemyDieAnimation = Animator.StringToHash("Enemy_Die");
-
-
-
-
 
     protected virtual void Start()
     {
@@ -84,7 +68,6 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         seeker = GetComponent<Seeker>();
-        animator = GetComponent<Animator>();
 
         //Pathfinding follow player
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
@@ -96,15 +79,11 @@ public class EnemyController : MonoBehaviour
         
         SwitchStates();
 
-        SwitchAnimation();
-
-        
-
         //Flipping Sprite
         if (rb.velocity.x >= 0.01f)
-            enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         else if (rb.velocity.x <= 0.01f)
-            enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -189,8 +168,6 @@ public class EnemyController : MonoBehaviour
         if (distance < nextWaypointDistance)
             currentWaypoint++;
     }
-
-
     #endregion
 
     #region Attack Methods
@@ -219,14 +196,14 @@ public class EnemyController : MonoBehaviour
 
     public void Damage()
     {
+        currentState = EnemyState.HIT;
         health -= (GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
-        Debug.Log(health);
 
         if(health <= 0 )
             currentState = EnemyState.DEAD;
     }
 
-    public void Death() => Destroy(gameObject);
+    private void EnemyDeath() => Destroy(gameObject);
 
     protected void SwitchStates()
     {
@@ -240,10 +217,12 @@ public class EnemyController : MonoBehaviour
                 currentState = EnemyState.WANDER;
 
 
-            if (distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
+            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
                 currentState = EnemyState.ATTACK;
+            else if(isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
+                currentState = EnemyState.IDLE;
 
-            if(health <= 0)
+            if (health <= 0)
                 currentState = EnemyState.DEAD;
         }
         else
@@ -261,43 +240,6 @@ public class EnemyController : MonoBehaviour
             case (EnemyState.FOLLOW):
                 Follow(); 
                 break;
-            /*case (EnemyState.DEAD):
-                Death();
-                break;*/
         }
     }
-
-    #region Animation
-    private void SwitchAnimation()
-    {
-        int animationState = GetAnimationState();
-
-        if (animationState == currentAnimationState) { return; }
-        animator.CrossFade(animationState, 0, 0);
-        currentAnimationState = animationState;
-    }
-
-    private int GetAnimationState()
-    {
-        if (Time.time < lockedTill) return currentAnimationState;
-
-        //Set animation based of the enemy state
-        if (currentState == EnemyState.WANDER || currentState == EnemyState.FOLLOW)
-            return EnemyRunAnimation;
-        else if (currentState == EnemyState.ATTACK)
-            return LockState(EnemyAttackAnimation, attackAnimTime);
-        else if (currentState == EnemyState.DEAD)
-            return EnemyDieAnimation;
-        else if (currentState == EnemyState.IDLE)
-            return EnemyIdleAnimation;
-
-        int LockState(int s, float t)
-        {
-            lockedTill = Time.time + t;
-            return s;
-        }
-
-        return EnemyIdleAnimation;
-    }
-    #endregion
 }
