@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyMelee : EnemyController
 {
     [Header("Melee Stats")]
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashTime;
+    [SerializeField] private float dashMultiplier;
+    private float dashSpeed;
 
     protected override void Start()
     {
         base.Start();
         enemyType = EnemyType.MELEE;
+        dashSpeed = speed * dashMultiplier;
     }
 
     protected override void Update()
@@ -19,7 +20,7 @@ public class EnemyMelee : EnemyController
         base.Update();
 
         if (currentState == EnemyState.ATTACK)
-            StartCoroutine(Dash());
+            DashAttack();
     }
 
 
@@ -33,7 +34,7 @@ public class EnemyMelee : EnemyController
     }
 
 
-    private IEnumerator Dash()
+    /*private IEnumerator Dash()
     {
         Vector2 target = player.transform.position;
         Vector2 direction = (target - rb.position).normalized;
@@ -41,5 +42,5 @@ public class EnemyMelee : EnemyController
         Vector2 force = direction * dashSpeed * Time.deltaTime;
         rb.AddForce(force);
         yield return new WaitForSeconds(dashTime);
-    }
+    }*/
 }

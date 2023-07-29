@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float lifeTime;
+    [SerializeField] private float bulletSpeed = 90f;
+    [SerializeField] private GameObject impactEffect;
 
     public bool isEnemyBullet;
 
@@ -22,6 +24,8 @@ public class BulletController : MonoBehaviour
         {
             transform.localScale = new Vector2(GameController.BulletSize, GameController.BulletSize);
         }
+
+        playerPosition = FindObjectOfType<PlayerController>().transform.position;
     }
 
     void Update()
@@ -30,13 +34,13 @@ public class BulletController : MonoBehaviour
         {
             //Shoot towards player
             currentPosition = transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, playerPosition, 90f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, playerPosition, bulletSpeed * Time.deltaTime);
 
-            if(currentPosition == lastPosition)
+            if (currentPosition == lastPosition)
                 Destroy(gameObject);
 
             lastPosition = currentPosition;
-        }    
+        }
     }
 
 
@@ -52,7 +56,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Enemy") && !isEnemyBullet)
+        if (collision.CompareTag("Enemy") && !isEnemyBullet)
         {
             collision.gameObject.GetComponentInParent<EnemyController>().Damage();
             Destroy(gameObject);
@@ -64,5 +68,14 @@ public class BulletController : MonoBehaviour
         }
         else if (collision.CompareTag("Wall") || collision.CompareTag("Door") || collision.CompareTag("BossDoor"))
             Destroy(gameObject);
+        
+    }
+
+    private void OnDestroy()
+    {
+        if (!gameObject.scene.isLoaded) { return; }
+
+        if (impactEffect != null)
+            Instantiate(impactEffect, transform.position, gameObject.transform.rotation);
     }
 }

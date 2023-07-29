@@ -25,16 +25,19 @@ public class EnemyController : MonoBehaviour
     protected GameObject player;
     protected Rigidbody2D rb;
     protected Collider2D coll;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField] public EnemyState currentState = EnemyState.IDLE;
-    [SerializeField] protected EnemyType enemyType;
+    [SerializeField] public EnemyType enemyType;
 
     [SerializeField] private GameObject bulletPrefab;
-    //[SerializeField] private Transform enemyGFX;
+
+    private Vector3 directionToPlayer;
 
     protected float distanceToPlayer;
     protected bool isOnCooldownAttack = false;
     protected bool inRoom = true;
+    private readonly bool flip;
 
 
     [Header("Base Stats")]
@@ -46,6 +49,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float cooldown;
+    [SerializeField] protected Transform bulletSpawnPos;
 
 
     //[Header("Pathfinding")]
@@ -68,6 +72,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         seeker = GetComponent<Seeker>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         //Pathfinding follow player
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
@@ -76,14 +81,16 @@ public class EnemyController : MonoBehaviour
     protected virtual void Update()
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        directionToPlayer = (player.transform.position - transform.position).normalized;
         
         SwitchStates();
+        Flip();
 
         //Flipping Sprite
-        if (rb.velocity.x >= 0.01f)
+        /*if (rb.velocity.x >= 0.01f)
             transform.localScale = new Vector3(1f, 1f, 1f);
         else if (rb.velocity.x <= 0.01f)
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);*/
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -93,6 +100,7 @@ public class EnemyController : MonoBehaviour
     }
 
     protected bool IsPlayerInRange(float range) => distanceToPlayer <= range;
+
     protected bool PlayerInSightLine()
     {
         string[] layers = { "Player", "Obstacle" };
@@ -102,6 +110,18 @@ public class EnemyController : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private void Flip()
+    {
+        Vector3 scale = transform.localScale;
+
+        if(rb.velocity.x <= 0.01f || (PlayerInSightLine() && currentState == EnemyState.IDLE && player.transform.position.x > transform.position.x))
+            scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+        else if (rb.velocity.x >= 0.01f)
+            scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
+
+        transform.localScale = scale;
     }
 
 
@@ -173,10 +193,19 @@ public class EnemyController : MonoBehaviour
     #region Attack Methods
     protected void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPos.transform.position, Quaternion.identity);
         bullet.GetComponent<BulletController>().GetPlayer(player.transform);
-        bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
+        bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+
+        bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y, -1f);
+
+        //Rotate to player
+        var relativePos = player.transform.position - transform.position;
+        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        bullet.transform.rotation = rotation;
+
         StartCoroutine(Cooldown());
     }
 
@@ -217,7 +246,7 @@ public class EnemyController : MonoBehaviour
                 currentState = EnemyState.WANDER;
 
 
-            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
+            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD && currentState != EnemyState.HIT)
                 currentState = EnemyState.ATTACK;
             else if(isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
                 currentState = EnemyState.IDLE;

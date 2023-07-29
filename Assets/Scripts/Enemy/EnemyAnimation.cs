@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
@@ -68,10 +69,10 @@ public class EnemyAnimation : MonoBehaviour
             return EnemyIdleAnimation;
         
 
-        int LockState(int s, float t)
+        int LockState(int animation, float time)
         {
-            lockedTill = Time.time + t;
-            return s;
+            lockedTill = Time.time + time;
+            return animation;
         }
 
         return EnemyIdleAnimation;

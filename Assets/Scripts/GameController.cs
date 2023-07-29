@@ -80,8 +80,6 @@ public class GameController : MonoBehaviour
 
         if (health <= 0)
             KillPlayer();
-
-        Debug.Log(health);
     }
 
 

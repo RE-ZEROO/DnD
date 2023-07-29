@@ -3,7 +3,7 @@ guid: 0cc7d30db79bb554eb6fe0821bd48da9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -25,7 +25,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -65,17 +65,19 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -88,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -100,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -112,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -124,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -896,54 +902,54 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fire Elemental Sprite Sheet_42: -1157094778
-      Fire Elemental Sprite Sheet_30: 1616784955
+      Fire Elemental Sprite Sheet_0: -1530045423
+      Fire Elemental Sprite Sheet_1: 922080272
+      Fire Elemental Sprite Sheet_10: -457717280
+      Fire Elemental Sprite Sheet_11: -1663673151
+      Fire Elemental Sprite Sheet_12: 4169390
+      Fire Elemental Sprite Sheet_13: -1026927705
+      Fire Elemental Sprite Sheet_14: -1169911642
+      Fire Elemental Sprite Sheet_15: 679717109
+      Fire Elemental Sprite Sheet_16: 594577461
+      Fire Elemental Sprite Sheet_17: -919505854
+      Fire Elemental Sprite Sheet_18: -1452210356
       Fire Elemental Sprite Sheet_19: -1688000730
+      Fire Elemental Sprite Sheet_2: -899762580
+      Fire Elemental Sprite Sheet_20: -1424354101
+      Fire Elemental Sprite Sheet_21: -17468920
+      Fire Elemental Sprite Sheet_22: -966144519
+      Fire Elemental Sprite Sheet_23: -178245242
+      Fire Elemental Sprite Sheet_24: 1983840659
+      Fire Elemental Sprite Sheet_25: 601430647
+      Fire Elemental Sprite Sheet_26: 1736687018
+      Fire Elemental Sprite Sheet_27: -764772104
+      Fire Elemental Sprite Sheet_28: 932547262
+      Fire Elemental Sprite Sheet_29: -1725173931
+      Fire Elemental Sprite Sheet_3: -1389791470
+      Fire Elemental Sprite Sheet_30: 1616784955
+      Fire Elemental Sprite Sheet_31: 1774380362
+      Fire Elemental Sprite Sheet_32: -1541432082
+      Fire Elemental Sprite Sheet_33: 1099135989
+      Fire Elemental Sprite Sheet_34: 81843125
+      Fire Elemental Sprite Sheet_35: -1484369713
+      Fire Elemental Sprite Sheet_36: -741713319
+      Fire Elemental Sprite Sheet_37: -1693580248
+      Fire Elemental Sprite Sheet_38: -1312883546
+      Fire Elemental Sprite Sheet_39: -729695211
       Fire Elemental Sprite Sheet_4: -647958855
       Fire Elemental Sprite Sheet_40: 2060277021
-      Fire Elemental Sprite Sheet_16: 594577461
-      Fire Elemental Sprite Sheet_34: 81843125
-      Fire Elemental Sprite Sheet_18: -1452210356
-      Fire Elemental Sprite Sheet_28: 932547262
-      Fire Elemental Sprite Sheet_21: -17468920
-      Fire Elemental Sprite Sheet_3: -1389791470
-      Fire Elemental Sprite Sheet_26: 1736687018
-      Fire Elemental Sprite Sheet_24: 1983840659
-      Fire Elemental Sprite Sheet_37: -1693580248
-      Fire Elemental Sprite Sheet_5: 2071869420
-      Fire Elemental Sprite Sheet_43: 1305151437
-      Fire Elemental Sprite Sheet_7: 5560807
-      Fire Elemental Sprite Sheet_13: -1026927705
-      Fire Elemental Sprite Sheet_22: -966144519
-      Fire Elemental Sprite Sheet_33: 1099135989
-      Fire Elemental Sprite Sheet_39: -729695211
-      Fire Elemental Sprite Sheet_0: -1530045423
-      Fire Elemental Sprite Sheet_35: -1484369713
-      Fire Elemental Sprite Sheet_9: 1460888003
-      Fire Elemental Sprite Sheet_14: -1169911642
-      Fire Elemental Sprite Sheet_20: -1424354101
-      Fire Elemental Sprite Sheet_12: 4169390
-      Fire Elemental Sprite Sheet_29: -1725173931
-      Fire Elemental Sprite Sheet_10: -457717280
-      Fire Elemental Sprite Sheet_23: -178245242
-      Fire Elemental Sprite Sheet_15: 679717109
-      Fire Elemental Sprite Sheet_25: 601430647
-      Fire Elemental Sprite Sheet_38: -1312883546
-      Fire Elemental Sprite Sheet_6: 478157550
-      Fire Elemental Sprite Sheet_44: -1070946228
-      Fire Elemental Sprite Sheet_27: -764772104
-      Fire Elemental Sprite Sheet_46: -964556787
-      Fire Elemental Sprite Sheet_31: 1774380362
-      Fire Elemental Sprite Sheet_36: -741713319
-      Fire Elemental Sprite Sheet_1: 922080272
-      Fire Elemental Sprite Sheet_32: -1541432082
       Fire Elemental Sprite Sheet_41: 750851252
-      Fire Elemental Sprite Sheet_17: -919505854
+      Fire Elemental Sprite Sheet_42: -1157094778
+      Fire Elemental Sprite Sheet_43: 1305151437
+      Fire Elemental Sprite Sheet_44: -1070946228
       Fire Elemental Sprite Sheet_45: 773030486
-      Fire Elemental Sprite Sheet_11: -1663673151
-      Fire Elemental Sprite Sheet_2: -899762580
+      Fire Elemental Sprite Sheet_46: -964556787
+      Fire Elemental Sprite Sheet_5: 2071869420
+      Fire Elemental Sprite Sheet_6: 478157550
+      Fire Elemental Sprite Sheet_7: 5560807
       Fire Elemental Sprite Sheet_8: -912536877
-  spritePackingTag: 
+      Fire Elemental Sprite Sheet_9: 1460888003
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
