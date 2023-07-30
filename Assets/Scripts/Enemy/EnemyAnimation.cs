@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class EnemyAnimation : MonoBehaviour
 
     [SerializeField] private float attackAnimTime;
     [SerializeField] private float hitAnimTime;
+    [SerializeField] private float invincibilityAnimTime;
 
     private Animator animator;
     private int currentAnimationState;
@@ -23,6 +25,9 @@ public class EnemyAnimation : MonoBehaviour
     private static readonly int EnemyAttackAnimation = Animator.StringToHash("Enemy_Attack");
     private static readonly int EnemyHitAnimation = Animator.StringToHash("Enemy_Hit");
     private static readonly int EnemyDieAnimation = Animator.StringToHash("Enemy_Death");
+
+    private static readonly int EnemyInvincibleAnimation = Animator.StringToHash("Enemy_Invincible");
+    private static readonly int EnemyNotInvincibleAnimation = Animator.StringToHash("Enemy_NotInvincible");
 
 
 
@@ -67,6 +72,11 @@ public class EnemyAnimation : MonoBehaviour
             return EnemyDieAnimation;
         else if (currentState == EnemyState.IDLE)
             return EnemyIdleAnimation;
+
+        if (enemyController.isInvincible)
+            return LockState(EnemyInvincibleAnimation, invincibilityAnimTime);
+        else if (!enemyController.isInvincible)
+            return LockState(EnemyNotInvincibleAnimation, invincibilityAnimTime);
         
 
         int LockState(int animation, float time)

@@ -16,14 +16,15 @@ public class GameController : MonoBehaviour
     private static float bulletSize = 0.2f;
 
     private static float enemyDamage = 1f;
-    private static float playerDamage = 1f;
-    [SerializeField] private float invincibilityTime = 1.5f;
+    private static float playerDamage = 100f;
+
+    [SerializeField] private static float invincibilityTime = 1.5f;
+    private bool isInvincible = false;
 
     /*private bool bootCollected = false;
     private bool screwCollected = false;
     private bool potionCollected = false;*/
 
-    private bool isInvincible = false;
 
     public List<string> collectedItems = new List<string>();
 
@@ -34,6 +35,8 @@ public class GameController : MonoBehaviour
     public static float FireRate { get => fireRate; set => fireRate = value; }
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
     public static float PlayerDamage { get => playerDamage; set => playerDamage = value; }
+
+    public static float PlayerInvicibilityTime { get => invincibilityTime; set => invincibilityTime = value; }
 
     //public Text healthText;
 
@@ -94,7 +97,7 @@ public class GameController : MonoBehaviour
     private void KillPlayer()
     {
         //Debug.Log("Player Died!");
-        playerController.PlayerDeath();
+        playerController.PlayerDeathState();
     }
 
     public void UpdateCollectedItems(ItemController collectedItem)
@@ -135,6 +138,7 @@ public class GameController : MonoBehaviour
     {
         isInvincible = true;
         //Set a flashing animation later when there is a player sprite
+        playerController.currentState = PlayerState.Invincible;
         playerColor.a = 0.5f;
         playerRenderer.material.color = playerColor;
 
@@ -147,6 +151,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(invincibilityTime);
 
         playerColor.a = 1f;
+        playerController.currentState = PlayerState.IDLE;
         playerRenderer.material.color = playerColor;
 
         if (enemyCollider != null)

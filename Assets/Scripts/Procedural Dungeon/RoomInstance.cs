@@ -12,7 +12,7 @@ public struct ColorToGameObject
 public class RoomInstance : MonoBehaviour
 {
     public Texture2D tex;
-    [SerializeField] private RoomType type;
+    [SerializeField] private RoomType roomType;
 
     [HideInInspector] public Vector2 gridPos;
     [HideInInspector] public bool doorTop, doorBottom, doorLeft, doorRight;
@@ -23,8 +23,13 @@ public class RoomInstance : MonoBehaviour
     [SerializeField] private GameObject doorU, doorD, doorL, doorR;
     [SerializeField] private GameObject doorWallT, doorWallB, doorWallL, doorWallR;
     [SerializeField] private GameObject doorBU, doorBD, doorBL, doorBR;
+
+    [Space]
+    [SerializeField] private GameObject[] bossMonsterPrefab;
+
     [Space]
     [SerializeField] private GameObject[] groundTiles;
+
     [Space]
     [SerializeField] private ColorToGameObject[] mappings;
 
@@ -36,13 +41,14 @@ public class RoomInstance : MonoBehaviour
     private float checkBossRayDistanceY = 290f;
 
 
+
     public void Setup(Texture2D _texture, Vector2 _gridPos, RoomType _type,
                         bool _doorTop, bool _doorBottom, bool _doorLeft, bool _doorRight,
                         bool _doorBossTop, bool _doorBossBottom, bool _doorBossLeft, bool _doorBossRight)
     {
         tex = _texture;
         gridPos = _gridPos;
-        type = _type;
+        roomType = _type;
 
         doorTop = _doorTop;
         doorBottom = _doorBottom;
@@ -56,6 +62,7 @@ public class RoomInstance : MonoBehaviour
 
         MakeDoors();
         GenerateRoomTiles();
+        SpawnBoss();
         //CheckForBossRoomNeighbour();
 
         gameObject.name = gameObject.name + " - " + gridPos;
@@ -93,6 +100,15 @@ public class RoomInstance : MonoBehaviour
         Gizmos.DrawRay(transform.position, Vector2.right * checkBossRayDistanceY);*/
     }
 
+    private void SpawnBoss()
+    {
+        if(roomType != RoomType.END) { return; }
+
+        int randomBossIndex = Random.Range(0, bossMonsterPrefab.Length);
+
+        Instantiate(bossMonsterPrefab[randomBossIndex], RoomCenter(), Quaternion.identity).transform.parent = transform;
+    }
+
 
     private void PlaceDoor(Vector3 spawnPos, bool door, GameObject doorSpawn)
     {
@@ -117,28 +133,28 @@ public class RoomInstance : MonoBehaviour
     {
         //Top door, get position then spawn
         Vector3 spawnPos = transform.position + Vector3.up * (roomSizeInTiles.y / 4 * tileSize) - Vector3.up * (tileSize / 4);
-        if (type == RoomType.END)
+        if (roomType == RoomType.END)
             PlaceDoor(spawnPos, doorBossTop, doorBU);
         else
             PlaceDoor(spawnPos, doorTop, doorU);
 
         //Bottom door
         spawnPos = transform.position + Vector3.down * (roomSizeInTiles.y / 4 * tileSize) - Vector3.down * (tileSize / 4);
-        if (type == RoomType.END)
+        if (roomType == RoomType.END)
             PlaceDoor(spawnPos, doorBossBottom, doorBD);
         else
             PlaceDoor(spawnPos, doorBottom, doorD);
 
         //Left door
         spawnPos = transform.position + Vector3.left * (roomSizeInTiles.x * tileSize) - Vector3.left * tileSize;
-        if (type == RoomType.END)
+        if (roomType == RoomType.END)
             PlaceDoor(spawnPos, doorBossLeft, doorBL);
         else
             PlaceDoor(spawnPos, doorLeft, doorL);
 
         //Right door
         spawnPos = transform.position + Vector3.right * (roomSizeInTiles.x * tileSize) - Vector3.right * tileSize;
-        if (type == RoomType.END)
+        if (roomType == RoomType.END)
             PlaceDoor(spawnPos, doorBossRight, doorBR);
         else
             PlaceDoor(spawnPos, doorRight, doorR);
@@ -186,10 +202,6 @@ public class RoomInstance : MonoBehaviour
 
                 Vector3 spawnPos = PositionFromTileGrid(x, y);
                 Instantiate(mapping.prefabs[randomIndex], spawnPos, Quaternion.identity).transform.parent = transform;
-
-                //Update the A* grid when the tile is an obstacle
-                //if(mapping.prefabs[randomIndex].GetComponent<Collider2D>() == null) { return; }
-                //AstarPath.active.UpdateGraphs(mapping.prefabs[randomIndex].GetComponent<Collider2D>().bounds);
             }
         }
     }

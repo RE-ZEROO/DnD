@@ -8,13 +8,14 @@ public enum PlayerState
     ATTACK,
     TELEPORTING_OUT,
     TELEPORTING_IN,
+    Invincible,
     DEAD
 }
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] public PlayerState currentState = PlayerState.IDLE;
+    public PlayerState currentState = PlayerState.IDLE;
 
     [Header("Input")]
     [SerializeField] private PlayerActionsInput playerInput;
@@ -23,7 +24,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float speed;
-    Vector2 moveDirection = Vector2.zero;
+    private Vector2 moveDirection = Vector2.zero;
+
+    [HideInInspector] public bool canMove = true;
     private bool facingRight = true;
 
     [Header("Shooting")]
@@ -33,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private float lastFire;
 
     public static bool isTripleshot = false;
-    Vector2 shootDirection = Vector2.zero;
+    private Vector2 shootDirection = Vector2.zero;
 
     //Animation
     private Animator animator;
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int PlayerAttackAnimation = Animator.StringToHash("Player_Attack");
     private static readonly int PlayerTeleportOutAnimation = Animator.StringToHash("Player_Teleport_Out");
     private static readonly int PlayerTeleportInAnimation = Animator.StringToHash("Player_Teleport_In");
+    private static readonly int PlayerInvincibleAnimation = Animator.StringToHash("Player_Invincible");
     private static readonly int PlayerDieAnimation = Animator.StringToHash("Player_Die");
 
 
@@ -81,6 +85,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(!canMove) { return; }
+
         //Read input values
         moveDirection = move.ReadValue<Vector2>().normalized;
         shootDirection = shoot.ReadValue<Vector2>();
@@ -179,7 +185,8 @@ public class PlayerController : MonoBehaviour
     }*/
     #endregion
 
-    public void PlayerDeath() => currentState = PlayerState.DEAD;
+    public void PlayerDeathState() => currentState = PlayerState.DEAD;
+    private void PlayerDeath() => Destroy(gameObject);
 
     private void Flip()
     {
@@ -204,6 +211,8 @@ public class PlayerController : MonoBehaviour
             return PlayerTeleportOutAnimation;
         else if (currentState == PlayerState.TELEPORTING_IN) 
             return PlayerTeleportInAnimation;
+        else if (currentState == PlayerState.TELEPORTING_IN)
+            return LockState(PlayerInvincibleAnimation, GameController.PlayerInvicibilityTime);
         else if (currentState == PlayerState.DEAD) 
             return PlayerDieAnimation;
 

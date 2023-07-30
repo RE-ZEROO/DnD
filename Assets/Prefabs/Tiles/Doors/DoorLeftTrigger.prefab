@@ -192,7 +192,10 @@ MonoBehaviour:
   player: {fileID: 0}
   room: {fileID: 0}
   mainCamera: {fileID: 0}
+  doorOpen: {fileID: -30556497, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
+  doorClosed: {fileID: -1105841510, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorTop: 0
   doorBottom: 0
   doorLeft: 0
   doorRight: 0
+  isOpen: 0

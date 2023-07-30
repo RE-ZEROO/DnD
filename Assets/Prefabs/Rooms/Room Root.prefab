@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025221610063380138}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2025221610063380139
 SpriteRenderer:
@@ -97,6 +97,25 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -126,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tex: {fileID: 0}
-  type: 0
+  roomType: 0
   gridPos: {x: 0, y: 0}
   doorTop: 0
   doorBottom: 0
@@ -149,6 +168,11 @@ MonoBehaviour:
   doorBD: {fileID: 1152370622949468, guid: b615f89db3db885499be737652307d22, type: 3}
   doorBL: {fileID: 1152370622949468, guid: c205a98e65d5a8e48a46348b1a794b2e, type: 3}
   doorBR: {fileID: 1152370622949468, guid: 9546df3c85ae31c4bb777dc47eec6a90, type: 3}
+  bossMonsterPrefab:
+  - {fileID: 6262418931332563877, guid: 4428df38b78a4b242a1332e979e8d763, type: 3}
+  - {fileID: 8315293247355595213, guid: b2fa319e2e9d59146945788ec86aa447, type: 3}
+  - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}
+  - {fileID: 8692043515048797067, guid: f9915b09c880c9b4ab593519ced5c401, type: 3}
   groundTiles:
   - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}
   - {fileID: 7500184176784253466, guid: a9c852d6ad3f33447847253a21b29c50, type: 3}
@@ -218,6 +242,21 @@ MonoBehaviour:
   - color: {r: 0, g: 1, b: 1, a: 1}
     prefabs:
     - {fileID: 7500184176784253466, guid: 1372315901c4e7a4db5c121c083d40a4, type: 3}
+  - color: {r: 0.50980395, g: 0, b: 0.5882353, a: 1}
+    prefabs:
+    - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}
+  - color: {r: 0.50980395, g: 0, b: 0.5882353, a: 1}
+    prefabs:
+    - {fileID: 6262418931332563877, guid: 4428df38b78a4b242a1332e979e8d763, type: 3}
+    - {fileID: 8315293247355595213, guid: b2fa319e2e9d59146945788ec86aa447, type: 3}
+    - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}
+    - {fileID: 8692043515048797067, guid: f9915b09c880c9b4ab593519ced5c401, type: 3}
+  - color: {r: 0, g: 0.27450982, b: 0.5882353, a: 1}
+    prefabs:
+    - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}
+  - color: {r: 0, g: 0.27450982, b: 0.5882353, a: 1}
+    prefabs:
+    - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}
   roomSizeInTiles: {x: 9, y: 17}
 --- !u!114 &666349969625168064
 MonoBehaviour:

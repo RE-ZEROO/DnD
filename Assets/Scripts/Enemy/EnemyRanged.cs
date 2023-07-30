@@ -15,8 +15,8 @@ public class EnemyRanged : EnemyController
         base.Update();
 
 
-        if (currentState == EnemyState.ATTACK)
-            RangeAttack();
+       // if (currentState == EnemyState.ATTACK)
+       //     RangeAttack();
     }
 
     private void RangeAttack()

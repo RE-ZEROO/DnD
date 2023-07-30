@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyStationary : EnemyController
 {
-    [Header("Stationary Stats")]
-    [SerializeField] private bool isInvincible = true;
-
     protected override void Start()
     {
         base.Start();
@@ -26,8 +23,8 @@ public class EnemyStationary : EnemyController
 
         //=======Health can't decline while being invincible==========
 
-        if (currentState == EnemyState.ATTACK && !isInvincible)
-            RangeAttack();
+        //if (currentState == EnemyState.ATTACK && !isInvincible)
+        //    RangeAttack();
     }
 
     private void RangeAttack()

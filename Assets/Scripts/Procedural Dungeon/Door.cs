@@ -6,11 +6,16 @@ public class Door : MonoBehaviour
     [SerializeField] RoomInstance room;
     [SerializeField] Camera mainCamera;
 
+    SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite doorOpen;
+    [SerializeField] private Sprite doorClosed;
+
     Vector2 moveJump = Vector2.zero;
     Vector3 camJump;
     Vector3 camTempPos;
 
     [SerializeField] private bool doorTop, doorBottom, doorLeft, doorRight;
+    [SerializeField] private bool isOpen = false;
     private bool camSwitchingRoom = false;
 
     private float camSpeedX = 2000f;
@@ -20,6 +25,7 @@ public class Door : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         room = GetComponentInParent<RoomInstance>();
+        spriteRenderer = GetComponentInParent<SpriteRenderer>();
         mainCamera = Camera.main;
 
         if (transform.position.y > room.RoomCenter().y)
@@ -36,11 +42,21 @@ public class Door : MonoBehaviour
         camJump = new Vector3(tempJump.x, tempJump.y, 0);
 
         //Numbers based on trial and error testing
-        moveJump = new Vector2(178, 98);
+        moveJump = new Vector2(172, 98);
     }
 
     void Update()
     {
+        if (RoomInCamera.enemiesInRoom)
+            isOpen = false;
+        else
+            isOpen = true;
+
+        if(isOpen)
+            spriteRenderer.sprite = doorOpen;
+        else if (!isOpen)
+            spriteRenderer.sprite = doorClosed;
+
         if (camSwitchingRoom)
         {
             //Camera Y-Movement
@@ -51,12 +67,19 @@ public class Door : MonoBehaviour
                                             new Vector3(camTempPos.x, mainCamera.transform.position.y, mainCamera.transform.position.z), camSpeedX * Time.deltaTime);
 
             if (mainCamera.transform.position == camTempPos)
+            {
                 camSwitchingRoom = false;
+                player.canMove = true;
+            }
         }
+
+       // Debug.Log(player.canMove);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!isOpen) { return; }
+
         //Teleport Player
         if (collision.CompareTag("Player"))
         {
@@ -85,7 +108,7 @@ public class Door : MonoBehaviour
             }
 
             player.transform.position = moveTempPos;
-
+            player.canMove = false;
             camSwitchingRoom = true;
         }
     }
