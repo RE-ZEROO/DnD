@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour
     {
         isInvincible = true;
         //Set a flashing animation later when there is a player sprite
-        playerController.currentState = PlayerState.Invincible;
+        //playerController.currentState = PlayerState.Invincible;
         playerColor.a = 0.5f;
         playerRenderer.material.color = playerColor;
 
@@ -151,7 +151,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(invincibilityTime);
 
         playerColor.a = 1f;
-        playerController.currentState = PlayerState.IDLE;
+        //playerController.currentState = PlayerState.IDLE;
         playerRenderer.material.color = playerColor;
 
         if (enemyCollider != null)

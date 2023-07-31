@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Base Stats")]
     [SerializeField] protected float health;
+    protected float maxHealth;
     [SerializeField] protected float speed;
 
     [SerializeField] protected float detectionRange;
@@ -76,6 +77,8 @@ public class EnemyController : MonoBehaviour
         seeker = GetComponent<Seeker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         roomInstance = GetComponentInParent<RoomInstance>();
+
+        maxHealth = health;
 
         //Pathfinding follow player
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);

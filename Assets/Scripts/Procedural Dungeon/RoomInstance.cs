@@ -24,13 +24,14 @@ public class RoomInstance : MonoBehaviour
     [SerializeField] private GameObject doorWallT, doorWallB, doorWallL, doorWallR;
     [SerializeField] private GameObject doorBU, doorBD, doorBL, doorBR;
 
-    [Space]
+    [Header("Boss Monsters")]
     [SerializeField] private GameObject[] bossMonsterPrefab;
+    [SerializeField] private GameObject portal;
 
-    [Space]
+    [Header("Ground Tiles")]
     [SerializeField] private GameObject[] groundTiles;
 
-    [Space]
+    [Header("Color Maping")]
     [SerializeField] private ColorToGameObject[] mappings;
 
     private float tileSize = 16;

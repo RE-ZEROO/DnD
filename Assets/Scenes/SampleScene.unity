@@ -582,6 +582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7253623324152499457, guid: 774d40f28bbd8c3498e916240efec6ca, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1052,7 +1056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756427a7a75c2d941a9b55c7431c73f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityTime: 3
   collectedItems: []
 --- !u!4 &1684077595
 Transform:
