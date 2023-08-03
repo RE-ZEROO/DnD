@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,9 +32,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform bulletSpawnPos;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float fireDelay;
     private float lastFire;
+    private float xShootValue;
+    private float yShootValue;
 
     public static bool isTripleshot = false;
     private Vector2 shootDirection = Vector2.zero;
@@ -42,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     [Header("Aniamtion")]
-    [SerializeField] private float attackAnimTime = 0.75f;
+    [SerializeField] private float attackAnimTime;
 
     private int currentAnimationState;
     private float lockedTill;
@@ -109,7 +113,9 @@ public class PlayerController : MonoBehaviour
         //Only shoot when cooldown is down 
         if ((shootDirection.x != 0 || shootDirection.y != 0) && Time.time > lastFire + fireDelay)
         {
-            Shoot(shootDirection.x, shootDirection.y);
+            xShootValue = shootDirection.x;
+            yShootValue = shootDirection.y;
+            currentState = PlayerState.ATTACK;
             lastFire = Time.time;
         }
 
@@ -121,10 +127,11 @@ public class PlayerController : MonoBehaviour
 
         //Animation
         var animationState = GetAnimationState();
-
-        if (animationState == currentAnimationState) { return; }
-        animator.CrossFade(animationState, 0, 0);
-        currentAnimationState = animationState;
+        if (animationState != currentAnimationState)
+        {
+            animator.CrossFade(animationState, 0, 0);
+            currentAnimationState = animationState;
+        }
     }
 
     private void FixedUpdate()
@@ -139,19 +146,18 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Shooting
-    private void Shoot(float x, float y)
+    private void Shoot()
     {
-        currentState = PlayerState.ATTACK;
-
-        //Create, instantiate and fire Bullet
+        //Instantiate and fire Bullet
         if (isTripleshot)
-            TripleShot(x, y);
+            TripleShot(xShootValue, yShootValue);
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation); //SpawnpointPos: xShootValue > yShootValue || xShootValue < yShootValue? transform.position : bulletSpawnPos.position
+
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(
-            (x < 0) ? Mathf.Floor(x) * bulletSpeed : Mathf.Ceil(x) * bulletSpeed,
-            (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed
+            (xShootValue < 0) ? Mathf.Floor(xShootValue) * bulletSpeed : Mathf.Ceil(xShootValue) * bulletSpeed,
+            (yShootValue < 0) ? Mathf.Floor(yShootValue) * bulletSpeed : Mathf.Ceil(yShootValue) * bulletSpeed
         );
     }
 
@@ -160,7 +166,7 @@ public class PlayerController : MonoBehaviour
         Quaternion upperMoveAngle = Quaternion.Euler(0, 0, 25);
         Quaternion lowerMoveAngle = Quaternion.Euler(0, 0, -25);
 
-        GameObject upperBullet = Instantiate(bulletPrefab, transform.position, upperMoveAngle);
+        GameObject upperBullet = Instantiate(bulletPrefab, bulletSpawnPos.position, upperMoveAngle);
         upperBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
 
         Vector2 upperDirection = (Vector2)(upperMoveAngle * new Vector3(
@@ -169,7 +175,7 @@ public class PlayerController : MonoBehaviour
         upperBullet.GetComponent<Rigidbody2D>().velocity = upperDirection * bulletSpeed;
 
 
-        GameObject lowerBullet = Instantiate(bulletPrefab, transform.position, lowerMoveAngle);
+        GameObject lowerBullet = Instantiate(bulletPrefab, bulletSpawnPos.position, lowerMoveAngle);
         lowerBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
 
         Vector2 lowerDirection = (Vector2)(lowerMoveAngle * new Vector3(
@@ -185,8 +191,13 @@ public class PlayerController : MonoBehaviour
     }*/
     #endregion
 
-    public void PlayerDeathState() => currentState = PlayerState.DEAD;
-    private void PlayerDeath() => Destroy(gameObject);
+    public void PlayerDeathState()
+    {
+        currentState = PlayerState.DEAD;
+        animator.CrossFade(PlayerDieAnimation, 0, 0);
+    }
+
+    private void Death() => GameController.GameOver();
 
     private void Flip()
     {
@@ -213,8 +224,6 @@ public class PlayerController : MonoBehaviour
             return PlayerTeleportInAnimation;
         else if (currentState == PlayerState.TELEPORTING_IN)
             return LockState(PlayerInvincibleAnimation, GameController.PlayerInvicibilityTime);
-        else if (currentState == PlayerState.DEAD) 
-            return PlayerDieAnimation;
 
         return PlayerIdleAnimation;
 

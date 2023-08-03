@@ -6,7 +6,8 @@ public enum EnemyType
 {
     MELEE,
     RANGED,
-    STATIONARY
+    STATIONARY,
+    Boss
 };
 
 public enum EnemyState
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour
     protected Rigidbody2D rb;
     protected Collider2D coll;
     private SpriteRenderer spriteRenderer;
-    private RoomInstance roomInstance;
+    protected RoomInstance roomInstance;
 
     [SerializeField] public EnemyState currentState = EnemyState.IDLE;
     [SerializeField] public EnemyType enemyType;
@@ -124,8 +125,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 scale = transform.localScale;
 
-        if(rb.velocity.x <= 0.01f || (PlayerInSightLine() && (currentState == EnemyState.IDLE || currentState == EnemyState.ATTACK) 
-                                                                                                 && player.transform.position.x > transform.position.x))
+        if(rb.velocity.x <= 0.01f) //|| (PlayerInSightLine() && (currentState == EnemyState.IDLE || currentState == EnemyState.ATTACK) && player.transform.position.x > transform.position.x)
             scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
         else if (rb.velocity.x >= 0.01f)
             scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
@@ -234,6 +234,8 @@ public class EnemyController : MonoBehaviour
 
     public void Damage()
     {
+        if(isInvincible) { return; }
+
         currentState = EnemyState.HIT;
         health -= (GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
     }
@@ -248,7 +250,7 @@ public class EnemyController : MonoBehaviour
             //Set current states
             if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)
                 currentState = EnemyState.FOLLOW;
-            else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)
+            else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.Boss)
                 currentState = EnemyState.WANDER;
 
 

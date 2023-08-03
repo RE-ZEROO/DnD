@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
     //Internal stats
-    private static float health = 6f;
-    private static int maxHealth = 6;
+    private static float health;
+    private static int maxHealth;
     //private float healAmount = 0.5f;
 
-    private static float moveSpeed = 90f;
+    private static float moveSpeed;
     private static float fireRate = 0.5f;
-    private static float bulletSize = 0.2f;
+    private static float bulletSize;
 
-    private static float enemyDamage = 1f;
-    private static float playerDamage = 100f;
+    private static float enemyDamage;
+    private static float playerDamage;
 
     [SerializeField] private static float invincibilityTime = 1.5f;
     private bool isInvincible = false;
@@ -52,6 +53,17 @@ public class GameController : MonoBehaviour
     private GameObject[] bulletArray;
 
 
+    private void SetStats()
+    {
+        health = 6f;
+        maxHealth = 6;
+        moveSpeed = 90f;
+        fireRate = 0.5f;
+        bulletSize = 0.2f;
+        enemyDamage = 1f;
+        playerDamage = 1f;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -60,6 +72,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        SetStats();
+
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
         playerCollider = player.GetComponent<Collider2D>();
@@ -97,7 +111,10 @@ public class GameController : MonoBehaviour
     private void KillPlayer()
     {
         //Debug.Log("Player Died!");
+        
+
         playerController.PlayerDeathState();
+        SetStats();
     }
 
     public void UpdateCollectedItems(ItemController collectedItem)
@@ -163,6 +180,20 @@ public class GameController : MonoBehaviour
         isInvincible = false;
     }
 
+    public static void GameOver()
+    {
+        instance.SetStats();
+        //Change this to show a gameover panel
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void NextLevel()
+    {
+        instance.SetStats();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     #region Player Power-Ups
     public static void HealPlayer(ItemType itemType)
     {
@@ -171,10 +202,10 @@ public class GameController : MonoBehaviour
             maxHealth++;
             health++;
         }
-        else if (itemType == ItemType.REDHEART && health <= maxHealth - 1)
+        else if (itemType == ItemType.REDHEART && health < maxHealth) //itemType == ItemType.REDHEART && health <= maxHealth - 1
             health += 1f;
-        else if (itemType == ItemType.REDHEART && health <= maxHealth - 0.5f)
-            health += 0.5f;
+        /*else if (itemType == ItemType.REDHEART && health <= maxHealth ) //itemType == ItemType.REDHEART && health <= maxHealth - 0.5f
+            health += 0.5f;*/
     }
 
     public static void MoveSpeedChange(float speed) => MoveSpeed += speed;

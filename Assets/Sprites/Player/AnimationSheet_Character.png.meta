@@ -3,7 +3,7 @@ guid: f3b166ffa211b8a4ab355ebe3a467021
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -25,7 +25,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -65,17 +65,19 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -88,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -100,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -112,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -124,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1211,58 +1217,58 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AnimationSheet_Character_7: 125079410
-      AnimationSheet_Character_30: -1015417879
-      AnimationSheet_Character_32: -645240237
-      AnimationSheet_Character_27: -534433873
-      AnimationSheet_Character_34: -844666900
-      AnimationSheet_Character_16: -461716267
-      AnimationSheet_Character_45: -1157134328
-      AnimationSheet_Character_41: 428662928
-      AnimationSheet_Character_36: -2134487308
-      AnimationSheet_Character_22: -1397891606
-      AnimationSheet_Character_31: 1728558757
-      AnimationSheet_Character_40: -218039240
-      AnimationSheet_Character_17: -2140936261
-      AnimationSheet_Character_42: 297616824
-      AnimationSheet_Character_33: -2026709142
-      AnimationSheet_Character_12: 948423876
-      AnimationSheet_Character_23: 1354349591
-      AnimationSheet_Character_29: 2062053176
-      AnimationSheet_Character_1: -740694290
-      AnimationSheet_Character_20: 580496126
-      AnimationSheet_Character_46: 1802035565
-      AnimationSheet_Character_9: 170330473
-      AnimationSheet_Character_15: -480175060
-      AnimationSheet_Character_28: -1045817762
-      AnimationSheet_Character_2: 29529107
-      AnimationSheet_Character_4: 766608131
-      AnimationSheet_Character_6: -622629687
-      AnimationSheet_Character_37: 688238003
-      AnimationSheet_Character_3: -1067719558
-      AnimationSheet_Character_14: 1493742278
-      AnimationSheet_Character_25: -1676650214
-      AnimationSheet_Character_8: -323152722
-      AnimationSheet_Character_5: -728067877
-      AnimationSheet_Character_47: 949187693
-      AnimationSheet_Character_50: -1594548333
-      AnimationSheet_Character_38: -918399647
-      AnimationSheet_Character_44: 468516286
-      AnimationSheet_Character_18: -489871502
-      AnimationSheet_Character_10: -1847286682
-      AnimationSheet_Character_49: 2063817113
-      AnimationSheet_Character_26: 1585657975
-      AnimationSheet_Character_11: 834672900
-      AnimationSheet_Character_35: -967857526
-      AnimationSheet_Character_13: 2102905888
       AnimationSheet_Character_0: -779282863
-      AnimationSheet_Character_24: -889725100
-      AnimationSheet_Character_39: -492939367
+      AnimationSheet_Character_1: -740694290
+      AnimationSheet_Character_10: -1847286682
+      AnimationSheet_Character_11: 834672900
+      AnimationSheet_Character_12: 948423876
+      AnimationSheet_Character_13: 2102905888
+      AnimationSheet_Character_14: 1493742278
+      AnimationSheet_Character_15: -480175060
+      AnimationSheet_Character_16: -461716267
+      AnimationSheet_Character_17: -2140936261
+      AnimationSheet_Character_18: -489871502
       AnimationSheet_Character_19: 1091519012
-      AnimationSheet_Character_48: -1438463844
+      AnimationSheet_Character_2: 29529107
+      AnimationSheet_Character_20: 580496126
       AnimationSheet_Character_21: 2071064951
+      AnimationSheet_Character_22: -1397891606
+      AnimationSheet_Character_23: 1354349591
+      AnimationSheet_Character_24: -889725100
+      AnimationSheet_Character_25: -1676650214
+      AnimationSheet_Character_26: 1585657975
+      AnimationSheet_Character_27: -534433873
+      AnimationSheet_Character_28: -1045817762
+      AnimationSheet_Character_29: 2062053176
+      AnimationSheet_Character_3: -1067719558
+      AnimationSheet_Character_30: -1015417879
+      AnimationSheet_Character_31: 1728558757
+      AnimationSheet_Character_32: -645240237
+      AnimationSheet_Character_33: -2026709142
+      AnimationSheet_Character_34: -844666900
+      AnimationSheet_Character_35: -967857526
+      AnimationSheet_Character_36: -2134487308
+      AnimationSheet_Character_37: 688238003
+      AnimationSheet_Character_38: -918399647
+      AnimationSheet_Character_39: -492939367
+      AnimationSheet_Character_4: 766608131
+      AnimationSheet_Character_40: -218039240
+      AnimationSheet_Character_41: 428662928
+      AnimationSheet_Character_42: 297616824
       AnimationSheet_Character_43: -250288387
-  spritePackingTag: 
+      AnimationSheet_Character_44: 468516286
+      AnimationSheet_Character_45: -1157134328
+      AnimationSheet_Character_46: 1802035565
+      AnimationSheet_Character_47: 949187693
+      AnimationSheet_Character_48: -1438463844
+      AnimationSheet_Character_49: 2063817113
+      AnimationSheet_Character_5: -728067877
+      AnimationSheet_Character_50: -1594548333
+      AnimationSheet_Character_6: -622629687
+      AnimationSheet_Character_7: 125079410
+      AnimationSheet_Character_8: -323152722
+      AnimationSheet_Character_9: 170330473
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 

@@ -26,7 +26,7 @@ public class RoomInstance : MonoBehaviour
 
     [Header("Boss Monsters")]
     [SerializeField] private GameObject[] bossMonsterPrefab;
-    [SerializeField] private GameObject portal;
+    public GameObject portal;
 
     [Header("Ground Tiles")]
     [SerializeField] private GameObject[] groundTiles;
