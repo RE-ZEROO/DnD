@@ -6,7 +6,7 @@ using System.Linq;
 public class LevelGeneration : MonoBehaviour
 {
     private static Room[,] rooms;
-    MapSpriteSelector currentRoomSprite;
+    //MapSpriteSelector currentRoomSprite;
     private RoomType type;
 
     Vector2 worldSize = new Vector2(4, 4); //Actual size is doubled
@@ -98,20 +98,6 @@ public class LevelGeneration : MonoBehaviour
                 isThereABossRoom = true;
             }
         }
-
-        /*BossNeighborTop(checkPos, takenPositions, rooms);
-        BossNeighborBottom(checkPos, takenPositions);
-        BossNeighborLeft(checkPos, takenPositions);
-        BossNeighborRight(checkPos, takenPositions);
-
-        if (bossTop)
-            Debug.Log("Boss Top");
-        else if(bossBottom)
-            Debug.Log("Boss Bottom");
-        else if (bossLeft)
-            Debug.Log("Boss Left");
-        else if (bossRight)
-            Debug.Log("Boss Right");*/
     }
 
     //Get a valid position that is neighboring to a room and already exits
@@ -228,31 +214,8 @@ public class LevelGeneration : MonoBehaviour
         return roomNeighbourNumber;
     }
 
-    /*public bool NeighborIsBoss(Vector2 checkingPos, List<Vector2> usedPositions)
-    {
-        bool neighborBoss = false;
-
-        //Right
-        if (usedPositions.Contains(checkingPos + Vector2.right) && type == RoomType.END)
-            neighborBoss = true;
-
-        //Left
-        if (usedPositions.Contains(checkingPos + Vector2.left) && type == RoomType.END)
-            neighborBoss = true;
-
-        //Up
-        if (usedPositions.Contains(checkingPos + Vector2.up) && type == RoomType.END)
-            neighborBoss = true;
-
-        //Down
-        if (usedPositions.Contains(checkingPos + Vector2.down) && type == RoomType.END)
-            neighborBoss = true;
-
-        return neighborBoss;
-    }*/
-
     #region Boss Neighbour Check
-    public bool BossNeighborTop(Vector2 checkingPos, List<Vector2> usedPositions, Room[,] rooms)
+    /*public bool BossNeighborTop(Vector2 checkingPos, List<Vector2> usedPositions, Room[,] rooms)
     {
         var bossPos = usedPositions.Contains(checkingPos + Vector2.up) && rooms[(int)checkingPos.x, (int)checkingPos.y].type == RoomType.END;
 
@@ -290,7 +253,7 @@ public class LevelGeneration : MonoBehaviour
             return bossRight = true;
 
         return bossRight = false;
-    }
+    }*/
     #endregion
 
     private void DrawMap()
