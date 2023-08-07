@@ -18,11 +18,6 @@ public class Room
     public bool doorLeft;
     public bool doorRight;
 
-    public bool doorBossTop;
-    public bool doorBossBottom;
-    public bool doorBossLeft;
-    public bool doorBossRight;
-
     public Room (Vector2 _gridPos, RoomType _type)
     {
         gridPos = _gridPos;

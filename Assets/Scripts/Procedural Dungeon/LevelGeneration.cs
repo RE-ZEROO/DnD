@@ -87,7 +87,7 @@ public class LevelGeneration : MonoBehaviour
         {
             if (isThereABossRoom) { return; }
 
-            if (NumberOfNeighbors(checkPos, takenPositions) == 1 && isThereABossRoom == false)
+            if (NumberOfNeighbors(checkPos, takenPositions) == 1) //&& isThereABossRoom == false
             {
                 takenPositions.RemoveAt(i);
 
@@ -332,21 +332,11 @@ public class LevelGeneration : MonoBehaviour
             MapSpriteSelector mapper = Instantiate(roomWhiteObj, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
             mapper.type = room.type;
 
-            if(mapper.type == RoomType.END)
-            {
-                mapper.up = room.doorBossTop;
-                mapper.down = room.doorBossBottom;
-                mapper.left = room.doorBossLeft;
-                mapper.right = room.doorBossRight;
-            }
-            else
-            {
-                mapper.up = room.doorTop;
-                mapper.down = room.doorBottom;
-                mapper.left = room.doorLeft;
-                mapper.right = room.doorRight;
-            }
-            
+            mapper.up = room.doorTop;
+            mapper.down = room.doorBottom;
+            mapper.left = room.doorLeft;
+            mapper.right = room.doorRight;
+
             mapper.gameObject.transform.parent = mapRoot;
         }
     }
@@ -366,45 +356,25 @@ public class LevelGeneration : MonoBehaviour
 
                 //check above
                 if (y - 1 < 0)
-                {
                     rooms[x, y].doorBottom = false;
-                    rooms[x, y].doorBossBottom = false;
-                }
-                else if(!(y - 1 < 0) && rooms[x, y].type == RoomType.END)
-                    rooms[x, y].doorBossBottom = (rooms[x, y - 1] != null);
                 else
                     rooms[x, y].doorBottom = (rooms[x, y - 1] != null);
 
                 //check bellow
                 if (y + 1 >= gridSizeY * 2)
-                {
                     rooms[x, y].doorTop = false;
-                    rooms[x, y].doorBossTop = false;
-                }
-                else if (!(y + 1 >= gridSizeY * 2) && rooms[x, y].type == RoomType.END)
-                    rooms[x, y].doorBossTop = (rooms[x, y + 1] != null);
                 else
                     rooms[x, y].doorTop = (rooms[x, y + 1] != null);
 
                 //check left
                 if (x - 1 < 0)
-                {
                     rooms[x, y].doorLeft = false;
-                    rooms[x, y].doorBossLeft = false;
-                }
-                else if (!(x - 1 < 0) && rooms[x, y].type == RoomType.END)
-                    rooms[x, y].doorBossLeft = (rooms[x - 1, y] != null);
                 else
                     rooms[x, y].doorLeft = (rooms[x - 1, y] != null);
 
                 //check right
                 if (x + 1 >= gridSizeX * 2)
-                {
                     rooms[x, y].doorRight = false;
-                    rooms[x, y].doorBossRight = false;
-                }
-                else if (!(x + 1 >= gridSizeX * 2) && rooms[x, y].type == RoomType.END)
-                    rooms[x, y].doorBossRight = (rooms[x + 1, y] != null);
                 else
                     rooms[x, y].doorRight = (rooms[x + 1, y] != null);
             }

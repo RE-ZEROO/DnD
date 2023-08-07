@@ -12,7 +12,7 @@ public struct ColorToGameObject
 public class RoomInstance : MonoBehaviour
 {
     public Texture2D tex;
-    [SerializeField] private RoomType roomType;
+    [SerializeField] public RoomType roomType;
 
     [HideInInspector] public Vector2 gridPos;
     [HideInInspector] public bool doorTop, doorBottom, doorLeft, doorRight;
@@ -22,7 +22,7 @@ public class RoomInstance : MonoBehaviour
 
     [SerializeField] private GameObject doorU, doorD, doorL, doorR;
     [SerializeField] private GameObject doorWallT, doorWallB, doorWallL, doorWallR;
-    [SerializeField] private GameObject doorBU, doorBD, doorBL, doorBR;
+    //[SerializeField] public GameObject doorBU, doorBD, doorBL, doorBR;
 
     [Header("Boss Monsters")]
     [SerializeField] private GameObject[] bossMonsterPrefab;
@@ -44,8 +44,7 @@ public class RoomInstance : MonoBehaviour
 
 
     public void Setup(Texture2D _texture, Vector2 _gridPos, RoomType _type,
-                        bool _doorTop, bool _doorBottom, bool _doorLeft, bool _doorRight,
-                        bool _doorBossTop, bool _doorBossBottom, bool _doorBossLeft, bool _doorBossRight)
+                        bool _doorTop, bool _doorBottom, bool _doorLeft, bool _doorRight)
     {
         tex = _texture;
         gridPos = _gridPos;
@@ -56,15 +55,9 @@ public class RoomInstance : MonoBehaviour
         doorLeft = _doorLeft;
         doorRight = _doorRight;
 
-        doorBossTop = _doorBossTop;
-        doorBossBottom = _doorBossBottom;
-        doorBossLeft = _doorBossLeft;
-        doorBossRight = _doorBossRight;
-
         MakeDoors();
         GenerateRoomTiles();
         SpawnBoss();
-        //CheckForBossRoomNeighbour();
 
         gameObject.name = gameObject.name + " - " + gridPos;
     }
@@ -73,32 +66,6 @@ public class RoomInstance : MonoBehaviour
     {
         roomCenterTilePos = transform.position;
         return roomCenterTilePos;
-    }
-
-    private void CheckForBossRoomNeighbour()
-    {
-        if (Physics2D.Raycast(transform.position += new Vector3(roomSizeInTiles.x, 0), Vector2.up, checkBossRayDistanceX).collider.CompareTag("BossDoor"))
-            Debug.Log("BossDoorTop" + gridPos);
-        else if (Physics2D.Raycast(transform.position, Vector2.down, checkBossRayDistanceX).collider.CompareTag("BossDoor"))
-            doorBossBottom = true;
-        else if (Physics2D.Raycast(transform.position, Vector2.left, checkBossRayDistanceY).collider.CompareTag("BossDoor"))
-            doorBossLeft = true;
-        else if (Physics2D.Raycast(transform.position, Vector2.right, checkBossRayDistanceY).collider.CompareTag("BossDoor"))
-            doorBossRight = true;
-
-
-        /*if (hit.collider.GetComponent<RoomInstance>().type == RoomType.END)
-            doorBossTop = true;
-        else if (hit.collider.GetComponent<RoomInstance>().type == RoomType.END)*/
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Gizmos.DrawRay(transform.position, Vector2.up * checkBossRayDistanceX);
-        /*Gizmos.DrawRay(transform.position, Vector2.down * checkBossRayDistanceX);
-        Gizmos.DrawRay(transform.position, Vector2.left * checkBossRayDistanceY);
-        Gizmos.DrawRay(transform.position, Vector2.right * checkBossRayDistanceY);*/
     }
 
     private void SpawnBoss()
@@ -134,31 +101,19 @@ public class RoomInstance : MonoBehaviour
     {
         //Top door, get position then spawn
         Vector3 spawnPos = transform.position + Vector3.up * (roomSizeInTiles.y / 4 * tileSize) - Vector3.up * (tileSize / 4);
-        if (roomType == RoomType.END)
-            PlaceDoor(spawnPos, doorBossTop, doorBU);
-        else
-            PlaceDoor(spawnPos, doorTop, doorU);
+        PlaceDoor(spawnPos, doorTop, doorU);
 
         //Bottom door
         spawnPos = transform.position + Vector3.down * (roomSizeInTiles.y / 4 * tileSize) - Vector3.down * (tileSize / 4);
-        if (roomType == RoomType.END)
-            PlaceDoor(spawnPos, doorBossBottom, doorBD);
-        else
-            PlaceDoor(spawnPos, doorBottom, doorD);
+        PlaceDoor(spawnPos, doorBottom, doorD);
 
         //Left door
         spawnPos = transform.position + Vector3.left * (roomSizeInTiles.x * tileSize) - Vector3.left * tileSize;
-        if (roomType == RoomType.END)
-            PlaceDoor(spawnPos, doorBossLeft, doorBL);
-        else
-            PlaceDoor(spawnPos, doorLeft, doorL);
+        PlaceDoor(spawnPos, doorLeft, doorL);
 
         //Right door
         spawnPos = transform.position + Vector3.right * (roomSizeInTiles.x * tileSize) - Vector3.right * tileSize;
-        if (roomType == RoomType.END)
-            PlaceDoor(spawnPos, doorBossRight, doorBR);
-        else
-            PlaceDoor(spawnPos, doorRight, doorR);
+        PlaceDoor(spawnPos, doorRight, doorR);
     }
 
     

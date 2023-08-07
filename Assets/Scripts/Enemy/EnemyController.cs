@@ -115,7 +115,7 @@ public class EnemyController : MonoBehaviour
         string[] layers = { "Player", "Obstacle" };
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distanceToPlayer, LayerMask.GetMask(layers));
 
-        if (hit.collider.CompareTag("Player"))
+        if (hit && hit.collider.CompareTag("Player"))
             return true;
         else
             return false;
@@ -206,6 +206,7 @@ public class EnemyController : MonoBehaviour
         bullet.GetComponent<BulletController>().GetPlayer(player.transform);
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+        bullet.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
         bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y, -1f);
 
@@ -248,7 +249,7 @@ public class EnemyController : MonoBehaviour
         if (inRoom)
         {
             //Set current states
-            if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)
+            if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && currentState != EnemyState.ATTACK && enemyType != EnemyType.STATIONARY)
                 currentState = EnemyState.FOLLOW;
             else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.Boss)
                 currentState = EnemyState.WANDER;

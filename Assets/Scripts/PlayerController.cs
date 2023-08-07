@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!canMove) { return; }
+        if(!canMove || currentState == PlayerState.DEAD) { return; }
 
         //Read input values
         moveDirection = move.ReadValue<Vector2>().normalized;

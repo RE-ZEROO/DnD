@@ -25,8 +25,7 @@ public class SheetAssigner : MonoBehaviour
             {
                 Vector3 startPos = new Vector3(room.gridPos.x * (roomDimensions.x + gutterSize.x), room.gridPos.y * (roomDimensions.y + gutterSize.y));
                 RoomInstance startRoom = Instantiate(RoomObj, startPos, Quaternion.identity).GetComponent<RoomInstance>();
-                startRoom.Setup(startSheet, room.gridPos, room.type, room.doorTop, room.doorBottom, room.doorLeft, room.doorRight, 
-                                room.doorBossTop, room.doorBossBottom, room.doorBossLeft, room.doorBossRight);
+                startRoom.Setup(startSheet, room.gridPos, room.type, room.doorTop, room.doorBottom, room.doorLeft, room.doorRight);
 
                 continue;
             }
@@ -37,8 +36,7 @@ public class SheetAssigner : MonoBehaviour
 
                 Vector3 endPos = new Vector3(room.gridPos.x * (roomDimensions.x + gutterSize.x), room.gridPos.y * (roomDimensions.y + gutterSize.y));
                 RoomInstance endRoom = Instantiate(RoomObj, endPos, Quaternion.identity).GetComponent<RoomInstance>();
-                endRoom.Setup(sheetsEnd[_index], room.gridPos, room.type, room.doorTop, room.doorBottom, room.doorLeft, room.doorRight, 
-                              room.doorBossTop, room.doorBossBottom, room.doorBossLeft, room.doorBossRight);
+                endRoom.Setup(sheetsEnd[_index], room.gridPos, room.type, room.doorTop, room.doorBottom, room.doorLeft, room.doorRight);
 
                 continue;
             }
@@ -51,8 +49,7 @@ public class SheetAssigner : MonoBehaviour
             Vector3 pos = new Vector3(room.gridPos.x * (roomDimensions.x + gutterSize.x), room.gridPos.y * (roomDimensions.y + gutterSize.y));
 
             RoomInstance currentRoom = Instantiate(RoomObj, pos, Quaternion.identity).GetComponent<RoomInstance>();
-            currentRoom.Setup(sheetsNormal[index], room.gridPos, room.type, room.doorTop, room.doorBottom, room.doorLeft, room.doorRight, 
-                              room.doorBossTop, room.doorBossBottom, room.doorBossLeft, room.doorBossRight);
+            currentRoom.Setup(sheetsNormal[index], room.gridPos, room.type, room.doorTop, room.doorBottom, room.doorLeft, room.doorRight);
         }
     }
 }

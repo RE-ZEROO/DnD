@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1b05cc19b414cfc40a305af828bac946, type: 3}
-  m_Color: {r: 0, g: 0.2524271, b: 1, a: 1}
+  m_Sprite: {fileID: 864872193, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -192,7 +192,10 @@ MonoBehaviour:
   player: {fileID: 0}
   room: {fileID: 0}
   mainCamera: {fileID: 0}
+  doorOpen: {fileID: 195829785, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
+  doorClosed: {fileID: 864872193, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorTop: 0
   doorBottom: 0
   doorLeft: 0
   doorRight: 0
+  isOpen: 0
