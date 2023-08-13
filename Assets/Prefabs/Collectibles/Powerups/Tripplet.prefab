@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &232453013982540844
+--- !u!1 &8423623438381612570
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 232453013982540840}
-  - component: {fileID: 232453013982540847}
-  - component: {fileID: 232453013982540846}
-  - component: {fileID: 232453013982540845}
+  - component: {fileID: 8423623438381612566}
+  - component: {fileID: 8423623438381612569}
+  - component: {fileID: 8423623438381612568}
+  - component: {fileID: -8667842531412768294}
   m_Layer: 0
-  m_Name: Screw
-  m_TagString: Untagged
+  m_Name: Tripplet
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &232453013982540840
+--- !u!4 &8423623438381612566
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232453013982540844}
+  m_GameObject: {fileID: 8423623438381612570}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.5, y: 23.8, z: 0}
+  m_LocalPosition: {x: -25.264341, y: 11.309344, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &232453013982540847
+--- !u!212 &8423623438381612569
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232453013982540844}
+  m_GameObject: {fileID: 8423623438381612570}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: -2413806693520163455, guid: 01da48330c4439046879b560b6e708f1, type: 3}
-  m_Color: {r: 0.16945817, g: 0.16981131, b: 0.16901031, a: 1}
+  m_Color: {r: 0.88209015, g: 1, b: 0.16509432, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,16 +86,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &232453013982540846
+--- !u!60 &8423623438381612568
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232453013982540844}
+  m_GameObject: {fileID: 8423623438381612570}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -152,23 +171,20 @@ PolygonCollider2D:
       - {x: 2.3125, y: -7.75}
       - {x: 3.1875, y: -7.5}
   m_UseDelaunayMesh: 0
---- !u!114 &232453013982540845
+--- !u!114 &-8667842531412768294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232453013982540844}
+  m_GameObject: {fileID: 8423623438381612570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38bd5b7327921ce448c245f2a3289ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc91ed607580c140a1bcd5e92444c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    itemType: 4
-    itemName: Screw
-    itemDescription: Increase bullet size & firerate
-    itemImage: {fileID: -2413806693520163455, guid: 01da48330c4439046879b560b6e708f1, type: 3}
-  moveSpeedChange: 1
-  firerateChange: 0.15
-  bulletSizeChange: 0.15
+  powerupEffect1: {fileID: 11400000, guid: 4139d169f9387fa4f818b09ca6299fc5, type: 2}
+  powerupEffect2: {fileID: 0}
+  powerupEffect3: {fileID: 0}
+  powerupEffect4: {fileID: 0}
+  powerupEffect5: {fileID: 0}

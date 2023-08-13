@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
     [SerializeField] private Sprite doorBossClosed;
 
     SpriteRenderer spriteRenderer;
-    private bool isBossDoor = false;
+    [HideInInspector] public bool isBossDoor = false;
 
     //[Header("Bools")]
     [SerializeField] private bool doorTop, doorBottom, doorLeft, doorRight;
@@ -59,7 +59,7 @@ public class Door : MonoBehaviour
         checkBossRayDistanceY = SA.roomDimensions.y + SA.gutterSize.y;
 
         //Numbers based on trial and error testing
-        moveJump = new Vector2(172, 98);
+        moveJump = new Vector2(172, 96);
 
         //Set door type to boss door
         if (roomInstance.roomType == RoomType.END)
@@ -154,25 +154,32 @@ public class Door : MonoBehaviour
 
     private void CheckForBossRoomNeighbour()
     {
+        if(!isBossDoor) { return; }
+
         RaycastHit2D hitUP = Physics2D.Raycast(transform.position, Vector2.up, checkBossRayDistanceY);
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, checkBossRayDistanceY);
         RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, checkBossRayDistanceX);
         RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, checkBossRayDistanceX);
 
-        if ((hitUP && hitUP.collider.CompareTag("BossDoor")) || (hitDown && hitDown.collider.CompareTag("BossDoor")) ||
-            (hitRight && hitRight.collider.CompareTag("BossDoor")) || (hitLeft && hitLeft.collider.CompareTag("BossDoor")))
+        if (hitUP && hitUP.collider.CompareTag("Door"))
         {
-            isBossDoor = true;
-            //gameObject.tag = "BossDoor";
+            hitUP.collider.GetComponent<Door>().isBossDoor = true;
+            //hitUP.collider.tag = "BossDoor";
+        }
+        else if(hitDown && hitDown.collider.CompareTag("Door"))
+        {
+            hitDown.collider.GetComponent<Door>().isBossDoor = true;
+            //hitDown.collider.tag = "BossDoor";
+        }
+        else if (hitRight && hitRight.collider.CompareTag("Door"))
+        {
+            hitRight.collider.GetComponent<Door>().isBossDoor = true;
+            //hitRight.collider.tag = "BossDoor";
+        }
+        else if (hitLeft && hitLeft.collider.CompareTag("Door"))
+        {
+            hitLeft.collider.GetComponent<Door>().isBossDoor = true;
+            //hitLeft.collider.tag = "BossDoor";
         }
     }
-
-    /*private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector2.up * checkBossRayDistanceY);
-        Gizmos.DrawRay(transform.position, Vector2.down * checkBossRayDistanceY);
-        Gizmos.DrawRay(transform.position, Vector2.left * checkBossRayDistanceX);
-        Gizmos.DrawRay(transform.position, Vector2.right * checkBossRayDistanceX);
-    }*/
 }

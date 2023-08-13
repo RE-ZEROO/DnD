@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3641691896271638881}
   - component: {fileID: 1749854473770985156}
   - component: {fileID: 1211743229852863214}
-  - component: {fileID: 8868325685237469145}
+  - component: {fileID: 9002113285066530046}
   m_Layer: 0
   m_Name: Blue Heart
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4333252389476777054}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 83.1, y: -36.4, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1749854473770985156
 SpriteRenderer:
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: -2413806693520163455, guid: 01da48330c4439046879b560b6e708f1, type: 3}
   m_Color: {r: 0.16470587, g: 0.42820752, b: 1, a: 1}
   m_FlipX: 0
@@ -96,6 +96,25 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -152,7 +171,7 @@ PolygonCollider2D:
       - {x: 2.3125, y: -7.75}
       - {x: 3.1875, y: -7.5}
   m_UseDelaunayMesh: 0
---- !u!114 &8868325685237469145
+--- !u!114 &9002113285066530046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,14 +180,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4333252389476777054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38bd5b7327921ce448c245f2a3289ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc91ed607580c140a1bcd5e92444c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    itemType: 1
-    itemName: Blue Heart
-    itemDescription: Heals the player by 1 and increases max health
-    itemImage: {fileID: -2413806693520163455, guid: 01da48330c4439046879b560b6e708f1, type: 3}
-  moveSpeedChange: 0
-  firerateChange: 0
-  bulletSizeChange: 0
+  powerupEffect1: {fileID: 0}
+  powerupEffect2: {fileID: 0}
+  powerupEffect3: {fileID: 0}
+  powerupEffect4: {fileID: 0}
+  powerupEffect5: {fileID: 0}

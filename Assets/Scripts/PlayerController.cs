@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPos;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] private float fireDelay;
+    private float bulletSpeed;
     private float lastFire;
     private float xShootValue;
     private float yShootValue;
@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
         //Set stats to current game stats
         fireDelay = GameController.FireRate;
         speed = GameController.MoveSpeed;
+        bulletSpeed = GameController.PlayerBulletSpeed;
 
         //Set player state
         currentState = PlayerState.IDLE;
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour
         Quaternion upperMoveAngle = Quaternion.Euler(0, 0, 25);
         Quaternion lowerMoveAngle = Quaternion.Euler(0, 0, -25);
 
-        GameObject upperBullet = Instantiate(bulletPrefab, bulletSpawnPos.position, upperMoveAngle);
+        GameObject upperBullet = Instantiate(bulletPrefab, transform.position, upperMoveAngle);
         upperBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
 
         Vector2 upperDirection = (Vector2)(upperMoveAngle * new Vector3(
@@ -175,7 +176,7 @@ public class PlayerController : MonoBehaviour
         upperBullet.GetComponent<Rigidbody2D>().velocity = upperDirection * bulletSpeed;
 
 
-        GameObject lowerBullet = Instantiate(bulletPrefab, bulletSpawnPos.position, lowerMoveAngle);
+        GameObject lowerBullet = Instantiate(bulletPrefab, transform.position, lowerMoveAngle);
         lowerBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
 
         Vector2 lowerDirection = (Vector2)(lowerMoveAngle * new Vector3(

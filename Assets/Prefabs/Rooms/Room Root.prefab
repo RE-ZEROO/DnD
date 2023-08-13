@@ -42,7 +42,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025221610063380138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -50
-  m_Sprite: {fileID: 21300000, guid: 1a6b18391fe4aca4e976b7129d95c4dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69e0f3ac99da272429d7c6a9f2be6526, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,10 +164,6 @@ MonoBehaviour:
   doorWallB: {fileID: 7500184176784253466, guid: 5f3a10df414980a4c9700ab9194cbcc5, type: 3}
   doorWallL: {fileID: 7500184176784253466, guid: a0d21ae1056ce754586877f2baa95c9b, type: 3}
   doorWallR: {fileID: 7500184176784253466, guid: 7a95cda5c39baf548abcf2f0dfa7b79f, type: 3}
-  doorBU: {fileID: 1152370622949468, guid: 977df8aa8e2717a489ba66a5d1f43945, type: 3}
-  doorBD: {fileID: 1152370622949468, guid: b615f89db3db885499be737652307d22, type: 3}
-  doorBL: {fileID: 1152370622949468, guid: c205a98e65d5a8e48a46348b1a794b2e, type: 3}
-  doorBR: {fileID: 1152370622949468, guid: 9546df3c85ae31c4bb777dc47eec6a90, type: 3}
   bossMonsterPrefab:
   - {fileID: 4061712487245009914, guid: bd4c08d587ac9094981084225b92ce29, type: 3}
   portal: {fileID: 531607778128142680, guid: 37fa01566151fa24485d2d9e754f0b42, type: 3}
@@ -211,9 +207,6 @@ MonoBehaviour:
   mappings:
   - color: {r: 0, g: 0, b: 0, a: 1}
     prefabs:
-    - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}
-  - color: {r: 0, g: 0, b: 0, a: 1}
-    prefabs:
     - {fileID: 3031388086310594188, guid: 7731273686275994090235da9c747385, type: 3}
     - {fileID: 3031388086310594188, guid: c7f57da836192d9408932b9248dd19ec, type: 3}
   - color: {r: 1, g: 0, b: 1, a: 1}
@@ -242,19 +235,29 @@ MonoBehaviour:
     - {fileID: 7500184176784253466, guid: 1372315901c4e7a4db5c121c083d40a4, type: 3}
   - color: {r: 0.50980395, g: 0, b: 0.5882353, a: 1}
     prefabs:
-    - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}
-  - color: {r: 0.50980395, g: 0, b: 0.5882353, a: 1}
-    prefabs:
     - {fileID: 6262418931332563877, guid: 4428df38b78a4b242a1332e979e8d763, type: 3}
     - {fileID: 8315293247355595213, guid: b2fa319e2e9d59146945788ec86aa447, type: 3}
     - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}
     - {fileID: 8692043515048797067, guid: f9915b09c880c9b4ab593519ced5c401, type: 3}
   - color: {r: 0, g: 0.27450982, b: 0.5882353, a: 1}
     prefabs:
-    - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}
-  - color: {r: 0, g: 0.27450982, b: 0.5882353, a: 1}
-    prefabs:
     - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}
+  - color: {r: 0.28235295, g: 0.5882353, b: 0, a: 1}
+    prefabs:
+    - {fileID: 5461898849823177956, guid: a4ecb6b2ef7e3514bac063201c5a982d, type: 3}
+    - {fileID: 8832388820062604935, guid: 000869096b3fbc241a8c1bb245367048, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+    - {fileID: 7946299299201553818, guid: ddefcc9f7b03aed4fbe4a5c25bd45e6a, type: 3}
+  - color: {r: 0.5882353, g: 0, b: 0.25490198, a: 1}
+    prefabs:
+    - {fileID: 5461898849823177956, guid: a4ecb6b2ef7e3514bac063201c5a982d, type: 3}
+    - {fileID: 8832388820062604935, guid: 000869096b3fbc241a8c1bb245367048, type: 3}
   roomSizeInTiles: {x: 9, y: 17}
 --- !u!114 &666349969625168064
 MonoBehaviour:

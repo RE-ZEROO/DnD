@@ -13,17 +13,18 @@ public enum ItemType
 }
 
 [System.Serializable]
-public class Item
+public class Item2
 {
-    public ItemType itemType;
+    public ItemType itemType; 
+    public Sprite itemImage;
     public string itemName;
     public string itemDescription;
-    public Sprite itemImage;
+    public int dropChance;
 }
 
 public class ItemController : MonoBehaviour
 {
-    public Item item;
+    public Item2 item;
 
     public float moveSpeedChange;
     public float firerateChange;

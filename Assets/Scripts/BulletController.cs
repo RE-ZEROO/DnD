@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float lifeTime;
-    [SerializeField] private float bulletSpeed = 90f;
+    [SerializeField] private float enemyBulletSpeed;
     [SerializeField] private GameObject impactEffect;
 
     public bool isEnemyBullet;
@@ -17,6 +17,8 @@ public class BulletController : MonoBehaviour
 
     void Start()
     {
+        enemyBulletSpeed = GameController.EnemyBulletSpeed;
+
         StartCoroutine(DeathDelay());
 
         //Set bullet size to player bullet size
@@ -34,7 +36,7 @@ public class BulletController : MonoBehaviour
         {
             //Shoot towards player
             currentPosition = transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, playerPosition, bulletSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, playerPosition, enemyBulletSpeed * Time.deltaTime);
 
             if (currentPosition == lastPosition)
                 Destroy(gameObject);
@@ -59,6 +61,7 @@ public class BulletController : MonoBehaviour
         if (collision.CompareTag("Enemy") && !isEnemyBullet)
         {
             collision.gameObject.GetComponentInParent<EnemyController>().Damage();
+            collision.gameObject.GetComponentInParent<EnemyAnimation>().AnimationHitEnemy();
             Destroy(gameObject);
         }
         else if(collision.CompareTag("Player") && isEnemyBullet)
@@ -68,7 +71,6 @@ public class BulletController : MonoBehaviour
         }
         else if (collision.CompareTag("Wall") || collision.CompareTag("Door") || collision.CompareTag("BossDoor"))
             Destroy(gameObject);
-        
     }
 
     private void OnDestroy()

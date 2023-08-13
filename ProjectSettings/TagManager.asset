@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - Enemy
   - Boss
+  - Powerup
+  - Item
   layers:
   - Default
   - TransparentFX

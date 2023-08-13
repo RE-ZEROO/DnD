@@ -194,8 +194,9 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   doorOpen: {fileID: 195829785, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorClosed: {fileID: 1742324479, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
-  doorBossOpen: {fileID: 195829785, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
+  doorBossOpen: {fileID: -1773758943, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorBossClosed: {fileID: 864872193, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
+  isBossDoor: 0
   doorTop: 0
   doorBottom: 0
   doorLeft: 0

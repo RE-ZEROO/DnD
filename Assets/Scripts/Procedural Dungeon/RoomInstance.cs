@@ -38,9 +38,6 @@ public class RoomInstance : MonoBehaviour
     public Vector2 roomSizeInTiles = new Vector2(9, 17);
     private Vector2 roomCenterTilePos = Vector2.zero;
 
-    private float checkBossRayDistanceX = 145f;
-    private float checkBossRayDistanceY = 290f;
-
 
 
     public void Setup(Texture2D _texture, Vector2 _gridPos, RoomType _type,
@@ -140,12 +137,14 @@ public class RoomInstance : MonoBehaviour
     {
         Color pixelColor = tex.GetPixel(x, y);
 
+        if(pixelColor.a == 0) { return; }
+
         //Place ground tile when pixel color is transparent
-        if (pixelColor.a == 0)
+        /*if (pixelColor.a == 0)
         {
             Vector3 spawnPos = PositionFromTileGrid(x, y);
             Instantiate(groundTiles[SelectGroundTiles()], spawnPos, Quaternion.identity).transform.parent = transform;
-        }
+        }*/
 
         //Find the color to match the pixel
         foreach (ColorToGameObject mapping in mappings)

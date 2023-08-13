@@ -13,10 +13,13 @@ public class GameController : MonoBehaviour
     //private float healAmount = 0.5f;
 
     private static float moveSpeed;
-    private static float fireRate = 0.5f;
+    private static float playerBulletSpeed;
+    private static float enemyBulletSpeed = 90f;
+
+    private static float fireRate;
     private static float bulletSize;
 
-    private static float enemyDamage;
+    private static float enemyDamage = 1f;
     private static float playerDamage;
 
     [SerializeField] private static float invincibilityTime = 1.5f;
@@ -33,6 +36,8 @@ public class GameController : MonoBehaviour
     public static float Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public static float PlayerBulletSpeed { get => playerBulletSpeed; set => playerBulletSpeed = value; }
+    public static float EnemyBulletSpeed { get => enemyBulletSpeed; set => enemyBulletSpeed = value; }
     public static float FireRate { get => fireRate; set => fireRate = value; }
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
     public static float PlayerDamage { get => playerDamage; set => playerDamage = value; }
@@ -55,12 +60,12 @@ public class GameController : MonoBehaviour
 
     private void SetStats()
     {
-        health = 6f;
+        health = 60f;
         maxHealth = 6;
-        moveSpeed = 90f;
+        moveSpeed = 70f;
+        playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.2f;
-        enemyDamage = 1f;
         playerDamage = 1f;
     }
 

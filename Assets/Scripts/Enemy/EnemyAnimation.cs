@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
@@ -46,6 +47,12 @@ public class EnemyAnimation : MonoBehaviour
         SetAnimTime();
     }
 
+    public void AnimationHitEnemy()
+    {
+        animator.CrossFade(EnemyHitAnimation, 0, 0);
+        return;
+    }
+
     #region Animation
     private int GetAnimationState()
     {
@@ -58,8 +65,8 @@ public class EnemyAnimation : MonoBehaviour
             return LockState(EnemyAttackAnimation, attackAnimTime); //animator.HasState(EnemyAttackAnimation, 0) && 
         /*else if (animator.HasState(EnemyAttackAnimation2, 0) && currentState == EnemyState.ATTACK)
             return LockState(EnemyAttackAnimation2, attackAnimTime);*/
-        else if (currentState == EnemyState.HIT)
-            return LockState(EnemyHitAnimation, hitAnimTime);
+        /*else if (currentState == EnemyState.HIT)
+            return LockState(EnemyHitAnimation, hitAnimTime);*/
         else if (currentState == EnemyState.DEAD)
             return EnemyDieAnimation;
         else if (currentState == EnemyState.IDLE)
