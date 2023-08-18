@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6066331494009787287}
-  m_Layer: 6
-  m_Name: Bullet Spawn Side
+  m_Layer: 0
+  m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2672129692697994099}
   - component: {fileID: 6707270457798589877}
   - component: {fileID: 878389075}
+  - component: {fileID: 4052701954335310080}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -202,7 +203,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &878389075
 MonoBehaviour:
@@ -238,9 +239,21 @@ MonoBehaviour:
   speed: 90
   canMove: 1
   bulletPrefab: {fileID: 1394850163104490642, guid: 381d43b838da1b94c8fa833d29ab216f, type: 3}
-  bulletSpeed: 90
+  bulletSpawnPos: {fileID: 6066331494009787287}
   fireDelay: 3
-  attackAnimTime: 0.75
+  attackAnimTime: 0.517
+--- !u!114 &4052701954335310080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707270457798589883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5253a0d9b67b7a24eadd537fa3070759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7253623324152499457
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,9 +264,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5269084195314222583}
   - component: {fileID: 2095711999325274451}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Trigger Collider
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

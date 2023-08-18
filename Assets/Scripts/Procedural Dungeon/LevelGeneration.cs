@@ -17,7 +17,6 @@ public class LevelGeneration : MonoBehaviour
     private int numberOfRooms = 20;
 
     private bool isThereABossRoom = false;
-    public bool bossTop, bossBottom, bossLeft, bossRight;
 
     public GameObject roomWhiteObj;
     public Transform mapRoot;
@@ -214,47 +213,6 @@ public class LevelGeneration : MonoBehaviour
         return roomNeighbourNumber;
     }
 
-    #region Boss Neighbour Check
-    /*public bool BossNeighborTop(Vector2 checkingPos, List<Vector2> usedPositions, Room[,] rooms)
-    {
-        var bossPos = usedPositions.Contains(checkingPos + Vector2.up) && rooms[(int)checkingPos.x, (int)checkingPos.y].type == RoomType.END;
-
-        if (bossPos)
-            return bossTop = true;
-
-        return bossTop = false;
-    }
-
-    public bool BossNeighborBottom(Vector2 checkingPos, List<Vector2> usedPositions)
-    {
-        var bossPos = usedPositions.Contains(checkingPos + Vector2.down);
-
-        if (bossPos && type == RoomType.END)
-            return bossBottom = true;
-
-        return bossBottom = false;
-    }
-
-    public bool BossNeighborLeft(Vector2 checkingPos, List<Vector2> usedPositions)
-    {
-        var bossPos = usedPositions.Contains(checkingPos + Vector2.left);
-
-        if (bossPos && type == RoomType.END)
-            return bossLeft = true;
-
-        return bossLeft = false;
-    }
-
-    public bool BossNeighborRight(Vector2 checkingPos, List<Vector2> usedPositions)
-    {
-        var bossPos = usedPositions.Contains(checkingPos + Vector2.right);
-
-        if  (bossPos && type == RoomType.END)
-            return bossRight = true;
-
-        return bossRight = false;
-    }*/
-    #endregion
 
     private void DrawMap()
     {

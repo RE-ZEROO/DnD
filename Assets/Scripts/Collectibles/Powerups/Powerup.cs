@@ -15,6 +15,8 @@ public class Powerup : MonoBehaviour
         if(!collision.CompareTag("Player")) { return; }
 
         Destroy(gameObject);
+        AudioManager.Instance.PlaySFX("Powerup");
+
         powerupEffect1?.Apply();
         powerupEffect2?.Apply();
         powerupEffect3?.Apply();

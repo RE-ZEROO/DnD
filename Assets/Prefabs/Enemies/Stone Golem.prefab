@@ -336,12 +336,13 @@ MonoBehaviour:
   currentState: 0
   enemyType: 1
   bulletPrefab: {fileID: 37778886935836554, guid: 93bbd815d7c5666488a191977463c40b, type: 3}
+  isInvincible: 0
   health: 15
   speed: 800
   detectionRange: 100
   attackRange: 45
   bulletSpeed: 90
-  cooldown: 1.5
+  cooldown: 3
   bulletSpawnPos: {fileID: 3091446354074156720}
 --- !u!114 &4656423604011320231
 MonoBehaviour:
@@ -357,3 +358,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimTime: 9.5
   hitAnimTime: 0
+  invincibilityAnimTime: 0

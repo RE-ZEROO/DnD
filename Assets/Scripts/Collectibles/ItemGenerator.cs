@@ -7,7 +7,7 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] private LootTable lootTable;
     [SerializeField] private Transform itemHolderPos;
 
-    public void GenerateLoot()
+    public void GenerateItem()
     {
         ItemData item = lootTable.GetRandomItem();
         Instantiate(item.itemGO, itemHolderPos.position, Quaternion.identity).transform.parent = itemHolderPos;

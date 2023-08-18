@@ -8,6 +8,8 @@ public class EnemyMelee : EnemyController
     [SerializeField] private float dashMultiplier;
     private float dashSpeed;
 
+    [SerializeField] private bool isDasher;
+
     protected override void Start()
     {
         base.Start();
@@ -19,8 +21,16 @@ public class EnemyMelee : EnemyController
     {
         base.Update();
 
-        if (currentState == EnemyState.ATTACK)
+
+
+        if (currentState == EnemyState.ATTACK && isDasher)
             DashAttack();
+    }
+
+
+    private void MeeleAttack()
+    {
+
     }
 
 
@@ -32,15 +42,4 @@ public class EnemyMelee : EnemyController
         Vector2 force = direction * dashSpeed * Time.deltaTime;
         rb.AddForce(force);
     }
-
-
-    /*private IEnumerator Dash()
-    {
-        Vector2 target = player.transform.position;
-        Vector2 direction = (target - rb.position).normalized;
-
-        Vector2 force = direction * dashSpeed * Time.deltaTime;
-        rb.AddForce(force);
-        yield return new WaitForSeconds(dashTime);
-    }*/
 }

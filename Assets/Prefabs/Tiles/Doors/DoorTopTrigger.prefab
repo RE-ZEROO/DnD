@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.022049427, y: -0.049367428}
+  m_Offset: {x: -0.02615547, y: -0.05415177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.029811, y: 15.040345}
+  m_Size: {x: 15.0085, y: 15.04761}
   m_EdgeRadius: 0
 --- !u!61 &61406581372063362
 BoxCollider2D:
@@ -195,7 +195,7 @@ MonoBehaviour:
   doorOpen: {fileID: -1791097897, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorClosed: {fileID: 1869029105, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorBossOpen: {fileID: -1044785427, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
-  doorBossClosed: {fileID: 112235577, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
+  doorBossClosed: {fileID: 1947875021, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   isBossDoor: 0
   doorTop: 0
   doorBottom: 0

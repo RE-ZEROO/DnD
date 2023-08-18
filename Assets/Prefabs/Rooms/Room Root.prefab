@@ -238,7 +238,6 @@ MonoBehaviour:
     - {fileID: 6262418931332563877, guid: 4428df38b78a4b242a1332e979e8d763, type: 3}
     - {fileID: 8315293247355595213, guid: b2fa319e2e9d59146945788ec86aa447, type: 3}
     - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}
-    - {fileID: 8692043515048797067, guid: f9915b09c880c9b4ab593519ced5c401, type: 3}
   - color: {r: 0, g: 0.27450982, b: 0.5882353, a: 1}
     prefabs:
     - {fileID: 3812915551817324802, guid: a8010e8ef6ee1bb43a8874a2b01fef39, type: 3}

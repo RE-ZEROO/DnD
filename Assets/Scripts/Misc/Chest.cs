@@ -23,6 +23,7 @@ public class Chest : MonoBehaviour
         if (collision.GetComponent<BulletController>()?.isEnemyBullet == false)
         {
             animator.CrossFade(ChestHitAnimation, 0, 0);
+            AudioManager.Instance.PlaySFX("ChestHit");
             health--;
 
             if(health <= 0)
@@ -36,6 +37,7 @@ public class Chest : MonoBehaviour
     private void SpawnItem()
     {
         animator.CrossFade(ItemSpawnAnimation, 0, 0);
-        GetComponent<ItemGenerator>().GenerateLoot();
+        AudioManager.Instance.PlaySFX("ItemSpawn");
+        GetComponent<ItemGenerator>().GenerateItem();
     }
 }

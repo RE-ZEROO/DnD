@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,9 +67,9 @@ public class ItemController : MonoBehaviour
         //If health is full, redheart can't be picked up
         if (item.itemType == ItemType.REDHEART && GameController.Health == GameController.MaxHealth) { return; }
 
-        GameController.instance.UpdateCollectedItems(this);
+        GameController.Instance.UpdateCollectedItems(this);
         Debug.Log("Added Item");
 
         Destroy(gameObject);
     }
-}
+}*/

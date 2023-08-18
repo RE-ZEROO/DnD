@@ -61,7 +61,7 @@ public class BulletController : MonoBehaviour
         if (collision.CompareTag("Enemy") && !isEnemyBullet)
         {
             collision.gameObject.GetComponentInParent<EnemyController>().Damage();
-            collision.gameObject.GetComponentInParent<EnemyAnimation>().AnimationHitEnemy();
+            //collision.gameObject.GetComponentInParent<EnemyAnimation>().AnimationHitEnemy();
             Destroy(gameObject);
         }
         else if(collision.CompareTag("Player") && isEnemyBullet)

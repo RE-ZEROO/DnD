@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789438205336454586}
   - component: {fileID: 789438205336454587}
-  - component: {fileID: 789438205336454589}
+  - component: {fileID: 3333121208267221472}
   - component: {fileID: -809974450498722595}
   m_Layer: 0
   m_Name: Speed
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 78, y: -10, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: -2413806693520163455, guid: 01da48330c4439046879b560b6e708f1, type: 3}
-  m_Color: {r: 0.3372549, g: 0.7843138, b: 0.7568628, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8badbd0c1906d0142b3bde2602186406, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &789438205336454589
-PolygonCollider2D:
+--- !u!61 &3333121208267221472
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,7 +118,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.030797958, y: 0.58520174}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,49 +128,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 4.75, y: -6.625}
-      - {x: 6.375, y: -5}
-      - {x: 6.9375, y: -4.1875}
-      - {x: 7.5, y: -3}
-      - {x: 7.8125, y: -2.3125}
-      - {x: 8, y: -1.1875}
-      - {x: 8, y: 1.3125}
-      - {x: 7.875, y: 1.8125}
-      - {x: 7.5, y: 3.125}
-      - {x: 6.8125, y: 4.375}
-      - {x: 6.375, y: 5}
-      - {x: 5.4375, y: 6}
-      - {x: 4.1875, y: 6.9375}
-      - {x: 2.8125, y: 7.625}
-      - {x: 2.125, y: 7.875}
-      - {x: 1.375, y: 8}
-      - {x: -1.1875, y: 8}
-      - {x: -1.8125, y: 7.9375}
-      - {x: -3.125, y: 7.5}
-      - {x: -4.375, y: 6.875}
-      - {x: -5.4375, y: 6}
-      - {x: -6.0625, y: 5.4375}
-      - {x: -6.9375, y: 4.1875}
-      - {x: -7.625, y: 2.875}
-      - {x: -8, y: 1.5625}
-      - {x: -8, y: -1.3125}
-      - {x: -7.75, y: -2.3125}
-      - {x: -7.4375, y: -3.125}
-      - {x: -6.8125, y: -4.375}
-      - {x: -6.375, y: -5}
-      - {x: -5.4375, y: -6.0625}
-      - {x: -4.1875, y: -6.9375}
-      - {x: -3.125, y: -7.4375}
-      - {x: -2.5, y: -7.75}
-      - {x: -1.5, y: -7.9375}
-      - {x: -1.25, y: -8}
-      - {x: 1.125, y: -8}
-      - {x: 1.5, y: -7.9375}
-      - {x: 2.3125, y: -7.75}
-      - {x: 3.1875, y: -7.5}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 12.365576, y: 5.4663467}
+  m_EdgeRadius: 0
 --- !u!114 &-809974450498722595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupEffect1: {fileID: 11400000, guid: 0589d6800df0caa4aa00fe9c400c24aa, type: 2}
-  powerupEffect2: {fileID: 0}
+  powerupEffect2: {fileID: 11400000, guid: 8cfc63f7ffddc464f8a7904aa67095be, type: 2}
   powerupEffect3: {fileID: 0}
   powerupEffect4: {fileID: 0}
   powerupEffect5: {fileID: 0}

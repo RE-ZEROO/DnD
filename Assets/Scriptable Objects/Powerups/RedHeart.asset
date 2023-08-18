@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: RedHeart
   m_EditorClassIdentifier: 
   amount: 1
+  floatingTextPrefab: {fileID: 0}

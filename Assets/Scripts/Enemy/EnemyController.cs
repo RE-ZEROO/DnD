@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
 
     private Vector3 directionToPlayer;
+    private Color hitColor = new Color(160, 130, 130);
 
     protected float distanceToPlayer;
     protected bool isOnCooldownAttack = false;
@@ -237,8 +238,19 @@ public class EnemyController : MonoBehaviour
     {
         if(isInvincible) { return; }
 
-        currentState = EnemyState.HIT;
+        //currentState = EnemyState.HIT;
+        AudioManager.Instance.PlaySFX("Hit");
         health -= (GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
+        StartCoroutine(DamageColorChange());
+    }
+
+    private IEnumerator DamageColorChange()
+    {
+        //spriteRenderer.color = hitColor;
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
+        yield return new WaitForSeconds(1);
+        //spriteRenderer.color = Color.white;
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
     }
 
     private void EnemyDeath() => Destroy(gameObject);

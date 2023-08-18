@@ -9,7 +9,9 @@ public class Coin : MonoBehaviour, ICollectible
 
     public void Collect()
     {
-        Debug.Log("Collected a Coin");
+        AudioManager.Instance.PlaySFX("Coin");
+        GameController.CoinCount++;
+
         Destroy(gameObject);
         OnCoinCollected?.Invoke();
     }
