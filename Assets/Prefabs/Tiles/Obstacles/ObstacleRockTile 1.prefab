@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8260635385926748380}
   - component: {fileID: 4801436991354404831}
-  - component: {fileID: 9161706338151735834}
   - component: {fileID: 4369103700522321900}
   m_Layer: 8
   m_Name: ObstacleRockTile 1
@@ -86,65 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &9161706338151735834
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031388086310594188}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 16}
-    newSize: {x: 16, y: 16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.1997232, y: 6.2531233}
-      - {x: -1.1790259, y: 6.2952576}
-      - {x: -2.597339, y: 5.0080667}
-      - {x: -3.3950639, y: 3.6548069}
-      - {x: -4.5543385, y: -0.30985892}
-      - {x: -6.1790247, y: -0.86706567}
-      - {x: -7.2502465, y: -1.296533}
-      - {x: -7.263862, y: -4.675352}
-      - {x: -7.309953, y: -6.140282}
-      - {x: 1.3187338, y: -6.290781}
-      - {x: 1.2324649, y: -0.21242934}
-      - {x: 5.411491, y: -0.1329344}
-      - {x: 5.21777, y: 4.225117}
-      - {x: 4.024049, y: 5.326655}
-  m_UseDelaunayMesh: 0
 --- !u!61 &4369103700522321900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +94,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3031388086310594188}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6793654b12ac81843998e9c5d69b2196, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -177,7 +117,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.95824623, y: -0.46748447}
+  m_Offset: {x: -0.9937136, y: 0.029061794}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -188,5 +128,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.406576, y: 13.105076}
-  m_EdgeRadius: 0
+  m_Size: {x: 6.3061557, y: 6.011565}
+  m_EdgeRadius: 3

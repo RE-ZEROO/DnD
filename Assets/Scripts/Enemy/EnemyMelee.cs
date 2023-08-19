@@ -22,15 +22,20 @@ public class EnemyMelee : EnemyController
         base.Update();
 
 
-
-        if (currentState == EnemyState.ATTACK && isDasher)
+        if (currentState == EnemyState.ATTACK && !isDasher)
+            MeeleAttack();
+        else if (currentState == EnemyState.ATTACK && isDasher)
             DashAttack();
     }
 
 
     private void MeeleAttack()
     {
+        if (isOnCooldownAttack) { return; }
 
+        GameController.DamagePlayer();
+
+        StartCoroutine(Cooldown());
     }
 
 

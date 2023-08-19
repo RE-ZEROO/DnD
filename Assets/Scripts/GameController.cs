@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
-    public static Action OnInitialize;
     public static Action OnPlayerDamaged;
     public static Action OnPlayerHeal;
+    public static Action OnInitialize;
+
 
     //Internal stats
     private static float health;
@@ -22,8 +23,8 @@ public class GameController : MonoBehaviour
     private static float fireRate;
     private static float bulletSize;
 
-    [SerializeField] private static float invincibilityTime = 1.5f;
-    private bool isInvincible = false;
+    private static float invincibilityTime = 1.5f;
+    private static bool isInvincible = false;
 
     //Enemy Stats
     private static float enemyDamage = 1f;
@@ -40,7 +41,9 @@ public class GameController : MonoBehaviour
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public static float PlayerDamage { get => playerDamage; set => playerDamage = value; }
-    public static float PlayerInvicibilityTime { get => invincibilityTime; set => invincibilityTime = value; }
+
+    public static float PlayerInvicibilityTime { get => invincibilityTime; }
+    public static bool PlayerInvicibility { get => isInvincible; set => isInvincible = value; }
 
     public static float FireRate { get => fireRate; set => fireRate = value; }
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
@@ -53,16 +56,16 @@ public class GameController : MonoBehaviour
     public static int KeyCount { get => keyCount; set => keyCount = value; }
 
 
-    private GameObject player;
-    private PlayerController playerController;
-    private Renderer playerRenderer;
+    //private GameObject player;
+    //private PlayerController playerController;
+    /*private Renderer playerRenderer;
     private Collider2D playerCollider;
-    private Color playerColor = Color.white;
+    private Color playerColor = Color.white;*/
     
-    private Collider2D[] enemyCollider;
+    /*private Collider2D[] enemyCollider;
     private Collider2D[] bulletCollider;
     private GameObject[] enemyArray;
-    private GameObject[] bulletArray;
+    private GameObject[] bulletArray;*/
 
 
     private void SetStats()
@@ -79,8 +82,7 @@ public class GameController : MonoBehaviour
         coinCount = 0;
         keyCount = 0;
         PlayerController.isTripleshot = false;
-
-        OnInitialize?.Invoke();
+        GameController.OnInitialize?.Invoke();
     }
 
     void Awake()
@@ -88,7 +90,7 @@ public class GameController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
@@ -98,26 +100,26 @@ public class GameController : MonoBehaviour
     {
         SetStats();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerController>();
-        playerCollider = player.GetComponent<Collider2D>();
-        playerRenderer = player.GetComponent<SpriteRenderer>();
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //playerController = player.GetComponent<PlayerController>();
+        /*playerCollider = player.GetComponent<Collider2D>();
+        playerRenderer = player.GetComponent<SpriteRenderer>();*/
         //playerColor = playerRenderer.material.color;
     }
 
 
     void Update()
     {
-        enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        /*enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemyArray) { enemyCollider = GetComponents<Collider2D>(); }
         
         bulletArray = GameObject.FindGameObjectsWithTag("Bullet");
-        foreach (GameObject bullet in bulletArray) { bulletCollider = GetComponents<Collider2D>(); }
+        foreach (GameObject bullet in bulletArray) { bulletCollider = GetComponents<Collider2D>(); }*/
 
         StatsMinCap();
 
-        if (health <= 0)
-            KillPlayer();
+        /*if (health <= 0)
+            KillPlayer();*/
 
         //Debug.Log(health);
     }
@@ -125,17 +127,17 @@ public class GameController : MonoBehaviour
 
     public static void DamagePlayer()
     {
-        if (Instance.isInvincible) { return; }
+        if (isInvincible) { return; }
         
         health -= enemyDamage;
         OnPlayerDamaged?.Invoke();
-        Instance.StartCoroutine(Instance.Invincibility());
+        //Instance.StartCoroutine(Instance.Invincibility());
     }
 
-    private void KillPlayer()
+    /*private void KillPlayer()
     {
         playerController.PlayerDeathState();
-    }
+    }*/
 
     /*public void UpdateCollectedItems(ItemController collectedItem)
     {
@@ -171,7 +173,7 @@ public class GameController : MonoBehaviour
             bulletSize = 0.2f;
     }
 
-    private IEnumerator Invincibility()
+    /*private IEnumerator Invincibility()
     {
         isInvincible = true;
         //Set a flashing animation later when there is a player sprite
@@ -198,7 +200,7 @@ public class GameController : MonoBehaviour
             for (int b = 0; b < bulletCollider.Length; b++) { Physics2D.IgnoreCollision(playerCollider, bulletCollider[b], false); }
 
         isInvincible = false;
-    }
+    }*/
 
     public static void GameOver()
     {

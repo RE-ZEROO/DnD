@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,8 +17,16 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
     public PlayerState currentState = PlayerState.IDLE;
+    private Rigidbody2D rb;
+    private Renderer playerRenderer;
+    private Collider2D playerCollider;
+    private Color playerColor = Color.white;
+
+    private Collider2D[] enemyCollider;
+    private Collider2D[] bulletCollider;
+    private GameObject[] enemyArray;
+    private GameObject[] bulletArray;
 
     [Header("Input")]
     [SerializeField] private PlayerActionsInput playerInput;
@@ -29,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool canMove = true;
     private bool facingRight = true;
+    private bool isTouchingEnemy;
 
     [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
@@ -43,11 +54,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 shootDirection = Vector2.zero;
 
     //Animation
-    private Animator animator;
-
     [Header("Aniamtion")]
     [SerializeField] private float attackAnimTime;
+    [SerializeField] private float teleportAnimTime;
 
+    private Animator animator;
     private int currentAnimationState;
     private float lockedTill;
 
@@ -69,12 +80,16 @@ public class PlayerController : MonoBehaviour
 
         shoot = playerInput.Player.Shoot;
         shoot.Enable();
+
+        GameController.OnPlayerDamaged += StartInvincibility;
     }
 
     public void OnDisable()
     {
         move.Disable();
         shoot.Disable();
+
+        GameController.OnPlayerDamaged -= StartInvincibility;
     }
     #endregion
 
@@ -84,7 +99,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //playerInput.Player.Shoot.performed += _ => Shoot(shootDirection.x, shootDirection.y);
+        playerCollider = GetComponent<Collider2D>();
+        playerRenderer = GetComponent<SpriteRenderer>();
+
+        GameController.PlayerInvicibility = false;
     }
 
     void Update()
@@ -94,6 +112,13 @@ public class PlayerController : MonoBehaviour
         //Read input values
         moveDirection = move.ReadValue<Vector2>().normalized;
         shootDirection = shoot.ReadValue<Vector2>();
+
+        //Check colliders
+        enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemyArray) { enemyCollider = GetComponents<Collider2D>(); }
+
+        bulletArray = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bulletArray) { bulletCollider = GetComponents<Collider2D>(); }
 
         //Set stats to current game stats
         fireDelay = GameController.FireRate;
@@ -112,7 +137,7 @@ public class PlayerController : MonoBehaviour
             shootDirection.x = 0;
             
         //Only shoot when cooldown is down 
-        if ((shootDirection.x != 0 || shootDirection.y != 0) && Time.time > lastFire + fireDelay)
+        if ((shootDirection.x != 0 || shootDirection.y != 0) && Time.time > lastFire + fireDelay && !isTouchingEnemy)
         {
             xShootValue = shootDirection.x;
             yShootValue = shootDirection.y;
@@ -133,6 +158,10 @@ public class PlayerController : MonoBehaviour
             animator.CrossFade(animationState, 0, 0);
             currentAnimationState = animationState;
         }
+
+        //Kill player
+        if (GameController.Health <= 0)
+            PlayerDeathState();
     }
 
     private void FixedUpdate()
@@ -143,7 +172,16 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
+        {
+            isTouchingEnemy = true;
             GameController.DamagePlayer();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
+            isTouchingEnemy = false;
     }
 
     #region Shooting
@@ -184,21 +222,7 @@ public class PlayerController : MonoBehaviour
         (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y), 0));
         lowerBullet.GetComponent<Rigidbody2D>().velocity = lowerDirection * bulletSpeed;
     }
-
-    /*private IEnumerator BulletDelay(float delay)
-    {
-        yield return new WaitForSeconds(5);
-        yield return null;
-    }*/
     #endregion
-
-    public void PlayerDeathState()
-    {
-        currentState = PlayerState.DEAD;
-        animator.CrossFade(PlayerDieAnimation, 0, 0);
-    }
-
-    private void Death() => GameController.GameOver();
 
     private void Flip()
     {
@@ -209,21 +233,63 @@ public class PlayerController : MonoBehaviour
         transform.localScale = Scaler;
     }
 
+    public void PlayerDeathState()
+    {
+        currentState = PlayerState.DEAD;
+        animator.CrossFade(PlayerDieAnimation, 0, 0);
+    }
+
+    private void Death() => GameController.GameOver();
+    private void PlayerNextLevel() => GameController.NextLevel();
+
+    #region Invincibility
+    private void StartInvincibility() => StartCoroutine(Invincibility());
+
+    private IEnumerator Invincibility()
+    {
+        GameController.PlayerInvicibility = true;
+        //Set a flashing animation later when there is a player sprite
+        //playerController.currentState = PlayerState.Invincible;
+        playerColor.a = 0.5f;
+        playerRenderer.material.color = playerColor;
+
+        if (enemyCollider != null)
+            for (int e = 0; e < enemyCollider.Length; e++) { Physics2D.IgnoreCollision(playerCollider, enemyCollider[e], true); }
+
+        if (bulletCollider != null)
+            for (int b = 0; b < bulletCollider.Length; b++) { Physics2D.IgnoreCollision(playerCollider, bulletCollider[b], true); }
+
+        yield return new WaitForSeconds(GameController.PlayerInvicibilityTime);
+
+        playerColor.a = 1f;
+        //playerController.currentState = PlayerState.IDLE;
+        playerRenderer.material.color = playerColor;
+
+        if (enemyCollider != null)
+            for (int e = 0; e < enemyCollider.Length; e++) { Physics2D.IgnoreCollision(playerCollider, enemyCollider[e], false); }
+
+        if (bulletCollider != null)
+            for (int b = 0; b < bulletCollider.Length; b++) { Physics2D.IgnoreCollision(playerCollider, bulletCollider[b], false); }
+
+        GameController.PlayerInvicibility = false;
+    }
+    #endregion
+
     #region Animation
     private int GetAnimationState()
     {
         if (Time.time < lockedTill) return currentAnimationState;
 
         //Set animation based of the player state
-        if (currentState == PlayerState.RUN) 
+        if (currentState == PlayerState.RUN)
             return PlayerRunAnimation;
         else if (currentState == PlayerState.ATTACK)
             return LockState(PlayerAttackAnimation, attackAnimTime);
-        else if (currentState == PlayerState.TELEPORTING_OUT) 
-            return PlayerTeleportOutAnimation;
-        else if (currentState == PlayerState.TELEPORTING_IN) 
-            return PlayerTeleportInAnimation;
+        else if (currentState == PlayerState.TELEPORTING_OUT)
+            return LockState(PlayerTeleportOutAnimation, teleportAnimTime);
         else if (currentState == PlayerState.TELEPORTING_IN)
+            return LockState(PlayerTeleportInAnimation, teleportAnimTime);
+        else if (currentState == PlayerState.Invincible)
             return LockState(PlayerInvincibleAnimation, GameController.PlayerInvicibilityTime);
 
         return PlayerIdleAnimation;

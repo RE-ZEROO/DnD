@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1219749, y: 0.06131554}
+  m_Offset: {x: -0.03316116, y: 0.2373276}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -75,8 +75,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.154945, y: 6.160725}
-  m_EdgeRadius: 0
+  m_Size: {x: 4.689491, y: 3.713921}
+  m_EdgeRadius: 1
 --- !u!1 &6262418931332563877
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.121974945, y: 0.061315536}
+  m_Offset: {x: -0.033161163, y: 0.23732758}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -232,8 +232,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.1549454, y: 6.1607246}
-  m_EdgeRadius: 0
+  m_Size: {x: 4.6894913, y: 3.7139206}
+  m_EdgeRadius: 1
 --- !u!50 &2694465162369149173
 Rigidbody2D:
   serializedVersion: 4
@@ -304,6 +304,7 @@ MonoBehaviour:
   currentState: 0
   enemyType: 0
   bulletPrefab: {fileID: 0}
+  isInvincible: 0
   health: 3
   speed: 1000
   detectionRange: 100
@@ -312,6 +313,7 @@ MonoBehaviour:
   cooldown: 0
   bulletSpawnPos: {fileID: 0}
   dashMultiplier: 5
+  isDasher: 1
 --- !u!114 &6464202557350219402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,3 +328,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimTime: 0.51666665
   hitAnimTime: 0.51666665
+  invincibilityAnimTime: 0

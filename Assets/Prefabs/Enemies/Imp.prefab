@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3481950035483889675}
-  m_Layer: 7
+  - component: {fileID: 7465260452530169133}
+  m_Layer: 10
   m_Name: Bullet Spawn Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +32,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4094741186877124503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7465260452530169133
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965741639833116846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4
 --- !u!1 &3812915551817324802
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +212,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.39286995, y: -0.31196404}
+  m_Offset: {x: -0.5549973, y: -0.40924072}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
@@ -187,8 +223,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.722858, y: 12.2093315}
-  m_EdgeRadius: 0
+  m_Size: {x: 5.2105217, y: 6.307888}
+  m_EdgeRadius: 3
 --- !u!50 &7960763916416939560
 Rigidbody2D:
   serializedVersion: 4
@@ -259,6 +295,7 @@ MonoBehaviour:
   currentState: 0
   enemyType: 1
   bulletPrefab: {fileID: 1394850163104490642, guid: 714f51d24a04c3b43829eabd6420ff8b, type: 3}
+  isInvincible: 0
   health: 8
   speed: 1000
   detectionRange: 150
@@ -280,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimTime: 0.6166667
   hitAnimTime: 0.8333333
+  invincibilityAnimTime: 0
 --- !u!1 &8773648848947089033
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +382,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3928699, y: -0.311964}
+  m_Offset: {x: -0.5549973, y: -0.4092407}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -355,5 +393,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.72286, y: 12.20933}
-  m_EdgeRadius: 0
+  m_Size: {x: 5.210522, y: 6.307888}
+  m_EdgeRadius: 3

@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
 {
     protected GameObject player;
     protected Rigidbody2D rb;
-    protected Collider2D coll;
+    protected BoxCollider2D enemyCollider;
     private SpriteRenderer spriteRenderer;
     protected RoomInstance roomInstance;
 
@@ -75,7 +75,7 @@ public class EnemyController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<Collider2D>();
+        enemyCollider = GetComponent<BoxCollider2D>();
         seeker = GetComponent<Seeker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         roomInstance = GetComponentInParent<RoomInstance>();
@@ -114,12 +114,25 @@ public class EnemyController : MonoBehaviour
     protected bool PlayerInSightLine()
     {
         string[] layers = { "Player", "Obstacle" };
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distanceToPlayer, LayerMask.GetMask(layers));
+        RaycastHit2D playerHit;
 
-        if (hit && hit.collider.CompareTag("Player"))
-            return true;
+        if(enemyType == EnemyType.RANGED)
+            playerHit = Physics2D.BoxCast(bulletSpawnPos.position, enemyCollider.size, 0, player.transform.position - bulletSpawnPos.position, distanceToPlayer, LayerMask.GetMask(layers));
         else
+            playerHit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distanceToPlayer, LayerMask.GetMask(layers));
+
+        //Debug.Log(playerHit.collider);
+
+        if (playerHit && playerHit.collider.CompareTag("Player"))
+        {
+            //Debug.Log("True");
+            return true;
+        }
+        else
+        {
+            //Debug.Log("False");
             return false;
+        }
     }
 
     private void Flip()
@@ -204,12 +217,12 @@ public class EnemyController : MonoBehaviour
     protected void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPos.transform.position, Quaternion.identity);
-        bullet.GetComponent<BulletController>().GetPlayer(player.transform);
+        //bullet.GetComponent<BulletController>().GetPlayer(player.transform);
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y, -1f);
+        //bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y, -1f);
 
         //Rotate to player
         var relativePos = player.transform.position - transform.position;
@@ -220,7 +233,7 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(Cooldown());
     }
 
-    private IEnumerator Cooldown()
+    protected IEnumerator Cooldown()
     {
         isOnCooldownAttack = true;
         yield return new WaitForSeconds(cooldown);
@@ -261,7 +274,7 @@ public class EnemyController : MonoBehaviour
         if (inRoom)
         {
             //Set current states
-            if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && currentState != EnemyState.ATTACK && enemyType != EnemyType.STATIONARY)
+            if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)// && currentState != EnemyState.ATTACK
                 currentState = EnemyState.FOLLOW;
             else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.Boss)
                 currentState = EnemyState.WANDER;

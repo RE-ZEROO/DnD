@@ -55,8 +55,8 @@ public class Door : MonoBehaviour
         camJump = new Vector3(tempJump.x, tempJump.y, 0);
 
         //Set door raycast
-        checkBossRayDistanceX = SA.roomDimensions.x + SA.gutterSize.x;
-        checkBossRayDistanceY = SA.roomDimensions.y + SA.gutterSize.y;
+        checkBossRayDistanceX = SA.roomDimensions.x + SA.gutterSize.x - 10f;
+        checkBossRayDistanceY = SA.roomDimensions.y + SA.gutterSize.y - 10f;
 
         //Numbers based on trial and error testing
         moveJump = new Vector2(172, 96);
@@ -73,7 +73,7 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if (RoomInCamera.enemiesInRoom)
+        if (ObjectInCamera.enemiesInRoom)
             isOpen = false;
         else
             isOpen = true;
@@ -160,6 +160,11 @@ public class Door : MonoBehaviour
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, checkBossRayDistanceY);
         RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, checkBossRayDistanceX);
         RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, checkBossRayDistanceX);
+
+        Debug.DrawRay(transform.position, Vector2.up);
+        Debug.DrawRay(transform.position, Vector2.down);
+        Debug.DrawRay(transform.position, Vector2.left);
+        Debug.DrawRay(transform.position, Vector2.right);
 
         if (hitUP && hitUP.collider.CompareTag("Door"))
         {

@@ -171,6 +171,7 @@ public class DebugController : MonoBehaviour
                 }
                 else if(commandList[i] as DebugCommand<int> != null)
                 {
+                    //Cast to int type command and Invoke()
                     (commandList[i] as DebugCommand<int>).Invoke(int.Parse(properties[1]));
                 }
             }

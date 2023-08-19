@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 2
-  bulletSpeed: 90
+  enemyBulletSpeed: 0
   impactEffect: {fileID: 5894274868189354536, guid: 18295a67ad133f14e93790446b58d205, type: 3}
   isEnemyBullet: 0
 --- !u!1 &2817559921284264966
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 745815685
   m_SortingLayer: 3
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_Sprite: {fileID: 2126099472, guid: 361d0b00a861ef34db471b12114d782e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
