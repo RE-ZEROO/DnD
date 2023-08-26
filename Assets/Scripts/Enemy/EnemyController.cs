@@ -253,7 +253,7 @@ public class EnemyController : MonoBehaviour
 
         //currentState = EnemyState.HIT;
         AudioManager.Instance.PlaySFX("Hit");
-        health -= (GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
+        health -= GameController.PlayerDamage; //(GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
         StartCoroutine(DamageColorChange());
     }
 

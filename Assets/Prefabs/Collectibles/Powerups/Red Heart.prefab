@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4456213877459205331}
   - component: {fileID: 1211430015924909247}
-  - component: {fileID: 5789482359380436083}
+  - component: {fileID: 2771654662830720632}
   - component: {fileID: 3420190977123366923}
   m_Layer: 0
   m_Name: Red Heart
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5789482359380436083
-BoxCollider2D:
+--- !u!60 &2771654662830720632
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.083853245, y: -0.007439375}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,9 +128,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7.78236, y: 9.779963}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.031109951, y: 0.044999994}
+      - {x: -0.031303644, y: 0.044999994}
+      - {x: -0.040684506, y: 0.034752984}
+      - {x: -0.05, y: 0.025731528}
+      - {x: -0.05031051, y: -0.0060585476}
+      - {x: -0.011679582, y: -0.04562103}
+      - {x: 0.011058548, y: -0.04562103}
+      - {x: 0.050621033, y: -0.0066795927}
+      - {x: 0.05, y: 0.025421012}
+      - {x: 0.04037399, y: 0.035995048}
+  m_UseDelaunayMesh: 0
 --- !u!114 &3420190977123366923
 MonoBehaviour:
   m_ObjectHideFlags: 0

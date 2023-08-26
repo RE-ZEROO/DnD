@@ -9,7 +9,7 @@ public class HealMaxHealthSO : PowerupEffect
 
     public override void Apply()
     {
-        if (GameController.Health > 30) { return; }
+        if (GameController.MaxHealth >= 30) { return; }
 
         GameController.MaxHealth += amount;
         GameController.OnPlayerHeal?.Invoke();

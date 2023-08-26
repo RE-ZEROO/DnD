@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
     public static Action OnPlayerDamaged;
     public static Action OnPlayerHeal;
-    public static Action OnInitialize;
+    public static Action OnInitializeStats;
 
 
     //Internal stats
@@ -68,21 +68,21 @@ public class GameController : MonoBehaviour
     private GameObject[] bulletArray;*/
 
 
-    private void SetStats()
+    private void InitializeStats()
     {
-        health = 6f;
+        health = 60f;
         maxHealth = 6;
         moveSpeed = 70f;
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.2f;
-        playerDamage = 1f;
+        playerDamage = 100f;
 
         bombCount = 1;
         coinCount = 0;
-        keyCount = 0;
+        keyCount = 1;
         PlayerController.isTripleshot = false;
-        GameController.OnInitialize?.Invoke();
+        OnInitializeStats?.Invoke();
     }
 
     void Awake()
@@ -94,11 +94,13 @@ public class GameController : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+        InitializeStats();
     }
 
     void Start()
     {
-        SetStats();
+        //InitializeStats();
 
         //player = GameObject.FindGameObjectWithTag("Player");
         //playerController = player.GetComponent<PlayerController>();
@@ -121,7 +123,8 @@ public class GameController : MonoBehaviour
         /*if (health <= 0)
             KillPlayer();*/
 
-        //Debug.Log(health);
+        //Debug.Log("Health: " + health);
+        //Debug.Log("Max Health: " + maxHealth);
     }
 
 
@@ -204,7 +207,7 @@ public class GameController : MonoBehaviour
 
     public static void GameOver()
     {
-        Instance.SetStats();
+        Instance.InitializeStats();
         //Change this to show a gameover panel
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

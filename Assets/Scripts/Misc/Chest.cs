@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour
     private Animator animator;
 
     [SerializeField] private int health = 3;
+    [SerializeField] private bool needsKey;
 
     private static readonly int ChestHitAnimation = Animator.StringToHash("Chest_Hit");
     private static readonly int ChestOpenAnimation = Animator.StringToHash("Chest_Open");
@@ -16,22 +17,37 @@ public class Chest : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        //if(needsKey)
+        //    GetComponent<Collider2D>().isTrigger = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<BulletController>()?.isEnemyBullet == false)
+        if (needsKey && collision.GetComponentInParent<PlayerController>() != null && GameController.KeyCount > 0)
+        {
+            GameController.KeyCount--;
+            OpenChest();
+        }
+        else if (!needsKey && collision.GetComponent<BulletController>()?.isEnemyBullet == false)
         {
             animator.CrossFade(ChestHitAnimation, 0, 0);
             AudioManager.Instance.PlaySFX("ChestHit");
             health--;
 
-            if(health <= 0)
-            {
-                animator.CrossFade(ChestOpenAnimation, 0, 0);
-                GetComponent<Collider2D>().enabled = false;
-            }
+            if (health <= 0)
+                OpenChest();
         }
+        else if (collision.GetComponent<BulletController>() != null)
+        {
+            AudioManager.Instance.PlaySFX("ChestHit");
+        }
+    }
+
+    private void OpenChest()
+    {
+        animator.CrossFade(ChestOpenAnimation, 0, 0);
+        GetComponent<Collider2D>().enabled = false;
     }
 
     private void SpawnItem()

@@ -188,6 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  enemyBulletSpeed: 0
+  enemyBulletSpeed: 180
   impactEffect: {fileID: 5224116779348753438, guid: a30445240eaf2fb40affee6f62946136, type: 3}
   isEnemyBullet: 0

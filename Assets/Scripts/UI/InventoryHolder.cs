@@ -21,6 +21,19 @@ public class InventoryHolder : MonoBehaviour
         Key.OnKeyCollected -= UpdateKeyValue;
     }
 
+    void Start()
+    {
+        SetInitialCount();
+        //Invoke(nameof(SetInitialCount), 0.1f);
+    }
+
+    private void SetInitialCount()
+    {
+        bombCountText.text = GameController.BombCount.ToString();
+        coinCountText.text = GameController.CoinCount.ToString();
+        keyCountText.text = GameController.KeyCount.ToString();
+    }
+
     private void UpdateBombValue() => bombCountText.text = GameController.BombCount.ToString();
 
     private void UpdateCoinValue() => coinCountText.text = GameController.CoinCount.ToString();

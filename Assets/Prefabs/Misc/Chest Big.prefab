@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7270454032326936938}
   - component: {fileID: 6417618782597492545}
-  - component: {fileID: 5100974608714259553}
   - component: {fileID: 1443970179253443391}
   - component: {fileID: 5638608548701986739}
   - component: {fileID: 324472066121762122}
+  - component: {fileID: 5876452710806690133}
   m_Layer: 8
   m_Name: Chest Big
   m_TagString: Wall
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e3a6f8c4fc18bba43a4811019ca8fc9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8cd37017462c94f82fe46ceebe24f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,27 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5100974608714259553
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461898849823177956}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b60abc93468d94445a63add2988b9a42, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &1443970179253443391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0047035217, y: 0.016338348}
+  m_Offset: {x: -0.026714325, y: -0.48993683}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.050201, y: 12.077129}
+  m_Size: {x: 11.981079, y: 11.064579}
   m_EdgeRadius: 0
 --- !u!114 &5638608548701986739
 MonoBehaviour:
@@ -168,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  needsKey: 0
 --- !u!114 &324472066121762122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +162,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable: {fileID: 11400000, guid: 5e3f0b17a4ae3744197ede11a927de4d, type: 2}
   itemHolderPos: {fileID: 1524504815084205367}
+--- !u!95 &5876452710806690133
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461898849823177956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bba2f8119e40ae74b9d11f6c8325787f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7734337578302144408
 GameObject:
   m_ObjectHideFlags: 0

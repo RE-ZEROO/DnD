@@ -18,8 +18,9 @@ public class EnemyAnimation : MonoBehaviour
     //Hashing animation states to improve performance
     private static readonly int EnemyIdleAnimation = Animator.StringToHash("Enemy_Idle");
     private static readonly int EnemyRunAnimation = Animator.StringToHash("Enemy_Run");
-    private static readonly int EnemyAttackAnimation = Animator.StringToHash("Enemy_Attack");
-    private static readonly int EnemyAttackAnimation2 = Animator.StringToHash("Enemy_Attack2");
+    private static readonly int EnemyAttackAnimation = Animator.StringToHash("GoblinKing_Jump");
+    private static readonly int EnemyFallAnimation = Animator.StringToHash("GoblinKing_Fall");
+    //private static readonly int EnemyAttackAnimation2 = Animator.StringToHash("Enemy_Attack2");
     private static readonly int EnemyHitAnimation = Animator.StringToHash("Enemy_Hit");
     private static readonly int EnemyDieAnimation = Animator.StringToHash("Enemy_Death");
 
@@ -60,6 +61,8 @@ public class EnemyAnimation : MonoBehaviour
             return EnemyRunAnimation;
         else if (currentState == EnemyState.ATTACK)
             return LockState(EnemyAttackAnimation, attackAnimTime); //animator.HasState(EnemyAttackAnimation, 0) && 
+        /*else if (currentState == EnemyState.ATTACK)
+            return EnemyAttackAnimation;*/
         /*else if (animator.HasState(EnemyAttackAnimation2, 0) && currentState == EnemyState.ATTACK)
             return LockState(EnemyAttackAnimation2, attackAnimTime);*/
         /*else if (currentState == EnemyState.HIT)

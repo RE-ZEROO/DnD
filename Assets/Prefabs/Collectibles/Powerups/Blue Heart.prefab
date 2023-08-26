@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc91ed607580c140a1bcd5e92444c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupEffect1: {fileID: 0}
-  powerupEffect2: {fileID: 0}
+  powerupEffect1: {fileID: 11400000, guid: 1965aff29a012064084e2786ea02f6a2, type: 2}
+  powerupEffect2: {fileID: 11400000, guid: bb47da5c61cba1741afe5b703ad143bd, type: 2}
   powerupEffect3: {fileID: 0}
   powerupEffect4: {fileID: 0}
   powerupEffect5: {fileID: 0}

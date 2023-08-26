@@ -4,6 +4,7 @@ using UnityEngine;
 public class Key : MonoBehaviour, ICollectible
 {
     public static event Action OnKeyCollected;
+    public static event Action OnKeyDestroyed;
 
     public void Collect()
     {

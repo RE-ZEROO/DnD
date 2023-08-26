@@ -12,14 +12,14 @@ public class HeartContainer : MonoBehaviour
     {
         GameController.OnPlayerDamaged += DrawHearts;
         GameController.OnPlayerHeal += DrawHearts;
-        GameController.OnInitialize += DrawHearts;
+        GameController.OnInitializeStats += DrawHearts;
     }
 
     void OnDisable()
     {
         GameController.OnPlayerDamaged -= DrawHearts;
         GameController.OnPlayerHeal -= DrawHearts;
-        GameController.OnInitialize -= DrawHearts;
+        GameController.OnInitializeStats -= DrawHearts;
     }
 
     private void DrawHearts()

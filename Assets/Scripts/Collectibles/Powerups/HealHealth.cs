@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealHealth : PowerupEffect
 {
     [SerializeField] private float amount;
-    public GameObject floatingTextPrefab;
+    //public GameObject floatingTextPrefab;
 
     public override void Apply()
     {

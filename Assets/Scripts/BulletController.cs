@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float lifeTime;
-    [SerializeField] private float enemyBulletSpeed;
+    [SerializeField] private float enemyBulletSpeed = 90f;
     [SerializeField] private GameObject impactEffect;
 
     public bool isEnemyBullet;
@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour
 
     void Start()
     {
-        enemyBulletSpeed = GameController.EnemyBulletSpeed;
+        //enemyBulletSpeed = GameController.EnemyBulletSpeed;
 
         StartCoroutine(DeathDelay());
 

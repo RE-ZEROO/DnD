@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 2
-  enemyBulletSpeed: 0
+  enemyBulletSpeed: 90
   impactEffect: {fileID: 5894274868189354536, guid: 18295a67ad133f14e93790446b58d205, type: 3}
   isEnemyBullet: 0
 --- !u!1 &2817559921284264966
