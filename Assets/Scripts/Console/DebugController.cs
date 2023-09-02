@@ -28,7 +28,7 @@ public class DebugController : MonoBehaviour
 
     private void OnToggleDebug(InputValue value) => isShowingConsole = !isShowingConsole;
 
-    private void OnSubmit(InputValue value)
+    private void OnEnter(InputValue value)
     {
         if (!isShowingConsole) { return; }
 

@@ -5,4 +5,6 @@ using UnityEngine;
 public abstract class PowerupEffect : ScriptableObject
 {
     public abstract void Apply();
+    public abstract string FloatingText();
+    public abstract bool IsPositiv();
 }

@@ -60,7 +60,7 @@ public class BulletController : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") && !isEnemyBullet)
         {
-            collision.gameObject.GetComponentInParent<EnemyController>().Damage();
+            collision.gameObject.GetComponentInParent<EnemyController>().DamageEnemy(GameController.PlayerDamage);
             //collision.gameObject.GetComponentInParent<EnemyAnimation>().AnimationHitEnemy();
             Destroy(gameObject);
         }
@@ -69,7 +69,7 @@ public class BulletController : MonoBehaviour
             GameController.DamagePlayer();
             Destroy(gameObject);
         }
-        else if (collision.CompareTag("Wall") || collision.CompareTag("Door") || collision.CompareTag("BossDoor"))
+        else if (collision.CompareTag("Wall") || collision.CompareTag("Rock") || collision.CompareTag("Door") || collision.CompareTag("BossDoor"))
             Destroy(gameObject);
     }
 

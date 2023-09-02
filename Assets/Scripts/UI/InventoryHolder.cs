@@ -24,7 +24,6 @@ public class InventoryHolder : MonoBehaviour
     void Start()
     {
         SetInitialCount();
-        //Invoke(nameof(SetInitialCount), 0.1f);
     }
 
     private void SetInitialCount()

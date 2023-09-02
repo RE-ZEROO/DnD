@@ -19,7 +19,7 @@ public class BossTemplate : EnemyController
     {
         base.Start();
         animator = GetComponent<Animator>();
-        enemyType = EnemyType.Boss;
+        enemyType = EnemyType.BOSS;
     }
 
 

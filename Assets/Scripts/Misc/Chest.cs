@@ -27,6 +27,8 @@ public class Chest : MonoBehaviour
         if (needsKey && collision.GetComponentInParent<PlayerController>() != null && GameController.KeyCount > 0)
         {
             GameController.KeyCount--;
+            Key.OnKeyCollected?.Invoke();
+            AudioManager.Instance.PlaySFX("ChestUnlock");
             OpenChest();
         }
         else if (!needsKey && collision.GetComponent<BulletController>()?.isEnemyBullet == false)

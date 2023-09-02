@@ -312,6 +312,7 @@ MonoBehaviour:
   bulletSpeed: 0
   cooldown: 0
   bulletSpawnPos: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: b7f87584ac7c8c74b8323159fa64a1e1, type: 2}
   dashMultiplier: 5
   isDasher: 1
 --- !u!114 &6464202557350219402
@@ -327,5 +328,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAnimTime: 0.51666665
-  hitAnimTime: 0.51666665
+  hitAnimTime: 0
   invincibilityAnimTime: 0

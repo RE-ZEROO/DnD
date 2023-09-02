@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MinorHealBuff
   m_EditorClassIdentifier: 
   amount: 1
-  floatingTextPrefab: {fileID: 0}
+  floatingText: + Health
+  isPositiv: 1

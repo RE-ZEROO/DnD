@@ -64,9 +64,18 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Submit"",
+                    ""name"": ""Enter"",
                     ""type"": ""Button"",
                     ""id"": ""1a5db2c0-87d2-4853-a3ad-6c0754e03fa4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnBomb"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce8a61d1-e826-4319-b130-a8e160c9e1e9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -345,7 +354,18 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Submit"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b76a50d6-dd10-48dd-9db4-f1352ab83e80"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SpawnBomb"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -937,7 +957,8 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_CamMove = m_Player.FindAction("CamMove", throwIfNotFound: true);
         m_Player_ToggleDebug = m_Player.FindAction("ToggleDebug", throwIfNotFound: true);
-        m_Player_Submit = m_Player.FindAction("Submit", throwIfNotFound: true);
+        m_Player_Enter = m_Player.FindAction("Enter", throwIfNotFound: true);
+        m_Player_SpawnBomb = m_Player.FindAction("SpawnBomb", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1015,7 +1036,8 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_CamMove;
     private readonly InputAction m_Player_ToggleDebug;
-    private readonly InputAction m_Player_Submit;
+    private readonly InputAction m_Player_Enter;
+    private readonly InputAction m_Player_SpawnBomb;
     public struct PlayerActions
     {
         private @PlayerActionsInput m_Wrapper;
@@ -1024,7 +1046,8 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @CamMove => m_Wrapper.m_Player_CamMove;
         public InputAction @ToggleDebug => m_Wrapper.m_Player_ToggleDebug;
-        public InputAction @Submit => m_Wrapper.m_Player_Submit;
+        public InputAction @Enter => m_Wrapper.m_Player_Enter;
+        public InputAction @SpawnBomb => m_Wrapper.m_Player_SpawnBomb;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1046,9 +1069,12 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
             @ToggleDebug.started += instance.OnToggleDebug;
             @ToggleDebug.performed += instance.OnToggleDebug;
             @ToggleDebug.canceled += instance.OnToggleDebug;
-            @Submit.started += instance.OnSubmit;
-            @Submit.performed += instance.OnSubmit;
-            @Submit.canceled += instance.OnSubmit;
+            @Enter.started += instance.OnEnter;
+            @Enter.performed += instance.OnEnter;
+            @Enter.canceled += instance.OnEnter;
+            @SpawnBomb.started += instance.OnSpawnBomb;
+            @SpawnBomb.performed += instance.OnSpawnBomb;
+            @SpawnBomb.canceled += instance.OnSpawnBomb;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1065,9 +1091,12 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
             @ToggleDebug.started -= instance.OnToggleDebug;
             @ToggleDebug.performed -= instance.OnToggleDebug;
             @ToggleDebug.canceled -= instance.OnToggleDebug;
-            @Submit.started -= instance.OnSubmit;
-            @Submit.performed -= instance.OnSubmit;
-            @Submit.canceled -= instance.OnSubmit;
+            @Enter.started -= instance.OnEnter;
+            @Enter.performed -= instance.OnEnter;
+            @Enter.canceled -= instance.OnEnter;
+            @SpawnBomb.started -= instance.OnSpawnBomb;
+            @SpawnBomb.performed -= instance.OnSpawnBomb;
+            @SpawnBomb.canceled -= instance.OnSpawnBomb;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1254,7 +1283,8 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnCamMove(InputAction.CallbackContext context);
         void OnToggleDebug(InputAction.CallbackContext context);
-        void OnSubmit(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
+        void OnSpawnBomb(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

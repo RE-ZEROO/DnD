@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: TrippleShot
   m_EditorClassIdentifier: 
   isTrippleShot: 1
+  floatingText: + Tripple Shot
+  isPositiv: 1

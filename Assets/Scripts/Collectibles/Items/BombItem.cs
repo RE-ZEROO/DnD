@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BombItem : MonoBehaviour, ICollectible
 {
-    public static event Action OnBombCollected;
+    public static Action OnBombCollected;
 
     public void Collect()
     {

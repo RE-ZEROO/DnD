@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f14a83455989d489f21f770530ae20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: {fileID: 11400000, guid: 5e3f0b17a4ae3744197ede11a927de4d, type: 2}
+  lootTable: {fileID: 11400000, guid: 078c2b43b1159cb47bb73b713f4dad99, type: 2}
   itemHolderPos: {fileID: 1524504815084205367}
 --- !u!1 &7734337578302144408
 GameObject:

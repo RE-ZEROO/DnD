@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: SpeedBuff
   m_EditorClassIdentifier: 
   amount: 5
+  floatingText: + Speed
+  isPositiv: 1

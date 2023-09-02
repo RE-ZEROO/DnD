@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DamageBuff
   m_EditorClassIdentifier: 
   amount: 1
+  floatingText: + Damage
+  isPositiv: 1

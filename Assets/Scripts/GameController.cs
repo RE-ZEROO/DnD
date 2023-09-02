@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 
     private static float moveSpeed;
     private static float playerBulletSpeed;
-    private static float playerDamage;
+    private static int playerDamage;
 
     private static float fireRate;
     private static float bulletSize;
@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
 
     //Enemy Stats
     private static float enemyDamage = 1f;
-    private static float enemyBulletSpeed = 90f;
+    private static float enemyBulletSpeedMultiplyer = 1f;
 
     //Item Stats
     private static int bombCount;
@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
     public static float Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
-    public static float PlayerDamage { get => playerDamage; set => playerDamage = value; }
+    public static int PlayerDamage { get => playerDamage; set => playerDamage = value; }
 
     public static float PlayerInvicibilityTime { get => invincibilityTime; }
     public static bool PlayerInvicibility { get => isInvincible; set => isInvincible = value; }
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
     public static float PlayerBulletSpeed { get => playerBulletSpeed; set => playerBulletSpeed = value; }
 
-    public static float EnemyBulletSpeed { get => enemyBulletSpeed; set => enemyBulletSpeed = value; }
+    public static float EnemyBulletSpeedMultiplyer { get => enemyBulletSpeedMultiplyer; set => enemyBulletSpeedMultiplyer = value; }
 
     public static int BombCount { get => bombCount; set => bombCount = value; }
     public static int CoinCount { get => coinCount; set => coinCount = value; }
@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.2f;
-        playerDamage = 100f;
+        playerDamage = 100;
 
         bombCount = 1;
         coinCount = 0;

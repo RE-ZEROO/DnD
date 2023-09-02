@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d9a8dbc8cb1064aa48b76056dc1702, type: 3}
+  m_Name: LargeChestTable
+  m_EditorClassIdentifier: 
+  itemList:
+  - itemGO: {fileID: 3255414844248976199, guid: 630b02bdd7d7fae4c955e44299bfbc22, type: 3}
+    dropWeight: 20
+  - itemGO: {fileID: 7768120304924849220, guid: 8d8f7408be69e4148a96c26695ed976d, type: 3}
+    dropWeight: 20
+  - itemGO: {fileID: 7323086603641081695, guid: 16d32b34c2c566648b3dd8f5a22f6ba5, type: 3}
+    dropWeight: 15
+  - itemGO: {fileID: 5602648557858700806, guid: 915c56d4bcbb64f4cb160770c9d5a91d, type: 3}
+    dropWeight: 15
+  - itemGO: {fileID: 5602648557858700806, guid: 1356329e6f3616441b5320bd0dd5789b, type: 3}
+    dropWeight: 30

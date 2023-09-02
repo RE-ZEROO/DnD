@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: BulletSizeBuff
   m_EditorClassIdentifier: 
   amount: 0.15
+  floatingText: + Bullet Size
+  isPositiv: 1

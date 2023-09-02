@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d9a8dbc8cb1064aa48b76056dc1702, type: 3}
+  m_Name: LargeLockedChestTable
+  m_EditorClassIdentifier: 
+  itemList:
+  - itemGO: {fileID: 232453013982540844, guid: 7bc13cf4703f8a948b56d570378aa020, type: 3}
+    dropWeight: 10
+  - itemGO: {fileID: 8423623438381612570, guid: d93cc6bbfe3653144a5831a8849db671, type: 3}
+    dropWeight: 10
+  - itemGO: {fileID: 789438205336454534, guid: 30793b42e97b5194ca5d21f61053ec90, type: 3}
+    dropWeight: 20
+  - itemGO: {fileID: 4333252389476777054, guid: b7d04fb28fa65ee4c897823a1b148d7b, type: 3}
+    dropWeight: 25
+  - itemGO: {fileID: 7323086603641081695, guid: 16d32b34c2c566648b3dd8f5a22f6ba5, type: 3}
+    dropWeight: 35

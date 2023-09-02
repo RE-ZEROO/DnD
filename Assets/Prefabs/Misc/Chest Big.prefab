@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f14a83455989d489f21f770530ae20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: {fileID: 11400000, guid: 5e3f0b17a4ae3744197ede11a927de4d, type: 2}
+  lootTable: {fileID: 11400000, guid: 5b2c1f9cc2206de48b58744c4b312682, type: 2}
   itemHolderPos: {fileID: 1524504815084205367}
 --- !u!95 &5876452710806690133
 Animator:

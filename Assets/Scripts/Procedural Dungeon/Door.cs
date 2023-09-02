@@ -14,7 +14,8 @@ public class Door : MonoBehaviour
     [SerializeField] private Sprite doorBossClosed;
 
     SpriteRenderer spriteRenderer;
-    [HideInInspector] public bool isBossDoor = false;
+    //[HideInInspector] public bool isBossDoor = false;
+    private bool isBossDoor = false;
 
     //[Header("Bools")]
     [SerializeField] private bool doorTop, doorBottom, doorLeft, doorRight;
@@ -167,24 +168,12 @@ public class Door : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.right);
 
         if (hitUP && hitUP.collider.CompareTag("Door"))
-        {
             hitUP.collider.GetComponent<Door>().isBossDoor = true;
-            //hitUP.collider.tag = "BossDoor";
-        }
         else if(hitDown && hitDown.collider.CompareTag("Door"))
-        {
             hitDown.collider.GetComponent<Door>().isBossDoor = true;
-            //hitDown.collider.tag = "BossDoor";
-        }
         else if (hitRight && hitRight.collider.CompareTag("Door"))
-        {
             hitRight.collider.GetComponent<Door>().isBossDoor = true;
-            //hitRight.collider.tag = "BossDoor";
-        }
         else if (hitLeft && hitLeft.collider.CompareTag("Door"))
-        {
             hitLeft.collider.GetComponent<Door>().isBossDoor = true;
-            //hitLeft.collider.tag = "BossDoor";
-        }
     }
 }

@@ -7,7 +7,7 @@ public enum EnemyType
     MELEE,
     RANGED,
     STATIONARY,
-    Boss
+    BOSS
 };
 
 public enum EnemyState
@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
 
     private Vector3 directionToPlayer;
-    private Color hitColor = new Color(160, 130, 130);
 
     protected float distanceToPlayer;
     protected bool isOnCooldownAttack = false;
@@ -54,6 +53,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float cooldown;
+
+    [Header("References")]
     [SerializeField] protected Transform bulletSpawnPos;
 
 
@@ -69,6 +70,12 @@ public class EnemyController : MonoBehaviour
     private float wanderingMaxDistance = 30f;
     private Vector2 wanderingWayPoint;
 
+    //Damage flash
+    [SerializeField] private Material flashMaterial;
+    private float flashDuration = 0.1f;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
+
 
 
     protected virtual void Start()
@@ -80,7 +87,9 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         roomInstance = GetComponentInParent<RoomInstance>();
 
+        originalMaterial = spriteRenderer.material;
         maxHealth = health;
+        bulletSpeed *= GameController.EnemyBulletSpeedMultiplyer;
 
         //Pathfinding follow player
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
@@ -217,7 +226,6 @@ public class EnemyController : MonoBehaviour
     protected void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPos.transform.position, Quaternion.identity);
-        //bullet.GetComponent<BulletController>().GetPlayer(player.transform);
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -247,23 +255,29 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void Damage()
+    public void DamageEnemy(int damage)
     {
         if(isInvincible) { return; }
 
         //currentState = EnemyState.HIT;
         AudioManager.Instance.PlaySFX("Hit");
-        health -= GameController.PlayerDamage; //(GameController.PlayerDamage / 2); //Enemies have two colliders => divide by 2
-        StartCoroutine(DamageColorChange());
+        health -= damage;
+        StartCoroutine(DamageFlash());
+
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+
+        flashRoutine = StartCoroutine(DamageFlash());
     }
 
-    private IEnumerator DamageColorChange()
+    private IEnumerator DamageFlash()
     {
-        //spriteRenderer.color = hitColor;
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
-        yield return new WaitForSeconds(1);
-        //spriteRenderer.color = Color.white;
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
+        spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        spriteRenderer.material = originalMaterial;
+        flashRoutine = null;
     }
 
     private void EnemyDeath() => Destroy(gameObject);
@@ -276,7 +290,7 @@ public class EnemyController : MonoBehaviour
             //Set current states
             if (IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY)// && currentState != EnemyState.ATTACK
                 currentState = EnemyState.FOLLOW;
-            else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.Boss)
+            else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.BOSS)
                 currentState = EnemyState.WANDER;
 
 

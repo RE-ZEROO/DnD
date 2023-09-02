@@ -28,10 +28,12 @@ public class PlayerController : MonoBehaviour
     private GameObject[] enemyArray;
     private GameObject[] bulletArray;
 
+    [SerializeField] private GameObject bombGO;
+
     [Header("Input")]
     [SerializeField] private PlayerActionsInput playerInput;
-    [SerializeField] private InputAction move;
-    [SerializeField] private InputAction shoot;
+    private InputAction move;
+    private InputAction shoot;
 
     [Header("Movement")]
     [SerializeField] private float speed;
@@ -223,6 +225,15 @@ public class PlayerController : MonoBehaviour
         lowerBullet.GetComponent<Rigidbody2D>().velocity = lowerDirection * bulletSpeed;
     }
     #endregion
+
+    private void OnSpawnBomb(InputValue value)
+    {
+        //if(GameController.BombCount <= 0) {  return; }
+
+        Debug.Log("1"); 
+        Instantiate(bombGO, transform.position, Quaternion.identity);
+        Debug.Log("2");
+    }
 
     private void Flip()
     {

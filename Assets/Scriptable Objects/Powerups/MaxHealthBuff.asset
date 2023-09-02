@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: MaxHealthBuff
   m_EditorClassIdentifier: 
   amount: 2
+  floatingText: + Max Health
+  isPositiv: 1

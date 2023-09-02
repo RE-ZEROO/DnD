@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: FirerateDebuff
   m_EditorClassIdentifier: 
   amount: 0.1
+  floatingText: '- Firerate'
+  isPositiv: 0

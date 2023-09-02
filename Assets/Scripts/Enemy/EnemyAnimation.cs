@@ -18,10 +18,10 @@ public class EnemyAnimation : MonoBehaviour
     //Hashing animation states to improve performance
     private static readonly int EnemyIdleAnimation = Animator.StringToHash("Enemy_Idle");
     private static readonly int EnemyRunAnimation = Animator.StringToHash("Enemy_Run");
-    private static readonly int EnemyAttackAnimation = Animator.StringToHash("GoblinKing_Jump");
-    private static readonly int EnemyFallAnimation = Animator.StringToHash("GoblinKing_Fall");
+    private static readonly int EnemyAttackAnimation = Animator.StringToHash("Enemy_Attack");
+    //private static readonly int EnemyFallAnimation = Animator.StringToHash("GoblinKing_Fall");
     //private static readonly int EnemyAttackAnimation2 = Animator.StringToHash("Enemy_Attack2");
-    private static readonly int EnemyHitAnimation = Animator.StringToHash("Enemy_Hit");
+    //private static readonly int EnemyHitAnimation = Animator.StringToHash("Enemy_Hit");
     private static readonly int EnemyDieAnimation = Animator.StringToHash("Enemy_Death");
 
     private static readonly int EnemyInvincibleAnimation = Animator.StringToHash("Enemy_Invincible");
@@ -42,14 +42,14 @@ public class EnemyAnimation : MonoBehaviour
 
         SwitchAnimation();
         //SwitchBossanimation();
-        SetAnimTime();
+        //SetAnimTime();
     }
 
-    public void AnimationHitEnemy()
+    /*public void AnimationHitEnemy()
     {
         animator.CrossFade(EnemyHitAnimation, 0, 0);
         return;
-    }
+    }*/
 
     #region Animation
     private int GetAnimationState()
@@ -102,15 +102,15 @@ public class EnemyAnimation : MonoBehaviour
             EnemyAttackAnimation = Animator.StringToHash("Enemy_Attack2");
     }*/
 
-    private void SetAnimTime()
+    /*private void SetAnimTime()
     {
         if (attackAnimTime != 0f && hitAnimTime != 0f) { return; }
 
         if (GetAnimationState() == EnemyAttackAnimation)
             attackAnimTime = GetCurrentAnimationTime(animator);
-        else if (GetAnimationState() == EnemyHitAnimation)
-            hitAnimTime = GetCurrentAnimationTime(animator);
-    }
+        //else if (GetAnimationState() == EnemyHitAnimation)
+        //    hitAnimTime = GetCurrentAnimationTime(animator);
+    }*/
 
     private float GetCurrentAnimationTime(Animator targetAnim, int layer = 0)
     {

@@ -42,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Submit",
+                    "name": "Enter",
                     "type": "Button",
                     "id": "1a5db2c0-87d2-4853-a3ad-6c0754e03fa4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnBomb",
+                    "type": "Button",
+                    "id": "ce8a61d1-e826-4319-b130-a8e160c9e1e9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -323,7 +332,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Submit",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b76a50d6-dd10-48dd-9db4-f1352ab83e80",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SpawnBomb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

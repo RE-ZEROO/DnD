@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc91ed607580c140a1bcd5e92444c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 6626260081670159974, guid: 5f7630fe069617a4e84d71ecedb914a5, type: 3}
   powerupEffect1: {fileID: 11400000, guid: 0589d6800df0caa4aa00fe9c400c24aa, type: 2}
   powerupEffect2: {fileID: 11400000, guid: 8cfc63f7ffddc464f8a7904aa67095be, type: 2}
   powerupEffect3: {fileID: 0}

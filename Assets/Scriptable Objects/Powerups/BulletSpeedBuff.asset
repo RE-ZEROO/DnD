@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: BulletSpeedBuff
   m_EditorClassIdentifier: 
   amount: 20
+  floatingText: + Bullet Speed
+  isPositiv: 1

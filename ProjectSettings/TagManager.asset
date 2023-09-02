@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - Powerup
   - Item
+  - Rock
   layers:
   - Default
   - TransparentFX
