@@ -165,7 +165,7 @@ MonoBehaviour:
   doorWallL: {fileID: 7500184176784253466, guid: a0d21ae1056ce754586877f2baa95c9b, type: 3}
   doorWallR: {fileID: 7500184176784253466, guid: 7a95cda5c39baf548abcf2f0dfa7b79f, type: 3}
   bossMonsterPrefab:
-  - {fileID: 4061712487245009914, guid: bd4c08d587ac9094981084225b92ce29, type: 3}
+  - {fileID: 8669751127627806507, guid: a7733faf04d65934eb683b23ffdcfda0, type: 3}
   portal: {fileID: 531607778128142680, guid: 37fa01566151fa24485d2d9e754f0b42, type: 3}
   groundTiles:
   - {fileID: 7500184176784253466, guid: 3689f61ef5d925548824c71554459e45, type: 3}

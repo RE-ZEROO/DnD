@@ -218,30 +218,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  move:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e4cbf800-1560-456a-9a7e-98703eff7255
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  shoot:
-    m_Name: Shoot
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 0cc2f93a-268c-49fe-92cc-4f72bcea419d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  bombGO: {fileID: 5814364898213352372, guid: a875470e3734463489d58c21d634889a, type: 3}
   speed: 90
   canMove: 1
-  bulletPrefab: {fileID: 1394850163104490642, guid: 381d43b838da1b94c8fa833d29ab216f, type: 3}
+  bulletPrefab: {fileID: 1394850163104490642, guid: b511aa9591ee41f48af37b621888c4ca, type: 3}
   bulletSpawnPos: {fileID: 6066331494009787287}
   fireDelay: 3
   attackAnimTime: 0.517
+  teleportAnimTime: 0.483
 --- !u!114 &4052701954335310080
 MonoBehaviour:
   m_ObjectHideFlags: 0

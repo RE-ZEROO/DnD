@@ -25,7 +25,8 @@ public class EnemyController : MonoBehaviour
 {
     protected GameObject player;
     protected Rigidbody2D rb;
-    protected BoxCollider2D enemyCollider;
+    protected BoxCollider2D enemyCollider; 
+    protected Animator animator;
     private SpriteRenderer spriteRenderer;
     protected RoomInstance roomInstance;
 
@@ -83,6 +84,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         enemyCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
         seeker = GetComponent<Seeker>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         roomInstance = GetComponentInParent<RoomInstance>();
@@ -133,15 +135,9 @@ public class EnemyController : MonoBehaviour
         //Debug.Log(playerHit.collider);
 
         if (playerHit && playerHit.collider.CompareTag("Player"))
-        {
-            //Debug.Log("True");
             return true;
-        }
         else
-        {
-            //Debug.Log("False");
             return false;
-        }
     }
 
     private void Flip()

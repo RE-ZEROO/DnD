@@ -164,6 +164,9 @@ public class PlayerController : MonoBehaviour
         //Kill player
         if (GameController.Health <= 0)
             PlayerDeathState();
+
+        if (playerInput.Player.SpawnBomb.WasPressedThisFrame())
+            SpawnBomb();
     }
 
     private void FixedUpdate()
@@ -194,6 +197,11 @@ public class PlayerController : MonoBehaviour
             TripleShot(xShootValue, yShootValue);
 
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation); //SpawnpointPos: xShootValue > yShootValue || xShootValue < yShootValue? transform.position : bulletSpawnPos.position
+
+        /*var relativePos = shootDirection - (Vector2)transform.position;
+        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        bullet.transform.rotation = rotation;*/
 
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(
@@ -226,10 +234,11 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    private void OnSpawnBomb(InputValue value)
+    private void SpawnBomb()
     {
         //if(GameController.BombCount <= 0) {  return; }
 
+        
         Debug.Log("1"); 
         Instantiate(bombGO, transform.position, Quaternion.identity);
         Debug.Log("2");

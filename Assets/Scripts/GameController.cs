@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
         moveSpeed = 70f;
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
-        bulletSize = 0.2f;
+        bulletSize = 0.7f;
         playerDamage = 100;
 
         bombCount = 1;

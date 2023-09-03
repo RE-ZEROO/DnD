@@ -7,18 +7,18 @@ using UnityEngine;
 public class BossTemplate : EnemyController
 {
     private int bossPhase = 2;
-    private bool phaseChange;
-    private Vector2 lastPosition;
-    private Vector2 currentPosition;
-    private Animator animator;
 
-    private static readonly int GoblinKingJumpAnimation = Animator.StringToHash("GoblinKing_Jump");
-    private static readonly int GoblinKingFallAnimation = Animator.StringToHash("GoblinKing_Fall");
+    //private GameObject healthBar;
+    private bool healthBarState = false;
+
+    [Header("Phase 2 Multiplyer")]
+    [SerializeField] private float speedMultiplyer;
+    [SerializeField] private float cooldownReduced;
+
 
     protected override void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();
         enemyType = EnemyType.BOSS;
     }
 
@@ -27,48 +27,55 @@ public class BossTemplate : EnemyController
     {
         base.Update();
 
-        //CheckForPhase();
+        if (inRoom)
+            animator.SetBool("inRoom", true);
 
-        /*if (bossPhase == 2)
-            BossPhase2();*/
+        CheckForPhase();
 
-        /*if (currentState == EnemyState.ATTACK)
-            animator.CrossFade(GoblinKingJumpAnimation, 0, 0);*/
+        SetAnimationStates();
+    }
+
+    private void SetAnimationStates()
+    {
+        if (currentState == EnemyState.IDLE)
+        {
+            animator.SetBool("isRunning", false);
+            animator.ResetTrigger("triggerAttack");
+        }
+        else if (currentState == EnemyState.FOLLOW)
+            animator.SetBool("isRunning", true);
+        else if (currentState == EnemyState.ATTACK)
+            animator.SetTrigger("triggerAttack");
+        else if (currentState == EnemyState.DEAD)
+            animator.SetTrigger("triggerDeath");
     }
 
     private void CheckForPhase()
     {
-        if (health == (maxHealth / 3))
-            bossPhase++;
-
-        /*if (currentState == EnemyState.ATTACK)
-            MeeleAttack();*/
+        if (health == (maxHealth / 2))
+            BossPhase2();
     }
 
     private void BossPhase2()
     {
-        
+        animator.SetBool("phase2", true);
+        //speed *= speedMultiplyer;
+        //cooldown += cooldownReduced;
+
     }
 
-    private void GoblinKingAttack()
+    private void ToggleHealthBar()
     {
-        currentPosition = transform.position;
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-
-        if (currentPosition == lastPosition)
-        {
-            currentState = EnemyState.RUSH;
-            return;
-        }
-            //animator.CrossFade(GoblinKingFallAnimation, 0, 0);
-
-        lastPosition = currentPosition;
+        //healthBarState = !healthBarState;
+        //healthBar.SetActive(healthBarState);
     }
+    private void Invincibile() => isInvincible = true; 
+    private void NotInvincibile() => isInvincible = false; 
 
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) { return; }
 
-        Instantiate(roomInstance.portal, transform.position, Quaternion.identity);
+        Instantiate(roomInstance.portal, roomInstance.RoomCenter(), Quaternion.identity);
     }
 }
