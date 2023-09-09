@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+    public static Action OnInitializeStats;
     public static Action OnPlayerDamaged;
     public static Action OnPlayerHeal;
-    public static Action OnInitializeStats;
+    public static Action OnBombSpawn;
 
 
     //Internal stats
@@ -31,7 +33,7 @@ public class GameController : MonoBehaviour
     private static float enemyBulletSpeedMultiplyer = 1f;
 
     //Item Stats
-    private static int bombCount;
+    private static int bombCount = 1;
     private static int coinCount;
     private static int keyCount;
     //public List<string> collectedItems = new List<string>();
@@ -61,41 +63,48 @@ public class GameController : MonoBehaviour
     /*private Renderer playerRenderer;
     private Collider2D playerCollider;
     private Color playerColor = Color.white;*/
-    
+
     /*private Collider2D[] enemyCollider;
     private Collider2D[] bulletCollider;
     private GameObject[] enemyArray;
     private GameObject[] bulletArray;*/
 
+    //private bool initalizedStart = false;
+
+    
 
     private void InitializeStats()
     {
-        health = 60f;
+        //if (initalizedStart) { return; }
+
+        health = 6f;
         maxHealth = 6;
         moveSpeed = 70f;
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.7f;
-        playerDamage = 100;
+        playerDamage = 1;
 
         bombCount = 1;
         coinCount = 0;
-        keyCount = 1;
-        PlayerController.isTripleshot = false;
+        keyCount = 0;
+
+        //PlayerController.isTripleshot = false;
         OnInitializeStats?.Invoke();
+
+        //initalizedStart = true;
     }
 
     void Awake()
     {
-        if (Instance == null)
+        if (!Instance)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeStats();
         }
         else
             Destroy(gameObject);
-
-        InitializeStats();
     }
 
     void Start()
@@ -123,8 +132,8 @@ public class GameController : MonoBehaviour
         /*if (health <= 0)
             KillPlayer();*/
 
-        //Debug.Log("Health: " + health);
-        //Debug.Log("Max Health: " + maxHealth);
+        Debug.Log("Health: " + health);
+        Debug.Log("Max Health: " + maxHealth);
     }
 
 
@@ -136,6 +145,8 @@ public class GameController : MonoBehaviour
         OnPlayerDamaged?.Invoke();
         //Instance.StartCoroutine(Instance.Invincibility());
     }
+
+    public void OnSpawnBomb(InputValue value) => OnBombSpawn.Invoke();
 
     /*private void KillPlayer()
     {
@@ -215,7 +226,6 @@ public class GameController : MonoBehaviour
 
     public static void NextLevel()
     {
-        //Instance.SetStats();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

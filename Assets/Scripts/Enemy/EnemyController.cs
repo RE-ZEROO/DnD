@@ -44,9 +44,9 @@ public class EnemyController : MonoBehaviour
     private readonly bool flip;
 
 
-    [Header("Base Stats")]
-    [SerializeField] protected float health;
-    protected float maxHealth;
+    //[Header("Base Stats")]
+    [field: SerializeField] public float health { get; private set; }
+    public float maxHealth { get; private set; }
     [SerializeField] protected float speed;
 
     [SerializeField] protected float detectionRange;
@@ -99,13 +99,13 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (health <= 0f)
+            currentState = EnemyState.DEAD;
+
         if (roomInstance.isCurrentRoom)
             inRoom = true;
         else
             inRoom = false;
-
-        if (health <= 0)
-            currentState = EnemyState.DEAD;
 
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         directionToPlayer = (player.transform.position - transform.position).normalized;
@@ -144,9 +144,13 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 scale = transform.localScale;
 
-        if(rb.velocity.x <= 0.01f) //|| (PlayerInSightLine() && (currentState == EnemyState.IDLE || currentState == EnemyState.ATTACK) && player.transform.position.x > transform.position.x)
+        if (currentState == EnemyState.WANDER && rb.velocity.x <= 0.01f)
             scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
-        else if (rb.velocity.x >= 0.01f)
+        else if (currentState == EnemyState.WANDER && rb.velocity.x >= 0.01f)
+            scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
+        else if (player.transform.position.x < transform.position.x)
+            scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+        else if(player.transform.position.x > transform.position.x)
             scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
 
         transform.localScale = scale;
@@ -289,11 +293,14 @@ public class EnemyController : MonoBehaviour
             else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.BOSS)
                 currentState = EnemyState.WANDER;
 
-
-            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
+            //!!!!!!!!!!Boss Behavour Teporary!!!!!!!!!!
+            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && enemyType == EnemyType.BOSS && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
+                currentState = EnemyState.ATTACK;
+            else if (!isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
                 currentState = EnemyState.ATTACK;
             else if(isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
                 currentState = EnemyState.IDLE;
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             if (health <= 0)
                 currentState = EnemyState.DEAD;

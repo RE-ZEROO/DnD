@@ -29,9 +29,13 @@ public class Bomb : MonoBehaviour
             if (enemy)
                 enemy.DamageEnemy(BombDamage);
 
-            var stoneObstacle = hit.CompareTag("Rock");
+            var player = hit.GetComponent<PlayerController>();
+            if (player)
+                GameController.DamagePlayer();
+
+            var stoneObstacle = hit.GetComponent<Rock>();
             if (stoneObstacle)
-                hit.GetComponent<Animator>().SetTrigger("destroyed");
+                stoneObstacle.gameObject.SetActive(false);
         }
     }
 }

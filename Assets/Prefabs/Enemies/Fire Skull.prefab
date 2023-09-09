@@ -285,7 +285,7 @@ MonoBehaviour:
   enemyType: 1
   bulletPrefab: {fileID: 1394850163104490642, guid: 714f51d24a04c3b43829eabd6420ff8b, type: 3}
   isInvincible: 0
-  health: 5
+  <health>k__BackingField: 5
   speed: 3000
   detectionRange: 150
   attackRange: 75

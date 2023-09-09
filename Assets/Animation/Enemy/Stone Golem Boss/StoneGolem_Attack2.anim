@@ -34,7 +34,7 @@ AnimationClip:
       value: {fileID: -1428078595, guid: 961452f4a38f16c4cb485cab4c2cc4c9, type: 3}
     - time: 0.7
       value: {fileID: -1008854255, guid: 961452f4a38f16c4cb485cab4c2cc4c9, type: 3}
-    - time: 0.81666666
+    - time: 0.93333334
       value: {fileID: 2064840514, guid: 961452f4a38f16c4cb485cab4c2cc4c9, type: 3}
     attribute: m_Sprite
     path: 
@@ -71,7 +71,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333333
+    m_StopTime: 0.95
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -91,8 +91,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.7
     functionName: ShootLaser
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.93333334
+    functionName: DisableLaser
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

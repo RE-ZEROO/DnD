@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8260635385926748380}
   - component: {fileID: 4801436991354404831}
   - component: {fileID: 1382710175834958339}
+  - component: {fileID: 5863509399709938471}
   m_Layer: 8
   m_Name: ObstacleRockTile
   m_TagString: Rock
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.145889, y: 6.1773376}
   m_EdgeRadius: 3
+--- !u!114 &5863509399709938471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031388086310594188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e696a1457124dc4e89b5a7bac1ae3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

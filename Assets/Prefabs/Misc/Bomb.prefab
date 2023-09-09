@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7189526908814570805}
   - component: {fileID: 179715102742884834}
   - component: {fileID: 1441858871402200316}
+  - component: {fileID: 9203567218093817071}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16, y: 16}
+  m_Size: {x: 32, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -119,6 +120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96df69cca56b02240937bc8817d1362a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntillExplosion: 2
-  BombDamage: 1
+  timeUntillExplosion: 1.5
+  BombDamage: 5
   explosionRadius: 12
+--- !u!114 &9203567218093817071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814364898213352372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5953ab082b972084fa52e7bad0e4df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

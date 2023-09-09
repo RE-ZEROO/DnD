@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerActionsInput playerInput;
     private InputAction move;
     private InputAction shoot;
+    private InputAction spawnBombPressed;
 
     [Header("Movement")]
     [SerializeField] private float speed;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
     [Header("Aniamtion")]
     [SerializeField] private float attackAnimTime;
     [SerializeField] private float teleportAnimTime;
+    [SerializeField] private int trippleNum;
 
     private Animator animator;
     private int currentAnimationState;
@@ -83,15 +85,21 @@ public class PlayerController : MonoBehaviour
         shoot = playerInput.Player.Shoot;
         shoot.Enable();
 
+        spawnBombPressed = playerInput.Player.SpawnBomb;
+        spawnBombPressed.Enable();
+
         GameController.OnPlayerDamaged += StartInvincibility;
+        GameController.OnBombSpawn += SpawnBomb;
     }
 
     public void OnDisable()
     {
         move.Disable();
         shoot.Disable();
+        spawnBombPressed.Disable();
 
         GameController.OnPlayerDamaged -= StartInvincibility;
+        GameController.OnBombSpawn -= SpawnBomb;
     }
     #endregion
 
@@ -105,6 +113,7 @@ public class PlayerController : MonoBehaviour
         playerRenderer = GetComponent<SpriteRenderer>();
 
         GameController.PlayerInvicibility = false;
+        GameController.OnPlayerHeal?.Invoke();
     }
 
     void Update()
@@ -164,9 +173,6 @@ public class PlayerController : MonoBehaviour
         //Kill player
         if (GameController.Health <= 0)
             PlayerDeathState();
-
-        if (playerInput.Player.SpawnBomb.WasPressedThisFrame())
-            SpawnBomb();
     }
 
     private void FixedUpdate()
@@ -192,56 +198,102 @@ public class PlayerController : MonoBehaviour
     #region Shooting
     private void Shoot()
     {
-        //Instantiate and fire Bullet
         if (isTripleshot)
-            TripleShot(xShootValue, yShootValue);
-
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation); //SpawnpointPos: xShootValue > yShootValue || xShootValue < yShootValue? transform.position : bulletSpawnPos.position
-
-        /*var relativePos = shootDirection - (Vector2)transform.position;
-        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        bullet.transform.rotation = rotation;*/
-
-        bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
-        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(
-            (xShootValue < 0) ? Mathf.Floor(xShootValue) * bulletSpeed : Mathf.Ceil(xShootValue) * bulletSpeed,
-            (yShootValue < 0) ? Mathf.Floor(yShootValue) * bulletSpeed : Mathf.Ceil(yShootValue) * bulletSpeed
-        );
+            TripleShot();
+        else
+            InstantiateStraightBullet(xShootValue, yShootValue);
     }
 
-    private void TripleShot(float x, float y)
+    private void TripleShot()
     {
         Quaternion upperMoveAngle = Quaternion.Euler(0, 0, 25);
         Quaternion lowerMoveAngle = Quaternion.Euler(0, 0, -25);
 
-        GameObject upperBullet = Instantiate(bulletPrefab, transform.position, upperMoveAngle);
+        InstantiateStraightBullet(xShootValue, yShootValue);
+        InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle);
+        InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle);
+
+        #region Trippleshot upgrade for later
+        /*Quaternion lowerMoveAngle2 = Quaternion.Euler(0, 0, -90);
+        Quaternion lowerMoveAngle3 = Quaternion.Euler(0, 0, -65);
+        Quaternion lowerMoveAngle4 = Quaternion.Euler(0, 0, -115);
+
+        Quaternion upperMoveAngle2 = Quaternion.Euler(0, 0, 90);
+        Quaternion upperMoveAngle3 = Quaternion.Euler(0, 0, 65);
+        Quaternion upperMoveAngle4 = Quaternion.Euler(0, 0, 115);
+
+
+        if(trippleNum == 1)
+        {
+            InstantiateStraightBullet(xShootValue, yShootValue);
+            InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle);
+            InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle);
+        }
+
+        if (trippleNum == 2)
+        {
+            InstantiateStraightBullet(-xShootValue, -yShootValue);
+            InstantiateAngledBullet(-xShootValue, -yShootValue, upperMoveAngle);
+            InstantiateAngledBullet(-xShootValue, -yShootValue, lowerMoveAngle);
+        }
+
+        if (trippleNum == 3)
+        {
+            InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle2);
+            InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle3);
+            InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle4);
+        }
+
+        if (trippleNum == 4)
+        {
+            InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle2);
+            InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle3);
+            InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle4);
+        }*/
+        #endregion
+    }
+
+    private void InstantiateStraightBullet(float x, float y)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+
+        bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(
+            (x < 0) ? Mathf.Floor(x) * bulletSpeed : Mathf.Ceil(x) * bulletSpeed,
+            (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed);
+
+        //Rotate bullet
+        var relativePos = bullet.GetComponent<Rigidbody2D>().velocity;
+        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        bullet.transform.rotation = rotation;
+    }
+
+    private void InstantiateAngledBullet(float x, float y, Quaternion rotationAngle)
+    {
+        GameObject upperBullet = Instantiate(bulletPrefab, transform.position, rotationAngle);
         upperBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
 
-        Vector2 upperDirection = (Vector2)(upperMoveAngle * new Vector3(
+        Vector2 direction = (Vector2)(rotationAngle * new Vector3(
         (x < 0) ? Mathf.Floor(x) : Mathf.Ceil(x),
         (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y), 0));
-        upperBullet.GetComponent<Rigidbody2D>().velocity = upperDirection * bulletSpeed;
+        upperBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 
-
-        GameObject lowerBullet = Instantiate(bulletPrefab, transform.position, lowerMoveAngle);
-        lowerBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
-
-        Vector2 lowerDirection = (Vector2)(lowerMoveAngle * new Vector3(
-        (x < 0) ? Mathf.Floor(x) : Mathf.Ceil(x),
-        (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y), 0));
-        lowerBullet.GetComponent<Rigidbody2D>().velocity = lowerDirection * bulletSpeed;
+        //Rotate bullet
+        var relativePos = upperBullet.GetComponent<Rigidbody2D>().velocity;
+        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        upperBullet.transform.rotation = rotation;
     }
     #endregion
 
     private void SpawnBomb()
     {
-        //if(GameController.BombCount <= 0) {  return; }
+        if(GameController.BombCount <= 0) {  return; }
 
-        
-        Debug.Log("1"); 
         Instantiate(bombGO, transform.position, Quaternion.identity);
-        Debug.Log("2");
+        GameController.BombCount--;
+        BombItem.OnBombCollected();
     }
 
     private void Flip()

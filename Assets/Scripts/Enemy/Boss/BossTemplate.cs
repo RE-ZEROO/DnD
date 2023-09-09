@@ -1,25 +1,29 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class BossTemplate : EnemyController
 {
-    private int bossPhase = 2;
+    public static Action OnToggleHealthBar;
 
-    //private GameObject healthBar;
-    private bool healthBarState = false;
+    //[SerializeField] private Slider healthBar;
+    //private bool healthBarState = false;
 
     [Header("Phase 2 Multiplyer")]
     [SerializeField] private float speedMultiplyer;
     [SerializeField] private float cooldownReduced;
+
+    [SerializeField] private BossHealthBar healthBar;
+    private bool healthBarState = false;
 
 
     protected override void Start()
     {
         base.Start();
         enemyType = EnemyType.BOSS;
+        healthBar = FindObjectOfType<BossHealthBar>();
     }
 
 
@@ -27,7 +31,7 @@ public class BossTemplate : EnemyController
     {
         base.Update();
 
-        if (inRoom)
+        if (inRoom && animator.GetBool("inRoom") == false)
             animator.SetBool("inRoom", true);
 
         CheckForPhase();
@@ -52,23 +56,18 @@ public class BossTemplate : EnemyController
 
     private void CheckForPhase()
     {
-        if (health == (maxHealth / 2))
-            BossPhase2();
+        if (health == (maxHealth / 4))
+            animator.SetBool("phase2", true);
     }
 
-    private void BossPhase2()
+    private void SetPhase2Stats()
     {
-        animator.SetBool("phase2", true);
-        //speed *= speedMultiplyer;
-        //cooldown += cooldownReduced;
-
+        speed *= speedMultiplyer;
+        cooldown += cooldownReduced;
     }
 
-    private void ToggleHealthBar()
-    {
-        //healthBarState = !healthBarState;
-        //healthBar.SetActive(healthBarState);
-    }
+    //private void ToggleHealthBar() => OnToggleHealthBar?.Invoke();
+
     private void Invincibile() => isInvincible = true; 
     private void NotInvincibile() => isInvincible = false; 
 
@@ -77,5 +76,29 @@ public class BossTemplate : EnemyController
         if (!gameObject.scene.isLoaded) { return; }
 
         Instantiate(roomInstance.portal, roomInstance.RoomCenter(), Quaternion.identity);
+    }
+
+
+    
+
+    /*private void OnEnable()
+    {
+        BossTemplate.OnToggleHealthBar += ToggleHealthBar;
+    }
+
+    private void OnDisable()
+    {
+        BossTemplate.OnToggleHealthBar -= ToggleHealthBar;
+    }*/
+
+    /*private void Awake()
+    {
+        healthBar = FindObjectOfType<BossHealthBar>();
+    }*/
+
+    private void ToggleHealthBar()
+    {
+        //healthBarState = !healthBarState;
+        //healthBar.gameObject.SetActive(healthBarState);
     }
 }
