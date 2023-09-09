@@ -132,8 +132,8 @@ public class GameController : MonoBehaviour
         /*if (health <= 0)
             KillPlayer();*/
 
-        Debug.Log("Health: " + health);
-        Debug.Log("Max Health: " + maxHealth);
+        //Debug.Log("Health: " + health);
+        //Debug.Log("Max Health: " + maxHealth);
     }
 
 
