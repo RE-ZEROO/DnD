@@ -150,7 +150,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WASD",
+                    "name": "Arrow Keys",
                     "id": "03fc7304-83a3-4a18-9fe0-90c2e15c83d2",
                     "path": "Dpad",
                     "interactions": "",
@@ -260,15 +260,59 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "cb6d3129-51e2-46e2-9714-119b7170b921",
-                    "path": "<Gamepad>/dpad",
+                    "name": "Mobile Buttons",
+                    "id": "31bf8845-aa79-4b8d-8040-76baf5869c34",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "856751e7-a403-4a91-af27-868751b9816a",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "1eded65b-ba56-4c55-8b31-aa95dbbe38d8",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c55761a1-4aec-41cc-993f-10de7a9eb246",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "41465d11-5bf1-4b92-8190-32db0a05063e",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "WASD",
