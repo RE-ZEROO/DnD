@@ -19646,7 +19646,7 @@ GameObject:
   - component: {fileID: 4341801187567322185}
   m_Layer: 7
   m_Name: Stone Golem Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19999,9 +19999,8 @@ MonoBehaviour:
   currentState: 0
   enemyType: 3
   bulletPrefab: {fileID: 3945254764783678875, guid: 09519a0ba5717994ab0ace8eaed5636a, type: 3}
-  isInvincible: 0
-  <health>k__BackingField: 32
   speed: 1500
+  <health>k__BackingField: 32
   detectionRange: 300
   attackRange: 100
   bulletSpeed: 90
@@ -20010,7 +20009,8 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: b7f87584ac7c8c74b8323159fa64a1e1, type: 2}
   speedMultiplyer: 1.2
   cooldownReduced: -0.7
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4440398228577966899, guid: 9f2282ee938d3ad4f93647b0e38e3178, type: 3}
+  healthBarHolder: {fileID: 0}
   defaultLaserDistance: 300
   laserSpawnPos: {fileID: 1658891024692837820}
   startVFX: {fileID: 6780379993542918553}

@@ -295,9 +295,8 @@ MonoBehaviour:
   currentState: 0
   enemyType: 1
   bulletPrefab: {fileID: 1394850163104490642, guid: 714f51d24a04c3b43829eabd6420ff8b, type: 3}
-  isInvincible: 0
-  <health>k__BackingField: 8
   speed: 1000
+  <health>k__BackingField: 8
   detectionRange: 150
   attackRange: 75
   bulletSpeed: 90
@@ -316,9 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b33b69ec241e548bc4e0388c3a150c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introAnimTime: 0.833
   attackAnimTime: 0.6166667
-  hitAnimTime: 0
-  invincibilityAnimTime: 0
 --- !u!1 &8773648848947089033
 GameObject:
   m_ObjectHideFlags: 0

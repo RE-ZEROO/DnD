@@ -6,24 +6,20 @@ using UnityEngine.UI;
 
 public class BossTemplate : EnemyController
 {
-    public static Action OnToggleHealthBar;
-
-    //[SerializeField] private Slider healthBar;
-    //private bool healthBarState = false;
+    public static Action OnHealthBar;
 
     [Header("Phase 2 Multiplyer")]
     [SerializeField] private float speedMultiplyer;
     [SerializeField] private float cooldownReduced;
 
-    [SerializeField] private BossHealthBar healthBar;
-    private bool healthBarState = false;
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private Transform healthBarHolder;
 
 
     protected override void Start()
     {
         base.Start();
         enemyType = EnemyType.BOSS;
-        healthBar = FindObjectOfType<BossHealthBar>();
     }
 
 
@@ -66,11 +62,6 @@ public class BossTemplate : EnemyController
         cooldown += cooldownReduced;
     }
 
-    //private void ToggleHealthBar() => OnToggleHealthBar?.Invoke();
-
-    private void Invincibile() => isInvincible = true; 
-    private void NotInvincibile() => isInvincible = false; 
-
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) { return; }
@@ -78,27 +69,5 @@ public class BossTemplate : EnemyController
         Instantiate(roomInstance.portal, roomInstance.RoomCenter(), Quaternion.identity);
     }
 
-
-    
-
-    /*private void OnEnable()
-    {
-        BossTemplate.OnToggleHealthBar += ToggleHealthBar;
-    }
-
-    private void OnDisable()
-    {
-        BossTemplate.OnToggleHealthBar -= ToggleHealthBar;
-    }*/
-
-    /*private void Awake()
-    {
-        healthBar = FindObjectOfType<BossHealthBar>();
-    }*/
-
-    private void ToggleHealthBar()
-    {
-        //healthBarState = !healthBarState;
-        //healthBar.gameObject.SetActive(healthBarState);
-    }
+    private void SpawnHealthBar() => OnHealthBar?.Invoke();
 }

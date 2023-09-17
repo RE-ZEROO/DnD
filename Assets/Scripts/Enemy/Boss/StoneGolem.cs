@@ -51,7 +51,6 @@ public class StoneGolem : BossTemplate
         string[] layers = { "Player", "Obstacle" };
         Vector2 direction = (player.transform.position - laserSpawnPos.position).normalized;
 
-        //RaycastHit2D hit = Physics2D.Raycast(laserSpawnPos.position, player.transform.position - laserSpawnPos.position, distanceToPlayer, LayerMask.GetMask(layers));
         RaycastHit2D hit = Physics2D.Linecast(laserSpawnPos.position, player.transform.position, LayerMask.GetMask(layers));
         Draw2DRay(laserSpawnPos.position, hit.point);
 

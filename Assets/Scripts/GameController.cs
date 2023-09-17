@@ -57,33 +57,15 @@ public class GameController : MonoBehaviour
     public static int CoinCount { get => coinCount; set => coinCount = value; }
     public static int KeyCount { get => keyCount; set => keyCount = value; }
 
-
-    //private GameObject player;
-    //private PlayerController playerController;
-    /*private Renderer playerRenderer;
-    private Collider2D playerCollider;
-    private Color playerColor = Color.white;*/
-
-    /*private Collider2D[] enemyCollider;
-    private Collider2D[] bulletCollider;
-    private GameObject[] enemyArray;
-    private GameObject[] bulletArray;*/
-
-    //private bool initalizedStart = false;
-
-    
-
     private void InitializeStats()
     {
-        //if (initalizedStart) { return; }
-
         health = 6f;
         maxHealth = 6;
         moveSpeed = 70f;
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.7f;
-        playerDamage = 1;
+        playerDamage = 100;
 
         bombCount = 1;
         coinCount = 0;
@@ -91,8 +73,6 @@ public class GameController : MonoBehaviour
 
         //PlayerController.isTripleshot = false;
         OnInitializeStats?.Invoke();
-
-        //initalizedStart = true;
     }
 
     void Awake()
@@ -109,31 +89,13 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        //InitializeStats();
 
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //playerController = player.GetComponent<PlayerController>();
-        /*playerCollider = player.GetComponent<Collider2D>();
-        playerRenderer = player.GetComponent<SpriteRenderer>();*/
-        //playerColor = playerRenderer.material.color;
     }
 
 
     void Update()
     {
-        /*enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemyArray) { enemyCollider = GetComponents<Collider2D>(); }
-        
-        bulletArray = GameObject.FindGameObjectsWithTag("Bullet");
-        foreach (GameObject bullet in bulletArray) { bulletCollider = GetComponents<Collider2D>(); }*/
-
         StatsMinCap();
-
-        /*if (health <= 0)
-            KillPlayer();*/
-
-        //Debug.Log("Health: " + health);
-        //Debug.Log("Max Health: " + maxHealth);
     }
 
 
@@ -143,15 +105,10 @@ public class GameController : MonoBehaviour
         
         health -= enemyDamage;
         OnPlayerDamaged?.Invoke();
-        //Instance.StartCoroutine(Instance.Invincibility());
     }
 
     public void OnSpawnBomb(InputValue value) => OnBombSpawn.Invoke();
 
-    /*private void KillPlayer()
-    {
-        playerController.PlayerDeathState();
-    }*/
 
     /*public void UpdateCollectedItems(ItemController collectedItem)
     {
@@ -186,35 +143,6 @@ public class GameController : MonoBehaviour
         else if (bulletSize < 0.2f)
             bulletSize = 0.2f;
     }
-
-    /*private IEnumerator Invincibility()
-    {
-        isInvincible = true;
-        //Set a flashing animation later when there is a player sprite
-        //playerController.currentState = PlayerState.Invincible;
-        playerColor.a = 0.5f;
-        playerRenderer.material.color = playerColor;
-
-        if (enemyCollider != null)
-            for (int e = 0; e < enemyCollider.Length; e++) { Physics2D.IgnoreCollision(playerCollider, enemyCollider[e], true); }
-
-        if(bulletCollider != null)
-            for (int b = 0; b < bulletCollider.Length; b++) { Physics2D.IgnoreCollision(playerCollider, bulletCollider[b], true); }
-
-        yield return new WaitForSeconds(invincibilityTime);
-
-        playerColor.a = 1f;
-        //playerController.currentState = PlayerState.IDLE;
-        playerRenderer.material.color = playerColor;
-
-        if (enemyCollider != null)
-            for (int e = 0; e < enemyCollider.Length; e++) { Physics2D.IgnoreCollision(playerCollider, enemyCollider[e], false); }
-
-        if (bulletCollider != null)
-            for (int b = 0; b < bulletCollider.Length; b++) { Physics2D.IgnoreCollision(playerCollider, bulletCollider[b], false); }
-
-        isInvincible = false;
-    }*/
 
     public static void GameOver()
     {

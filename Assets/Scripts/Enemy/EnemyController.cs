@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
 {
     protected GameObject player;
     protected Rigidbody2D rb;
-    protected BoxCollider2D enemyCollider; 
+    protected BoxCollider2D enemyCollider;
     protected Animator animator;
     private SpriteRenderer spriteRenderer;
     protected RoomInstance roomInstance;
@@ -39,15 +39,16 @@ public class EnemyController : MonoBehaviour
 
     protected float distanceToPlayer;
     protected bool isOnCooldownAttack = false;
-    protected bool inRoom = false;
-    public bool isInvincible = false;
-    private readonly bool flip;
+    public bool inRoom {get; private set;}
+    protected bool isInvincible = false;
+    private bool flip;
 
 
-    //[Header("Base Stats")]
-    [field: SerializeField] public float health { get; private set; }
-    public float maxHealth { get; private set; }
+    [Header("Base Stats")]
     [SerializeField] protected float speed;
+
+    [field: SerializeField] public float health { get; private set; }
+    [HideInInspector] public float maxHealth { get; private set; }
 
     [SerializeField] protected float detectionRange;
     [SerializeField] protected float attackRange;
@@ -103,7 +104,10 @@ public class EnemyController : MonoBehaviour
             currentState = EnemyState.DEAD;
 
         if (roomInstance.isCurrentRoom)
+        {
             inRoom = true;
+            //animator.SetBool("inRoom", true);
+        }
         else
             inRoom = false;
 
@@ -281,6 +285,8 @@ public class EnemyController : MonoBehaviour
     }
 
     private void EnemyDeath() => Destroy(gameObject);
+    public void Invincibile() => isInvincible = true;
+    public void NotInvincibile() => isInvincible = false;
 
     protected void SwitchStates()
     {
@@ -293,10 +299,11 @@ public class EnemyController : MonoBehaviour
             else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.BOSS)
                 currentState = EnemyState.WANDER;
 
-            //!!!!!!!!!!Boss Behavour Teporary!!!!!!!!!!
-            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && enemyType == EnemyType.BOSS && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
-                currentState = EnemyState.ATTACK;
-            else if (!isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
+            //!!!!!!!!!!Boss Behaviour Temporary!!!!!!!!!!
+            //if (!isOnCooldownAttack && distanceToPlayer <= attackRange && enemyType == EnemyType.BOSS && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
+            //    currentState = EnemyState.ATTACK;
+            if (!isOnCooldownAttack && distanceToPlayer <= attackRange && (enemyType == EnemyType.BOSS || PlayerInSightLine()) && 
+                currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
                 currentState = EnemyState.ATTACK;
             else if(isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
                 currentState = EnemyState.IDLE;
