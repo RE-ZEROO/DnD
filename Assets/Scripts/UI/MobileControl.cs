@@ -5,6 +5,10 @@ public class MobileControl : MonoBehaviour
 {
     void Start()
     {
-        gameObject.SetActive(UnityEngine.Device.Application.isMobilePlatform);
+        if (UnityEngine.Device.Application.isMobilePlatform)
+        {
+            foreach(Transform child in transform)
+                child.gameObject.SetActive(true);
+        }
     }
 }

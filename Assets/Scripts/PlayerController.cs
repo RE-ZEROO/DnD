@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour
 
         Instantiate(bombGO, transform.position, Quaternion.identity);
         GameController.BombCount--;
-        BombItem.OnBombCollected();
+        BombItem.OnBombCollected?.Invoke();
     }
 
     private void Flip()

@@ -5,16 +5,22 @@ using UnityEngine;
 public class StoneGolem : BossTemplate
 {
     [Header("Stone Golem")]
-    [SerializeField] private float defaultLaserDistance = 300;
+    //[SerializeField] private float defaultLaserDistance = 300;
     [SerializeField] private Transform laserSpawnPos;
     private LineRenderer lineRenderer;
 
+    //Particles
     [SerializeField] private GameObject startVFX;
     [SerializeField] private GameObject endVFX;
     private List<ParticleSystem> particleList = new List<ParticleSystem>();
 
+    [Space]
+
+    //Rock spawning
+    [SerializeField] private int searchForRockRadius = 130;
     private List<Rock> rocksInRoomList = new List<Rock>();
     Collider2D[] hitColliders;
+
 
     protected override void Start()
     {
@@ -23,7 +29,7 @@ public class StoneGolem : BossTemplate
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
 
-        hitColliders = Physics2D.OverlapCircleAll(transform.position, 130);
+        hitColliders = Physics2D.OverlapCircleAll(transform.position, searchForRockRadius);
         foreach (Collider2D col in hitColliders)
         {
             Rock rock = col.GetComponent<Rock>();
@@ -35,7 +41,7 @@ public class StoneGolem : BossTemplate
             }
         }
 
-        FillLists();
+        FillParticleList();
         DisableLaser();
     }
 
@@ -44,6 +50,8 @@ public class StoneGolem : BossTemplate
         base.Update();
     }
 
+
+    #region Laser
     private void ShootLaser()
     {
         lineRenderer.enabled = true;
@@ -82,17 +90,11 @@ public class StoneGolem : BossTemplate
         lineRenderer.SetPosition(1, endPos);
         endVFX.transform.position = lineRenderer.GetPosition(1);
     }
+    #endregion
 
-    private void SpawnRocks()
+    private void FillParticleList()
     {
-        foreach(Rock rock in rocksInRoomList)
-            rock.gameObject.SetActive(true);
-
-    }
-
-    private void FillLists()
-    {
-        for(int i = 0; i < startVFX.transform.childCount; i++)
+        for (int i = 0; i < startVFX.transform.childCount; i++)
         {
             var ps = startVFX.transform.GetChild(i).GetComponent<ParticleSystem>();
             if (ps)
@@ -105,5 +107,12 @@ public class StoneGolem : BossTemplate
             if (ps)
                 particleList.Add(ps);
         }
+    }
+
+    private void SpawnRocks()
+    {
+        foreach(Rock rock in rocksInRoomList)
+            rock.gameObject.SetActive(true);
+
     }
 }

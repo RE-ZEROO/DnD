@@ -8,12 +8,9 @@ public class BossTemplate : EnemyController
 {
     public static Action OnHealthBar;
 
-    [Header("Phase 2 Multiplyer")]
-    [SerializeField] private float speedMultiplyer;
+    [Header("Phase 2 Multiplier")]
+    [SerializeField] private float speedMultiplier;
     [SerializeField] private float cooldownReduced;
-
-    [SerializeField] private GameObject healthBar;
-    [SerializeField] private Transform healthBarHolder;
 
 
     protected override void Start()
@@ -58,7 +55,7 @@ public class BossTemplate : EnemyController
 
     private void SetPhase2Stats()
     {
-        speed *= speedMultiplyer;
+        speed *= speedMultiplier;
         cooldown += cooldownReduced;
     }
 

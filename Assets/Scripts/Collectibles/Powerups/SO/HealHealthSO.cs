@@ -15,6 +15,10 @@ public class HealHealthSO : PowerupEffect
         if(GameController.Health >= GameController.MaxHealth) { return; }
 
         GameController.Health += amount;
+
+        if (GameController.Health > GameController.MaxHealth)
+            GameController.Health = GameController.MaxHealth;
+
         GameController.OnPlayerHeal?.Invoke();
     }
 

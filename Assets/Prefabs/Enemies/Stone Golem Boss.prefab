@@ -20009,8 +20009,6 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: b7f87584ac7c8c74b8323159fa64a1e1, type: 2}
   speedMultiplyer: 1.2
   cooldownReduced: -0.7
-  healthBar: {fileID: 4440398228577966899, guid: 9f2282ee938d3ad4f93647b0e38e3178, type: 3}
-  healthBarHolder: {fileID: 0}
   defaultLaserDistance: 300
   laserSpawnPos: {fileID: 1658891024692837820}
   startVFX: {fileID: 6780379993542918553}

@@ -18,6 +18,10 @@ public class DebugController : MonoBehaviour
     public static DebugCommand<int> SET_PLAYER_MAX_HEALTH;
     public static DebugCommand<int> SET_PLAYER_DAMAGE;
 
+    public static DebugCommand<int> SET_BOMB_COUNT;
+    public static DebugCommand<int> SET_COIN_COUNT;
+    public static DebugCommand<int> SET_KEY_COUNT;
+
     public static DebugCommand EBG1;
     public static DebugCommand EBG2;
     public static DebugCommand EBG3;
@@ -50,6 +54,9 @@ public class DebugController : MonoBehaviour
             SET_PLAYER_HEALTH,
             SET_PLAYER_MAX_HEALTH,
             SET_PLAYER_DAMAGE,
+            SET_BOMB_COUNT,
+            SET_COIN_COUNT,
+            SET_KEY_COUNT,
             EBG1,
             EBG2,
             EBG3,
@@ -114,6 +121,24 @@ public class DebugController : MonoBehaviour
         HELP = new DebugCommand("#help", "Shows all commands", "#help", () =>
         {
             isShowingHelp = !isShowingHelp;
+        });
+
+        SET_BOMB_COUNT = new DebugCommand<int>("set_bomb_count", "Set the bomb count", "set_bomb_count <bomb_amount>", (x) =>
+        {
+            GameController.BombCount = x;
+            BombItem.OnBombCollected?.Invoke();
+        });
+
+        SET_COIN_COUNT = new DebugCommand<int>("set_coin_count", "Set the coin count", "set_coin_count <coin_amount>", (x) =>
+        {
+            GameController.CoinCount = x;
+            Coin.OnCoinCollected?.Invoke();
+        });
+
+        SET_KEY_COUNT = new DebugCommand<int>("set_key_count", "Set the key count", "set_key_count <key_amount>", (x) =>
+        {
+            GameController.KeyCount = x;
+            Key.OnKeyCollected?.Invoke();
         });
     }
 

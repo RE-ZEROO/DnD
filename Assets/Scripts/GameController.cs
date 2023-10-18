@@ -65,13 +65,13 @@ public class GameController : MonoBehaviour
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.7f;
-        playerDamage = 100;
+        playerDamage = 1;
 
         bombCount = 1;
         coinCount = 0;
         keyCount = 0;
 
-        //PlayerController.isTripleshot = false;
+        PlayerController.isTripleshot = false;
         OnInitializeStats?.Invoke();
     }
 
