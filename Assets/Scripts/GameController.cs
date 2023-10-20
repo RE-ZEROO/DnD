@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public static Action OnPlayerHeal;
     public static Action OnBombSpawn;
 
+    [SerializeField] private GameObject blackFadePanel;
 
     //Internal stats
     private static float health;
