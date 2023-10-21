@@ -7387,7 +7387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1684077594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7400,7 +7400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756427a7a75c2d941a9b55c7431c73f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackFadePanel: {fileID: 138518829}
 --- !u!4 &1684077595
 Transform:
   m_ObjectHideFlags: 0
@@ -8519,7 +8518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1946367233
 MonoBehaviour:
   m_ObjectHideFlags: 0

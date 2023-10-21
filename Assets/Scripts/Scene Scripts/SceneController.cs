@@ -12,6 +12,9 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject IceHolder;
     [SerializeField] private GameObject[] IceGameObject;
 
+    [SerializeField] private GameObject gameOverCanvas;
+    [SerializeField] private GameObject blackFadeCanvas;
+
     void Awake()
     {
         if (!Instance)
@@ -36,8 +39,6 @@ public class SceneController : MonoBehaviour
     private IEnumerator LoadSceneAsync(string sceneName)
     {
         AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
-        //scene.priority = 4;
-        //Application.backgroundLoadingPriority = ThreadPriority.Low;
         loadingCanvas.SetActive(true);
 
         while(!scene.isDone)
@@ -49,6 +50,14 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         loadingCanvas.SetActive(false);
+        
+        
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            blackFadeCanvas.SetActive(true);
+            yield return new WaitForSeconds(1.1f);
+            blackFadeCanvas.SetActive(false);
+        }
     }
 
     private void SpawnIceElementalAnimations()
@@ -57,4 +66,7 @@ public class SceneController : MonoBehaviour
 
         Instantiate(IceGameObject[tempIndex], IceHolder.transform);
     }
+
+    public void ToggleGameOverCanvas(bool state) => gameOverCanvas.SetActive(state);
+    //public void ToggleFadeCanvas(bool state) => blackFadeCanvas.SetActive(state);
 }

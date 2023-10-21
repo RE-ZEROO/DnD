@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+using TMPro;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class GameController : MonoBehaviour
     public static Action OnPlayerHeal;
     public static Action OnBombSpawn;
 
-    [SerializeField] private GameObject blackFadePanel;
+    [SerializeField] private GameObject worldLevelText;
 
     //Internal stats
     private static float health;
@@ -39,6 +38,10 @@ public class GameController : MonoBehaviour
     private static int keyCount;
     //public List<string> collectedItems = new List<string>();
 
+    //World / Level
+    private static int worldNumber = 1;
+    private static int levelNumber = 1;
+
     //For public access
     public static float Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -58,6 +61,10 @@ public class GameController : MonoBehaviour
     public static int CoinCount { get => coinCount; set => coinCount = value; }
     public static int KeyCount { get => keyCount; set => keyCount = value; }
 
+    public static int WorldNumber { get => worldNumber; set => worldNumber = value; }
+    public static int LevelNumber { get => levelNumber; set => levelNumber = value; }
+
+
     private void InitializeStats()
     {
         health = 6f;
@@ -72,7 +79,12 @@ public class GameController : MonoBehaviour
         coinCount = 0;
         keyCount = 0;
 
+        worldNumber = 1;
+        levelNumber = 1;
+
         PlayerController.isTripleshot = false;
+
+        //Time.timeScale = 1;
         OnInitializeStats?.Invoke();
     }
 
@@ -86,11 +98,6 @@ public class GameController : MonoBehaviour
         }
         else
             Destroy(gameObject);
-    }
-
-    void Start()
-    {
-
     }
 
 
@@ -148,13 +155,21 @@ public class GameController : MonoBehaviour
     public static void GameOver()
     {
         Instance.InitializeStats();
-        //Change this to show a gameover panel
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneController.Instance.ToggleGameOverCanvas(true);
     }
 
     public static void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LevelNumber++;
+
+        /*if(LevelNumber == 5)
+        {
+            LevelNumber = 1;
+            WorldNumber++;
+        }*/
+
+        Instance.worldLevelText.GetComponent<TextMeshProUGUI>().text = $"{worldNumber} - {levelNumber}";
+
+        SceneController.Instance.LoadScene("MainScene");
     }
 }
