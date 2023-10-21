@@ -10,6 +10,10 @@ public class ItemGenerator : MonoBehaviour
     public void GenerateItem()
     {
         ItemData item = lootTable.GetRandomItem();
-        Instantiate(item.itemGO, itemHolderPos.position, Quaternion.identity).transform.parent = itemHolderPos;
+
+        if(itemHolderPos)
+            Instantiate(item.itemGO, itemHolderPos.position, Quaternion.identity).transform.parent = itemHolderPos;
+        else
+            Instantiate(item.itemGO, transform.position, Quaternion.identity);
     }
 }

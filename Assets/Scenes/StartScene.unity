@@ -1921,10 +1921,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ===Game Controller===
       objectReference: {fileID: 0}
-    - target: {fileID: 5124626149185333527, guid: a8018abd75582c74fa4270ef6fadea6f, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 16777215
-      objectReference: {fileID: 0}
     - target: {fileID: 5840303271018015753, guid: a8018abd75582c74fa4270ef6fadea6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -87.68186
@@ -1965,11 +1961,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6933382496582915337, guid: a8018abd75582c74fa4270ef6fadea6f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8832652052889250048, guid: a8018abd75582c74fa4270ef6fadea6f, type: 3}
+    - target: {fileID: 7852350373475252712, guid: a8018abd75582c74fa4270ef6fadea6f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
