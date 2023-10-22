@@ -19690,7 +19690,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20007,12 +20007,12 @@ MonoBehaviour:
   cooldown: 2
   bulletSpawnPos: {fileID: 8307440610868134359}
   flashMaterial: {fileID: 2100000, guid: b7f87584ac7c8c74b8323159fa64a1e1, type: 2}
-  speedMultiplyer: 1.2
+  speedMultiplier: 0
   cooldownReduced: -0.7
-  defaultLaserDistance: 300
   laserSpawnPos: {fileID: 1658891024692837820}
   startVFX: {fileID: 6780379993542918553}
   endVFX: {fileID: 9013948945105531539}
+  searchForRockRadius: 130
 --- !u!1 &9013948945105531539
 GameObject:
   m_ObjectHideFlags: 0

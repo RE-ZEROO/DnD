@@ -8,18 +8,22 @@ public class MapSpriteSelector : MonoBehaviour
             spUD, spRL, spUR, spUL, spDR, spDL,
             spULD, spRUL, spDRU, spLDR, spUDRL;
 
+    [Header("Door Placement")]
     public bool up;
     public bool down;
     public bool left;
     public bool right;
 
+    [Header("Specifics")]
     public RoomType type;
+    public int id = 0;
 
+    [Header("Colors")]
     [SerializeField] private Color normalColor;
     [SerializeField] private Color startColor;
     [SerializeField] private Color bossColor;
 
-    private Color mainColor;
+    public Color mainColor;
     private SpriteRenderer rend;
 
 

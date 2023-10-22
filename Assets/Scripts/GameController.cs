@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.7f;
-        playerDamage = 1;
+        playerDamage = 100;
 
         bombCount = 1;
         coinCount = 0;
@@ -84,7 +84,6 @@ public class GameController : MonoBehaviour
 
         PlayerController.isTripleshot = false;
 
-        //Time.timeScale = 1;
         OnInitializeStats?.Invoke();
     }
 

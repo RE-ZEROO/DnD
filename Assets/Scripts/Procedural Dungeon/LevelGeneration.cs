@@ -7,7 +7,7 @@ public class LevelGeneration : MonoBehaviour
 {
     private static Room[,] rooms;
     //MapSpriteSelector currentRoomSprite;
-    private RoomType type;
+    //private RoomType type;
 
     Vector2 worldSize = new Vector2(4, 4); //Actual size is doubled
     List<Vector2> takenPositions = new List<Vector2>();
@@ -43,7 +43,7 @@ public class LevelGeneration : MonoBehaviour
     {
         //Setup
         rooms = new Room[gridSizeX * 2, gridSizeY * 2];
-        rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, RoomType.START);
+        rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, RoomType.START, 0);
         takenPositions.Insert(0, Vector2.zero);
         Vector2 checkPos = Vector2.zero;
 
@@ -77,11 +77,11 @@ public class LevelGeneration : MonoBehaviour
             }
 
             //Add position to array and list
-            rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, RoomType.NORMAL); //Calculating offset when added to array
+            rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, RoomType.NORMAL, i + 1); //Calculating offset when added to array
             takenPositions.Insert(0, checkPos);
         }
 
-        //Check for rooms with one neighbor and set is as a boss room
+        //Check for rooms with one neighbor and set it as a boss room
         for (int i = 0; i < numberOfRooms - 1; i++)
         {
             if (isThereABossRoom) { return; }
@@ -90,8 +90,7 @@ public class LevelGeneration : MonoBehaviour
             {
                 takenPositions.RemoveAt(i);
 
-                var bossRoom = rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, RoomType.END);
-                //var beforeBoss = rooms[(int)checkPos.x + gridSizeX - 1, (int)checkPos.y + gridSizeY - 1] = new Room(checkPos, RoomType.NORMAL);
+                var bossRoom = rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, RoomType.END, numberOfRooms - 1);
                 takenPositions.Insert(i, checkPos);
 
                 isThereABossRoom = true;
@@ -252,6 +251,7 @@ public class LevelGeneration : MonoBehaviour
             //Instantiate and set variables to the room it represents
             MapSpriteSelector mapper = Instantiate(roomWhiteObj, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
             mapper.type = room.type;
+            mapper.id = room.roomId;
 
             mapper.up = room.doorTop;
             mapper.down = room.doorBottom;

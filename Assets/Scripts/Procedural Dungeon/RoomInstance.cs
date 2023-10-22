@@ -12,7 +12,8 @@ public struct ColorToGameObject
 public class RoomInstance : MonoBehaviour
 {
     public Texture2D tex;
-    [SerializeField] public RoomType roomType;
+    public RoomType roomType;
+    public int roomId;
 
     [HideInInspector] public Vector2 gridPos;
     [HideInInspector] public bool doorTop, doorBottom, doorLeft, doorRight;
@@ -41,7 +42,7 @@ public class RoomInstance : MonoBehaviour
 
 
     public void Setup(Texture2D _texture, Vector2 _gridPos, RoomType _type,
-                        bool _doorTop, bool _doorBottom, bool _doorLeft, bool _doorRight)
+                        bool _doorTop, bool _doorBottom, bool _doorLeft, bool _doorRight, int _roomId)
     {
         tex = _texture;
         gridPos = _gridPos;
@@ -51,6 +52,8 @@ public class RoomInstance : MonoBehaviour
         doorBottom = _doorBottom;
         doorLeft = _doorLeft;
         doorRight = _doorRight;
+
+        roomId = _roomId;
 
         MakeDoors();
         GenerateRoomTiles();

@@ -90,7 +90,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   fireDelay: 3
   attackAnimTime: 0.517
   teleportAnimTime: 0.483
+  trippleNum: 0
 --- !u!114 &4052701954335310080
 MonoBehaviour:
   m_ObjectHideFlags: 0

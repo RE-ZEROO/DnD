@@ -69,7 +69,7 @@ public class Door : MonoBehaviour
             gameObject.tag = "BossDoor";
         }
 
-        Invoke("CheckForBossRoomNeighbour", 0.1f);
+        Invoke(nameof(CheckForBossRoomNeighbour), 0.1f);
     }
 
     void Update()

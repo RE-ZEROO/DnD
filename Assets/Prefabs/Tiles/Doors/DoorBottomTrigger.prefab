@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -196,7 +196,6 @@ MonoBehaviour:
   doorClosed: {fileID: 1869029105, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorBossOpen: {fileID: -1794619713, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
   doorBossClosed: {fileID: 1947875021, guid: b5553b5448db89748962f76ad04ae0da, type: 3}
-  isBossDoor: 0
   doorTop: 0
   doorBottom: 0
   doorLeft: 0
