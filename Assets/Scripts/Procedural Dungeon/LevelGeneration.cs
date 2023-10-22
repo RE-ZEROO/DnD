@@ -259,6 +259,10 @@ public class LevelGeneration : MonoBehaviour
             mapper.right = room.doorRight;
 
             mapper.gameObject.transform.parent = mapRoot;
+
+            GameObject mapperCover = Instantiate(gameObject, drawPos, Quaternion.identity, mapper.transform);
+            //mapperCover.AddComponent<SpriteRenderer>().sprite = mapper.GetComponent<SpriteRenderer>().sprite;
+            //mapperCover.GetComponent<SpriteRenderer>().color = mapper.backgroundColor;
         }
     }
 

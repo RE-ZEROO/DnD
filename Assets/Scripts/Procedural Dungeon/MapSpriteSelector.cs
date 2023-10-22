@@ -24,6 +24,7 @@ public class MapSpriteSelector : MonoBehaviour
     [SerializeField] private Color bossColor;
 
     public Color mainColor;
+    public Color backgroundColor;
     private SpriteRenderer rend;
 
 
