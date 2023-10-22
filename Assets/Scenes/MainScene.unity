@@ -5704,6 +5704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomWhiteObj: {fileID: 5858730167357424811, guid: df7481152784b1e4797f911673b114d1, type: 3}
+  roomWhiteObjCover: {fileID: 2917442556933024371, guid: b163d54215ed4e84f925b0f556cf98ed, type: 3}
   mapRoot: {fileID: 295886438}
 --- !u!4 &1428808658
 Transform:
