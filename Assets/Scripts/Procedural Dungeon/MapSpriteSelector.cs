@@ -16,7 +16,7 @@ public class MapSpriteSelector : MonoBehaviour
 
     [Header("Specifics")]
     public RoomType type;
-    public int id = 0;
+    public int mapId = 0;
 
     [Header("Colors")]
     [SerializeField] private Color normalColor;
@@ -58,7 +58,7 @@ public class MapSpriteSelector : MonoBehaviour
             case 1: //left
                 rend.sprite = spL;
                 break;
-            case 2: //right door
+            case 2: //right
                 rend.sprite = spR;
                 break;
             case 3: //left, right

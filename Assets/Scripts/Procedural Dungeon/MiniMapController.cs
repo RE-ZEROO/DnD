@@ -48,7 +48,7 @@ public class MiniMapController : MonoBehaviour
             SpriteRenderer spriteRenderer = placeholderSprites[i].GetComponent<SpriteRenderer>();
             MapSpriteSelector sprite = placeholderSprites[i].GetComponent<MapSpriteSelector>();
 
-            if (currentRoom.roomId == sprite.id)
+            if (currentRoom.roomId == sprite.mapId)
             {
                 spriteRenderer.color = sprite.mainColor;
 

@@ -221,28 +221,6 @@ public class LevelGeneration : MonoBehaviour
             if (room == null)
                 continue;
 
-            //Hide MiniMap
-            /*if(room.type == RoomType.START)
-            {
-                //Grab the position of a room and multiply by size of map sprite
-                Vector2 drawPos = room.gridPos;
-                drawPos.x *= 16;
-                drawPos.y *= 8;
-
-                //Instantiate and set variables to the room it represents
-                MapSpriteSelector mapper = Instantiate(roomWhiteObj, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
-                mapper.type = room.type;
-
-                mapper.up = room.doorTop;
-                mapper.down = room.doorBottom;
-                mapper.left = room.doorLeft;
-                mapper.right = room.doorRight;
-
-                mapper.gameObject.transform.parent = mapRoot;
-                mapper = currentRoomSprite;
-            }*/
-
-
             
             //Grab the position of a room and multiply by size of map sprite
             Vector2 drawPos = room.gridPos;
@@ -252,7 +230,7 @@ public class LevelGeneration : MonoBehaviour
             //Instantiate and set variables to the room it represents
             MapSpriteSelector mapper = Instantiate(roomWhiteObj, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
             mapper.type = room.type;
-            mapper.id = room.roomId;
+            mapper.mapId = room.roomId;
 
             mapper.up = room.doorTop;
             mapper.down = room.doorBottom;
