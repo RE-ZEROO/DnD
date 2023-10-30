@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -300,9 +298,9 @@ public class PlayerController : MonoBehaviour
     {
         //Flip player sprite
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 
     public void PlayerDeathState()
@@ -321,7 +319,8 @@ public class PlayerController : MonoBehaviour
     {
         GameController.PlayerInvicibility = true;
         //Set a flashing animation later when there is a player sprite
-        //playerController.currentState = PlayerState.Invincible;
+        //animator.CrossFade(PlayerInvincibleAnimation, 0, 0);
+
         playerColor.a = 0.5f;
         playerRenderer.material.color = playerColor;
 
@@ -334,7 +333,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(GameController.PlayerInvicibilityTime);
 
         playerColor.a = 1f;
-        //playerController.currentState = PlayerState.IDLE;
         playerRenderer.material.color = playerColor;
 
         if (enemyCollider != null)

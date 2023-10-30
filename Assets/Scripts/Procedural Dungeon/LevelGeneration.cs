@@ -19,7 +19,6 @@ public class LevelGeneration : MonoBehaviour
     private bool isThereABossRoom = false;
 
     public GameObject roomWhiteObj;
-    public GameObject roomWhiteObjCover;
     public Transform mapRoot;
 
 
@@ -238,13 +237,6 @@ public class LevelGeneration : MonoBehaviour
             mapper.right = room.doorRight;
 
             mapper.gameObject.transform.parent = mapRoot;
-
-
-            //Instantiate MiniMap cover
-            GameObject mapperCover = Instantiate(roomWhiteObjCover, drawPos, Quaternion.identity, mapper.transform);
-            mapperCover.transform.position = mapper.transform.position;
-            mapperCover.GetComponent<SpriteRenderer>().sprite = mapper.GetComponent<SpriteRenderer>().sprite;
-            mapperCover.GetComponent<SpriteRenderer>().color = mapper.backgroundColor;
         }
     }
 

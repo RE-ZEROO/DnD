@@ -41,7 +41,7 @@ public class MiniMapController : MonoBehaviour
         roominstances = FindObjectsOfType<RoomInstance>();
     }
 
-    public void HighlightCurrentRoom(int roomIndex)
+    private void HighlightCurrentRoom(int roomIndex)
     {
         for (int i = 0; i < placeholderSprites.Count; i++)
         {
@@ -50,10 +50,10 @@ public class MiniMapController : MonoBehaviour
 
             if (currentRoom.roomId == sprite.mapId)
             {
-                spriteRenderer.color = sprite.mainColor;
+                if (!spriteRenderer.enabled)
+                    spriteRenderer.enabled = true;
 
-                if(placeholderSprites[i].transform.childCount > 0)
-                    Destroy(placeholderSprites[i].transform.GetChild(0).gameObject);
+                spriteRenderer.color = sprite.mainColor;
             }
             else
                 spriteRenderer.color = sprite.mainColor + new Color(-0.5f, -0.5f, -0.5f);

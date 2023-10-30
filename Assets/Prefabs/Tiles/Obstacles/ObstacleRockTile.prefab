@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4801436991354404831}
   - component: {fileID: 1382710175834958339}
   - component: {fileID: 5863509399709938471}
+  - component: {fileID: 7320173760849702417}
   m_Layer: 8
   m_Name: ObstacleRockTile
   m_TagString: Rock
@@ -143,3 +144,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e696a1457124dc4e89b5a7bac1ae3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7320173760849702417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031388086310594188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf87f5d7d9b
+  m_ShapePath:
+  - {x: -8.119293, y: -3.1685724, z: 0}
+  - {x: -7.9403524, y: 4.719401, z: 0}
+  - {x: 2.2738628, y: 5.1369314, z: 0}
+  - {x: 3.4061403, y: 3.9345021, z: 0}
+  - {x: 3.4061403, y: 0.5942559, z: 0}
+  - {x: 7.0446234, y: -0.061864138, z: 0}
+  - {x: 6.866702, y: -7.045643, z: 0}
+  - {x: -2.7971754, y: -6.9212985, z: 0}
+  - {x: -3.4532952, y: -4.2968197, z: 0}
+  - {x: -7.151426, y: -4.2371716, z: 0}
+  m_ShapePathHash: 888640146
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -113294
+  m_LocalBounds:
+    m_Center: {x: -0.5373349, y: -0.9543557, z: 0}
+    m_Extent: {x: 7.5819583, y: 6.091287, z: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 374983136764886969}
   - component: {fileID: 5756106794668924085}
   - component: {fileID: 363666027391265303}
+  - component: {fileID: 4254655158304982415}
   m_Layer: 8
   m_Name: TileWallTop
   m_TagString: Wall
@@ -130,3 +131,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
+--- !u!114 &4254655158304982415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500184176784253466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf87f5d7d9b
+  m_ShapePath:
+  - {x: -8, y: -8, z: 0}
+  - {x: -8, y: 8, z: 0}
+  - {x: 8, y: 8, z: 0}
+  - {x: 8, y: -8, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -190134
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 8, y: 8, z: 0}
