@@ -49,7 +49,7 @@ public class BossTemplate : EnemyController
 
     private void CheckForPhase()
     {
-        if (health == (maxHealth / 4))
+        if (health <= (maxHealth / 4))
             animator.SetBool("phase2", true);
     }
 
