@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - itemGO: {fileID: 7768120304924849220, guid: 8d8f7408be69e4148a96c26695ed976d, type: 3}
-    dropWeight: 25
+    dropWeight: 30
   - itemGO: {fileID: 5602648557858700806, guid: 1356329e6f3616441b5320bd0dd5789b, type: 3}
     dropWeight: 25
   - itemGO: {fileID: 4333252389476777054, guid: b7d04fb28fa65ee4c897823a1b148d7b, type: 3}
-    dropWeight: 15
+    dropWeight: 10
   - itemGO: {fileID: 789438205336454534, guid: 30793b42e97b5194ca5d21f61053ec90, type: 3}
     dropWeight: 15
   - itemGO: {fileID: 7323086603641081695, guid: 16d32b34c2c566648b3dd8f5a22f6ba5, type: 3}

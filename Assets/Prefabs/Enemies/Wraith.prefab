@@ -302,7 +302,7 @@ MonoBehaviour:
   enemyType: 0
   bulletPrefab: {fileID: 0}
   speed: 1000
-  <health>k__BackingField: 5
+  <health>k__BackingField: 4
   detectionRange: 100
   attackRange: 100
   bulletSpeed: 0
