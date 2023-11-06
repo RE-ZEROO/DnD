@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1751622660406113536}
   - component: {fileID: 2657925329141662445}
   m_Layer: 8
-  m_Name: ObstacleRockTile 1
+  m_Name: ObstacleRockSmallTile
   m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

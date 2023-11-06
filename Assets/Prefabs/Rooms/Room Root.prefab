@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tex: {fileID: 0}
   roomType: 0
+  roomId: 0
   gridPos: {x: 0, y: 0}
   doorTop: 0
   doorBottom: 0
