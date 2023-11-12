@@ -19,4 +19,10 @@ public class ChangeSceneButton : MonoBehaviour
     {
         SceneController.Instance.ToggleGameOverCanvas(false);
     }
+
+    public void ExitGame()
+    {
+        AudioManager.Instance.SaveSettings();
+        Application.Quit();
+    }
 }

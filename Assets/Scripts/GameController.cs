@@ -171,4 +171,9 @@ public class GameController : MonoBehaviour
 
         SceneController.Instance.LoadScene("MainScene");
     }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
 }

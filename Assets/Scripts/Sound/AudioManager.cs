@@ -36,6 +36,8 @@ public class AudioManager : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, bgMusic.Length);
         string bgName = bgMusic[randomIndex].soundName;
 
+        SaveSettings();
+        LoadSettings();
         PlayBGMusic(bgName);
     }
 
@@ -79,4 +81,19 @@ public class AudioManager : MonoBehaviour
 
     public void MusicVolume(float volume) => musicSource.volume = volume;
     public void SFXVolume(float volume) => sfxSource.volume = volume;
+
+
+    private void LoadSettings()
+    {
+        musicSource.volume = PlayerPrefs.GetFloat("musicVolume");
+        sfxSource.volume = PlayerPrefs.GetFloat("sfxVolume");
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetFloat("musicVolume", musicSource.volume);
+        PlayerPrefs.SetFloat("sfxVolume", sfxSource.volume);
+
+        PlayerPrefs.Save();
+    }
 }
