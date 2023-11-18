@@ -7,7 +7,18 @@ public class PanelManager : MonoBehaviour
     [SerializeField] private GameObject panel;
     private bool state;
 
+    void Start()
+    {
+        state = panel.activeSelf;    
+    }
+
     public void TogglePanel()
+    {
+        state = !state;
+        panel.SetActive(state);
+    }
+
+    public void TogglePausePanel()
     {
         state = !state;
         panel.SetActive(state);

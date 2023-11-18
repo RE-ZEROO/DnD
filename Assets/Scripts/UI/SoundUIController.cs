@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SoundUIController : MonoBehaviour
@@ -19,14 +16,6 @@ public class SoundUIController : MonoBehaviour
 
     [SerializeField] private Sprite sfxSprite;
     [SerializeField] private Sprite sfxSpriteOff;
-
-    /*EventSystem eventSystem;
-
-    private void Awake() => eventSystem = FindObjectOfType<EventSystem>();
-
-    private void OnEnable() => eventSystem.SetSelectedGameObject(gameObject);*/
-
-
 
 
     public void ToggleMusic()
