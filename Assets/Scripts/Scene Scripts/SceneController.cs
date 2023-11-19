@@ -38,6 +38,9 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator LoadSceneAsync(string sceneName)
     {
+        if (Time.timeScale != 1)
+            Time.timeScale = 1;
+
         AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
         loadingCanvas.SetActive(true);
 

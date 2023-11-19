@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4289852272116261104
 Transform:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3052299839830311049}
   - component: {fileID: 7630243418414393335}
   m_Layer: 6
-  m_Name: Player Light
+  m_Name: Normal Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 10.32
+  m_PointLightOuterRadius: 11.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 6707270457798589877}
   - component: {fileID: 878389075}
   - component: {fileID: 4052701954335310080}
+  - component: {fileID: 4585202129498087111}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -571,6 +572,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5253a0d9b67b7a24eadd537fa3070759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4585202129498087111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707270457798589883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf87f5d7d9b
+  m_ShapePath:
+  - {x: -1.498017, y: -8.128753, z: 0}
+  - {x: -4.08531, y: -5.9158983, z: 0}
+  - {x: -3.8278058, y: -1.4739494, z: 0}
+  - {x: -2.7977886, y: 0.32858062, z: 0}
+  - {x: -4.3428144, y: 2.8392472, z: 0}
+  - {x: -2.6567872, y: 5.2962055, z: 0}
+  - {x: 2.6567864, y: 5.167453, z: 0}
+  - {x: 2.6098008, y: 0.32858062, z: 0}
+  - {x: 3.3179379, y: -1.6027017, z: 0}
+  - {x: 3.3179379, y: -5.658394, z: 0}
+  - {x: 1.6911459, y: -8, z: 0}
+  m_ShapePathHash: -1430338410
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 55942
+  m_LocalBounds:
+    m_Center: {x: -0.5124383, y: -1.4162736, z: 0}
+    m_Extent: {x: 3.8303761, y: 6.712479, z: 0}
 --- !u!1 &7253623324152499457
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,16 @@ public class AudioManager : MonoBehaviour
         PlayBGMusic(bgName);
     }
 
+    void Update()
+    {
+        if(!musicSource.isPlaying)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, bgMusic.Length);
+            string bgName = bgMusic[randomIndex].soundName;
+            PlayBGMusic(bgName);
+        }
+    }
+
     public void PlayBGMusic(string name)
     {
         Sound sound = Array.Find(bgMusic, x => x.soundName == name);
