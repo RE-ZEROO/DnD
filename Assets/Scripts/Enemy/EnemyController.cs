@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
         maxHealth = health;
         bulletSpeed *= GameController.EnemyBulletSpeedMultiplyer;
 
-        //Pathfinding follow player
+        //Pathfinding to follow player
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
     }
 
@@ -104,10 +104,7 @@ public class EnemyController : MonoBehaviour
             currentState = EnemyState.DEAD;
 
         if (roomInstance.isCurrentRoom)
-        {
             inRoom = true;
-            //animator.SetBool("inRoom", true);
-        }
         else
             inRoom = false;
 
@@ -234,8 +231,6 @@ public class EnemyController : MonoBehaviour
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        //bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y, -1f);
-
         //Rotate to player
         var relativePos = player.transform.position - transform.position;
         var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
@@ -284,7 +279,17 @@ public class EnemyController : MonoBehaviour
         flashRoutine = null;
     }
 
-    private void EnemyDeath() => Destroy(gameObject);
+    private void EnemyDeath()
+    {
+        if (GetComponent<ItemGenerator>())
+        {
+            AudioManager.Instance.PlaySFX("ItemSpawn");
+            GetComponent<ItemGenerator>().GenerateItem();
+        }
+
+        Destroy(gameObject);
+    }
+
     public void Invincibile() => isInvincible = true;
     public void NotInvincibile() => isInvincible = false;
 
@@ -299,15 +304,11 @@ public class EnemyController : MonoBehaviour
             else if (!IsPlayerInRange(detectionRange) && currentState != EnemyState.DEAD && enemyType != EnemyType.STATIONARY && enemyType != EnemyType.BOSS)
                 currentState = EnemyState.WANDER;
 
-            //!!!!!!!!!!Boss Behaviour Temporary!!!!!!!!!!
-            //if (!isOnCooldownAttack && distanceToPlayer <= attackRange && enemyType == EnemyType.BOSS && currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
-            //    currentState = EnemyState.ATTACK;
             if (!isOnCooldownAttack && distanceToPlayer <= attackRange && (enemyType == EnemyType.BOSS || PlayerInSightLine()) && 
                 currentState != EnemyState.DEAD && currentState != EnemyState.IDLE)
                 currentState = EnemyState.ATTACK;
             else if(isOnCooldownAttack && distanceToPlayer <= attackRange && PlayerInSightLine() && currentState != EnemyState.DEAD)
                 currentState = EnemyState.IDLE;
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             if (health <= 0)
                 currentState = EnemyState.DEAD;

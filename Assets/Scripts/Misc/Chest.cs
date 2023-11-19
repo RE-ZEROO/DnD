@@ -17,9 +17,6 @@ public class Chest : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
-        //if(needsKey)
-        //    GetComponent<Collider2D>().isTrigger = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

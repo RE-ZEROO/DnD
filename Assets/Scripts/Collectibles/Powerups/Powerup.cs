@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Powerup : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Powerup : MonoBehaviour
 
         AudioManager.Instance.PlaySFX("Powerup");
         GetComponent<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<Light2D>().enabled = false;
         
         powerupEffect1?.Apply();
         powerupEffect2?.Apply();

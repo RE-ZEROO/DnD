@@ -19466,8 +19466,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.2845, y: -0.5581, z: 0}
-    m_Extent: {x: 2.17, y: 7.7151003, z: 0}
+    m_Center: {x: -0.27669996, y: -0.55879974, z: 0}
+    m_Extent: {x: 2.1632, y: 7.7127, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -19984,6 +19984,7 @@ GameObject:
   - component: {fileID: 2368306246649819178}
   - component: {fileID: 669474942554733529}
   - component: {fileID: 4341801187567322185}
+  - component: {fileID: 6298722637317213861}
   m_Layer: 7
   m_Name: Stone Golem Boss
   m_TagString: Boss
@@ -20357,6 +20358,20 @@ MonoBehaviour:
   startVFX: {fileID: 6780379993542918553}
   endVFX: {fileID: 9013948945105531539}
   searchForRockRadius: 130
+--- !u!114 &6298722637317213861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669751127627806507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f14a83455989d489f21f770530ae20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: f4c1d14a02dbda94f926541a2da322de, type: 2}
+  itemHolderPos: {fileID: 0}
 --- !u!1 &9013948945105531539
 GameObject:
   m_ObjectHideFlags: 0

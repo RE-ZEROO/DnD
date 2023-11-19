@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPos;
     [SerializeField] private float fireDelay;
+    [SerializeField] private int trippleNum;
     private float bulletSpeed;
     private float lastFire;
     private float xShootValue;
@@ -58,7 +59,6 @@ public class PlayerController : MonoBehaviour
     [Header("Aniamtion")]
     [SerializeField] private float attackAnimTime;
     [SerializeField] private float teleportAnimTime;
-    [SerializeField] private int trippleNum;
 
     private Animator animator;
     private int currentAnimationState;
@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
         InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle);
         InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle);
 
-        #region Trippleshot upgrade for later
+        #region Stackable Trippleshot upgrade for later
         /*Quaternion lowerMoveAngle2 = Quaternion.Euler(0, 0, -90);
         Quaternion lowerMoveAngle3 = Quaternion.Euler(0, 0, -65);
         Quaternion lowerMoveAngle4 = Quaternion.Euler(0, 0, -115);
@@ -220,29 +220,22 @@ public class PlayerController : MonoBehaviour
         Quaternion upperMoveAngle3 = Quaternion.Euler(0, 0, 65);
         Quaternion upperMoveAngle4 = Quaternion.Euler(0, 0, 115);
 
-
-        if(trippleNum == 1)
-        {
-            InstantiateStraightBullet(xShootValue, yShootValue);
-            InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle);
-            InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle);
-        }
-
-        if (trippleNum == 2)
+        
+        if (trippleNum >= 1)
         {
             InstantiateStraightBullet(-xShootValue, -yShootValue);
             InstantiateAngledBullet(-xShootValue, -yShootValue, upperMoveAngle);
             InstantiateAngledBullet(-xShootValue, -yShootValue, lowerMoveAngle);
         }
 
-        if (trippleNum == 3)
+        if (trippleNum >= 2)
         {
             InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle2);
             InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle3);
             InstantiateAngledBullet(xShootValue, yShootValue, lowerMoveAngle4);
         }
 
-        if (trippleNum == 4)
+        if (trippleNum >= 3)
         {
             InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle2);
             InstantiateAngledBullet(xShootValue, yShootValue, upperMoveAngle3);
