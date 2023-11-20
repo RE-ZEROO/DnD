@@ -22,6 +22,7 @@ public class ChangeSceneButton : MonoBehaviour
 
     public void ExitGame()
     {
+        Debug.Log("Closed Application!");
         AudioManager.Instance.SaveSettings();
         Application.Quit();
     }

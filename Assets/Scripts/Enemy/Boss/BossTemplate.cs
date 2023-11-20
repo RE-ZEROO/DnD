@@ -63,7 +63,15 @@ public class BossTemplate : EnemyController
     {
         if (!gameObject.scene.isLoaded) { return; }
 
+        AudioManager.Instance.inBossRoom = false;
+        AudioManager.Instance.PlayBGMusic();
         Instantiate(roomInstance.portal, roomInstance.RoomCenter(), Quaternion.identity);
+    }
+
+    private void StartBossMusic()
+    {
+        AudioManager.Instance.inBossRoom = true;
+        AudioManager.Instance.PlayBossMusic();
     }
 
     private void SpawnHealthBar() => OnHealthBar?.Invoke();

@@ -20348,7 +20348,7 @@ MonoBehaviour:
   <health>k__BackingField: 32
   detectionRange: 300
   attackRange: 100
-  bulletSpeed: 90
+  bulletSpeed: 180
   cooldown: 2
   bulletSpawnPos: {fileID: 8307440610868134359}
   flashMaterial: {fileID: 2100000, guid: b7f87584ac7c8c74b8323159fa64a1e1, type: 2}

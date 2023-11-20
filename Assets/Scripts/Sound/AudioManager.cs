@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
+    public bool inBossRoom = false;
+
 
     void Awake()
     {
@@ -33,36 +35,37 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        int randomIndex = UnityEngine.Random.Range(0, bgMusic.Length);
-        string bgName = bgMusic[randomIndex].soundName;
-
         SaveSettings();
         LoadSettings();
-        PlayBGMusic(bgName);
+        PlayBGMusic();
     }
 
     void Update()
     {
-        if(!musicSource.isPlaying)
-        {
-            int randomIndex = UnityEngine.Random.Range(0, bgMusic.Length);
-            string bgName = bgMusic[randomIndex].soundName;
-            PlayBGMusic(bgName);
-        }
+        if (!musicSource.isPlaying && inBossRoom)
+            PlayBossMusic();
+        else if (!musicSource.isPlaying && !inBossRoom)
+            PlayBGMusic();
     }
 
-    public void PlayBGMusic(string name)
+    public void PlayBGMusic()
     {
-        Sound sound = Array.Find(bgMusic, x => x.soundName == name);
+        int randomIndex = UnityEngine.Random.Range(0, bgMusic.Length);
+        string bgName = bgMusic[randomIndex].soundName;
+
+        Sound sound = Array.Find(bgMusic, x => x.soundName == bgName);
         if(sound == null) { return; }
 
         musicSource.clip = sound.soundClip;
         musicSource.Play();
     }
 
-    public void PlayBossMusic(string name)
+    public void PlayBossMusic()
     {
-        Sound sound = Array.Find(bossBgMusic, x => x.soundName == name);
+        int randomIndex = UnityEngine.Random.Range(0, bossBgMusic.Length);
+        string bossBgName = bossBgMusic[randomIndex].soundName;
+
+        Sound sound = Array.Find(bossBgMusic, x => x.soundName == bossBgName);
         if (sound == null) { return; }
 
         musicSource.clip = sound.soundClip;
