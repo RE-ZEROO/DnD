@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public float enemyBulletSpeed;
     [SerializeField] private float lifeTime;
-    [SerializeField] private float enemyBulletSpeed = 90f;
     [SerializeField] private GameObject impactEffect;
 
     public bool isEnemyBullet;
@@ -17,8 +17,6 @@ public class BulletController : MonoBehaviour
 
     void Start()
     {
-        //enemyBulletSpeed = GameController.EnemyBulletSpeed;
-
         StartCoroutine(DeathDelay());
 
         //Set bullet size to player bullet size

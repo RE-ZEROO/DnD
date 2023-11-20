@@ -30,7 +30,9 @@ public class GameController : MonoBehaviour
 
     //Enemy Stats
     private static float enemyDamage = 1f;
-    private static float enemyBulletSpeedMultiplyer = 1f;
+    private static float enemyHealthMultiplier;
+    private static float enemyBulletSpeedMultiplier;
+    private static float enemySpeedMultiplier;
 
     //Item Stats
     private static int bombCount = 1;
@@ -55,7 +57,9 @@ public class GameController : MonoBehaviour
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
     public static float PlayerBulletSpeed { get => playerBulletSpeed; set => playerBulletSpeed = value; }
 
-    public static float EnemyBulletSpeedMultiplyer { get => enemyBulletSpeedMultiplyer; set => enemyBulletSpeedMultiplyer = value; }
+    public static float EnemyHealthMultiplier { get => enemyHealthMultiplier; set => enemyHealthMultiplier = value; }
+    public static float EnemyBulletSpeedMultiplier { get => enemyBulletSpeedMultiplier; set => enemyBulletSpeedMultiplier = value; }
+    public static float EnemySpeedMultiplier { get => enemySpeedMultiplier; set => enemySpeedMultiplier = value; }
 
     public static int BombCount { get => bombCount; set => bombCount = value; }
     public static int CoinCount { get => coinCount; set => coinCount = value; }
@@ -78,6 +82,10 @@ public class GameController : MonoBehaviour
         bombCount = 1;
         coinCount = 0;
         keyCount = 0;
+
+        enemyHealthMultiplier = 0;
+        enemyBulletSpeedMultiplier = 1f;
+        enemySpeedMultiplier = 1f;
 
         worldNumber = 1;
         levelNumber = 1;
@@ -166,6 +174,14 @@ public class GameController : MonoBehaviour
             LevelNumber = 1;
             WorldNumber++;
         }*/
+
+        //In every other level...
+        if(levelNumber % 2 != 0)
+        {
+            enemyHealthMultiplier += 1;
+            enemyBulletSpeedMultiplier += 0.2f;
+            enemySpeedMultiplier += 0.2f;
+        }
 
         Instance.worldLevelText.GetComponent<TextMeshProUGUI>().text = $"{worldNumber} - {levelNumber}";
 

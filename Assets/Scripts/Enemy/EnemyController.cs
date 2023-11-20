@@ -91,8 +91,12 @@ public class EnemyController : MonoBehaviour
         roomInstance = GetComponentInParent<RoomInstance>();
 
         originalMaterial = spriteRenderer.material;
+
+        health += GameController.EnemyHealthMultiplier;
+        bulletSpeed *= GameController.EnemyBulletSpeedMultiplier;
+        speed *= GameController.EnemySpeedMultiplier;
+
         maxHealth = health;
-        bulletSpeed *= GameController.EnemyBulletSpeedMultiplyer;
 
         //Pathfinding to follow player
         InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
@@ -167,7 +171,6 @@ public class EnemyController : MonoBehaviour
 
         if (currentState == EnemyState.FOLLOW)
             seeker.StartPath(rb.position, player.transform.position, OnPathComplete);
-
     }
 
     private void OnPathComplete(Path p)
@@ -228,6 +231,7 @@ public class EnemyController : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPos.transform.position, Quaternion.identity);
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
+        bullet.GetComponent<BulletController>().enemyBulletSpeed = bulletSpeed;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -258,7 +262,6 @@ public class EnemyController : MonoBehaviour
     {
         if(isInvincible) { return; }
 
-        //currentState = EnemyState.HIT;
         AudioManager.Instance.PlaySFX("Hit");
         health -= damage;
         StartCoroutine(DamageFlash());
