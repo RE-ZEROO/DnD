@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271568419f734c5489b4c92031233bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 2
   enemyBulletSpeed: 90
+  lifeTime: 2
   impactEffect: {fileID: 5894274868189354536, guid: 18295a67ad133f14e93790446b58d205, type: 3}
   isEnemyBullet: 0
 --- !u!1 &1682395558653806675
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Intensity: 0.35
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf87f5d7d9b
+  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf8
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

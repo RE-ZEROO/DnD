@@ -17,6 +17,11 @@ public class SoundUIController : MonoBehaviour
     [SerializeField] private Sprite sfxSprite;
     [SerializeField] private Sprite sfxSpriteOff;
 
+    void Start()
+    {
+        //AudioManager.Instance.SaveSettings();
+        LoadValues();
+    }
 
     public void ToggleMusic()
     {
@@ -41,4 +46,20 @@ public class SoundUIController : MonoBehaviour
 
     public void MusicVolume() => AudioManager.Instance.MusicVolume(musicSlider.value);
     public void SFXVolume() => AudioManager.Instance.SFXVolume(sfxSlider.value);
+
+    private void LoadValues()
+    {
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+
+        if (AudioManager.Instance.musicSource.mute)
+            musicImage.sprite = musicSpriteOff;
+        else
+            musicImage.sprite = musicSprite;
+
+        if (AudioManager.Instance.sfxSource.mute)
+            sfxImage.sprite = sfxSpriteOff;
+        else
+            sfxImage.sprite = sfxSprite;
+    }
 }

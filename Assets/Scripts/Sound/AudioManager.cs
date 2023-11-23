@@ -33,10 +33,14 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void Start()
+    private void OnEnable()
     {
         SaveSettings();
         LoadSettings();
+    }
+
+    void Start()
+    {
         PlayBGMusic();
     }
 

@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public enum EnemyType
 {
@@ -108,7 +109,12 @@ public class EnemyController : MonoBehaviour
             currentState = EnemyState.DEAD;
 
         if (roomInstance.isCurrentRoom)
+        {
             inRoom = true;
+
+            if(GetComponentInChildren<Light2D>() && !GetComponentInChildren<Light2D>().enabled && enemyType != EnemyType.BOSS)
+                GetComponentInChildren<Light2D>().enabled = true;
+        }
         else
             inRoom = false;
 

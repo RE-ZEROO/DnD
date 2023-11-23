@@ -179,7 +179,7 @@ MonoBehaviour:
   - {x: -7.0008774, y: -2.9324417, z: 0}
   m_ShapePathHash: 210708947
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1226156
+  m_InstanceId: 58316
   m_LocalBounds:
     m_Center: {x: -0.5510235, y: 0.036185265, z: 0}
     m_Extent: {x: 7.518091, y: 6.054206, z: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf87f5d7d9b
+  m_ApplyToSortingLayers: 000000005d17219e474c250c853e742c433fbcf8
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.2602501, y: -0.4538002, z: 0}
-    m_Extent: {x: 9.29835, y: 9.1083, z: 0}
+    m_Center: {x: -1.2736001, y: -0.45114994, z: 0}
+    m_Extent: {x: 9.299, y: 9.11175, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

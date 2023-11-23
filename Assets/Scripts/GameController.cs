@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
         playerBulletSpeed = 90f;
         fireRate = 0.5f;
         bulletSize = 0.7f;
-        playerDamage = 100;
+        playerDamage = 1;
 
         bombCount = 1;
         coinCount = 0;
@@ -190,6 +190,7 @@ public class GameController : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        AudioManager.Instance.SaveSettings();
         PlayerPrefs.Save();
     }
 }
