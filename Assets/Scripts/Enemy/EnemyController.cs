@@ -159,9 +159,9 @@ public class EnemyController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
         else if ((currentState == EnemyState.WANDER || currentState == EnemyState.FOLLOW) && rb.velocity.x >= 0.01f)
             scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
-        else if (player.transform.position.x < transform.position.x)
+        else if (player.transform.position.x < transform.position.x && rb.velocity.x <= 0.01f)
             scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
-        else if(player.transform.position.x > transform.position.x)
+        else if(player.transform.position.x > transform.position.x && rb.velocity.x <= 0.01f)
             scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
 
         transform.localScale = scale;

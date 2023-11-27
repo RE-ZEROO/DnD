@@ -337,6 +337,17 @@ public partial class @PlayerActionsInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""424f9f57-303a-416e-a2a2-f14f4ca2ccb4"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""WASD"",
                     ""id"": ""e93d3498-083c-4939-9602-df5e979ff593"",
                     ""path"": ""Dpad"",

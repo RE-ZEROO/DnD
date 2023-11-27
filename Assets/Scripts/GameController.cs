@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     public static Action OnPlayerHeal;
     public static Action OnBombSpawn;
 
-    [SerializeField] private GameObject worldLevelText;
+    [SerializeField] private TextMeshProUGUI worldLevelText;
 
     //Internal stats
     private static float health;
@@ -89,6 +89,7 @@ public class GameController : MonoBehaviour
 
         worldNumber = 1;
         levelNumber = 1;
+        worldLevelText.text = $"{worldNumber} - {levelNumber}";
 
         PlayerController.isTripleshot = false;
 
@@ -183,7 +184,7 @@ public class GameController : MonoBehaviour
             enemySpeedMultiplier += 0.2f;
         }
 
-        Instance.worldLevelText.GetComponent<TextMeshProUGUI>().text = $"{worldNumber} - {levelNumber}";
+        Instance.worldLevelText.text = $"{worldNumber} - {levelNumber}";
 
         SceneController.Instance.LoadScene("MainScene");
     }
