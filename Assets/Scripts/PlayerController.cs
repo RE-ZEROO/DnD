@@ -254,27 +254,27 @@ public class PlayerController : MonoBehaviour
             (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed);
 
         //Rotate bullet
-        var relativePos = bullet.GetComponent<Rigidbody2D>().velocity;
-        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector2 relativePos = bullet.GetComponent<Rigidbody2D>().velocity;
+        float angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         bullet.transform.rotation = rotation;
     }
 
     private void InstantiateAngledBullet(float x, float y, Quaternion rotationAngle)
     {
-        GameObject upperBullet = Instantiate(bulletPrefab, transform.position, rotationAngle);
-        upperBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+        GameObject angledBullet = Instantiate(bulletPrefab, transform.position, rotationAngle);
+        angledBullet.AddComponent<Rigidbody2D>().gravityScale = 0;
 
         Vector2 direction = (Vector2)(rotationAngle * new Vector3(
         (x < 0) ? Mathf.Floor(x) : Mathf.Ceil(x),
         (y < 0) ? Mathf.Floor(y) : Mathf.Ceil(y), 0));
-        upperBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        angledBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 
         //Rotate bullet
-        var relativePos = upperBullet.GetComponent<Rigidbody2D>().velocity;
-        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-        var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        upperBullet.transform.rotation = rotation;
+        Vector2 relativePos = angledBullet.GetComponent<Rigidbody2D>().velocity;
+        float angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        angledBullet.transform.rotation = rotation;
     }
     #endregion
 
