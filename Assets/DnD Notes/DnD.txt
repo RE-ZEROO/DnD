@@ -1,0 +1,21 @@
+Dash fähigkeit von Platformer übernehmen
+
+
+NPC-Projektile sollten weiter Fliegen
+
+Bosse könnten den Spieler Max heilen
+
+Größere Struerung auf Mobile
+
+100% Holztruhe im raum mit 4 monstern
+100% große Silbertruhe im Bossraum (ohne schlüssel wegen exploren)
+
+Game Changes:
+
+Boss?
+
+Gegner Projektile mit deinrn zerschießen?
+
+Loot rooms wie latzerrette oder schatzkammern?
+
+respawn an sowas wie Dark souls campfiren 1 mal respawn = x coins viellricht in combi mit lazerettrn

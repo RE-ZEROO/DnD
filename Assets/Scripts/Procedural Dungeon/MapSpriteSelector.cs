@@ -23,14 +23,14 @@ public class MapSpriteSelector : MonoBehaviour
     [SerializeField] private Color startColor;
     [SerializeField] private Color bossColor;
 
-    public Color mainColor;
+    public Color currentColor;
     private SpriteRenderer rend;
 
 
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        mainColor = normalColor;
+        currentColor = normalColor;
 
         PickSprite();
         PickColor();
@@ -105,12 +105,12 @@ public class MapSpriteSelector : MonoBehaviour
     private void PickColor()
     {
         if (type == RoomType.NORMAL)
-            mainColor = normalColor;
+            currentColor = normalColor;
         else if (type == RoomType.START)
-            mainColor = startColor;
+            currentColor = startColor;
         else if (type == RoomType.END)
-            mainColor = bossColor;
+            currentColor = bossColor;
 
-        rend.color = mainColor;
+        rend.color = currentColor;
     }
 }

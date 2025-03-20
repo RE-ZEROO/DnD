@@ -12,6 +12,7 @@ public class DebugController : MonoBehaviour
 
     //Commands
     public static DebugCommand HELP;
+    public static DebugCommand GOD;
 
     public static DebugCommand PLAYER_KILL;
     public static DebugCommand<int> SET_PLAYER_HEALTH;
@@ -50,6 +51,7 @@ public class DebugController : MonoBehaviour
         commandList = new List<object>()
         {
             HELP,
+            GOD,
             PLAYER_KILL,
             SET_PLAYER_HEALTH,
             SET_PLAYER_MAX_HEALTH,
@@ -69,6 +71,27 @@ public class DebugController : MonoBehaviour
         PLAYER_KILL = new DebugCommand("player_kill", "Kills the player", "player_kill", () =>
         {
             GameController.Health -= GameController.Health + 1;
+        });
+
+        GOD = new DebugCommand("god", "Set player to godmode", "#god#", () =>
+        {
+            GameController.MaxHealth = 30;
+            GameController.OnPlayerHeal?.Invoke();
+
+            GameController.Health = 30;
+            GameController.OnPlayerHeal?.Invoke();
+
+            GameController.PlayerDamage = 10000;
+            GameController.PlayerInvicibility = true;
+
+            GameController.BombCount = 1000;
+            BombItem.OnBombCollected?.Invoke();
+
+            GameController.CoinCount = 1000;
+            Coin.OnCoinCollected?.Invoke();
+
+            GameController.KeyCount = 1000;
+            Key.OnKeyCollected?.Invoke();
         });
 
         SET_PLAYER_HEALTH = new DebugCommand<int>("set_player_health", "Set the health of the player", "set_player_health <health_amount>", (x) =>

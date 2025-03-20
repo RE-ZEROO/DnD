@@ -10,28 +10,28 @@ public class MiniMapController : MonoBehaviour
     [Header("Current Room")]
     [SerializeField] private RoomInstance currentRoom;
     RoomInstance[] roominstances;
-    
+
+    private RoomStreamer roomStreamer;
 
     void Start()
     {
+        roomStreamer = FindObjectOfType<RoomStreamer>();
         Invoke(nameof(GetObjects), 0.1f);
         InvokeRepeating(nameof(CheckForCurrentRoom), 0.3f, 0.2f);
     }
 
     void CheckForCurrentRoom()
     {
-        foreach (var room in roominstances)
+        if (roomStreamer != null && roomStreamer.currentRoom != null)
         {
-            if (room.isCurrentRoom)
-                currentRoom = room;
+            currentRoom = roomStreamer.currentRoom;
+            HighlightCurrentRoom(currentRoom.roomId);
         }
-
-        HighlightCurrentRoom(currentRoom.roomId);
     }
 
     private void GetObjects()
     {
-        mapSprites = FindObjectsOfType<MapSpriteSelector>();
+        mapSprites = FindObjectsOfType<MapSpriteSelector>(true);
 
         foreach (MapSpriteSelector sprites in mapSprites)
         {
@@ -53,10 +53,10 @@ public class MiniMapController : MonoBehaviour
                 if (!spriteRenderer.enabled)
                     spriteRenderer.enabled = true;
 
-                spriteRenderer.color = sprite.mainColor;
+                spriteRenderer.color = sprite.currentColor;
             }
             else
-                spriteRenderer.color = sprite.mainColor + new Color(-0.5f, -0.5f, -0.5f);
+                spriteRenderer.color = sprite.currentColor + new Color(-0.5f, -0.5f, -0.5f);
         }
     }
 }

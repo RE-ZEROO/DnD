@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
     [SerializeField] PlayerController player;
     [SerializeField] RoomInstance roomInstance;
     [SerializeField] Camera mainCamera;
+    private RoomStreamer roomStreamer;
 
     [Header("Doors")]
     [SerializeField] private Sprite doorOpen;
@@ -39,6 +40,7 @@ public class Door : MonoBehaviour
         roomInstance = GetComponentInParent<RoomInstance>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main;
+        roomStreamer = FindObjectOfType<RoomStreamer>();
 
         //Find out where the door is
         if (transform.position.y > roomInstance.RoomCenter().y)
@@ -109,30 +111,46 @@ public class Door : MonoBehaviour
         Vector2 movePlayerTempPos = transform.position;
         camTempPos = mainCamera.transform.position;
 
+        Vector2 destinationGridPos = roomInstance.gridPos;
+
         if (doorTop)
         {
             movePlayerTempPos += Vector2.up * moveJump.y;
             camTempPos.y += Vector3.up.y * camJump.y;
+            destinationGridPos += Vector2.up;
         }
         else if (doorBottom)
         {
             movePlayerTempPos += Vector2.down * moveJump.y;
             camTempPos.y += Vector3.down.y * camJump.y;
+            destinationGridPos += Vector2.down;
         }
         else if (doorLeft)
         {
             movePlayerTempPos += Vector2.left * moveJump.x;
             camTempPos.x += Vector3.left.x * camJump.x;
+            destinationGridPos += Vector2.left;
         }
         else if (doorRight)
         {
             movePlayerTempPos += Vector2.right * moveJump.x;
             camTempPos.x += Vector3.right.x * camJump.x;
+            destinationGridPos += Vector2.right;
         }
 
         player.transform.position = movePlayerTempPos;
         player.canMove = false;
         camSwitchingRoom = true;
+
+        // Get destination room and update current room
+        if (roomStreamer != null)
+        {
+            RoomInstance destinationRoom = roomStreamer.GetRoomAtGridPosition(destinationGridPos);
+            if (destinationRoom != null)
+            {
+                roomStreamer.SetCurrentRoom(destinationRoom);
+            }
+        }
     }
 
     private void CalculateCameraPosition()
